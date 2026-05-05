@@ -42,23 +42,27 @@
          ============================================ -->
     <section class="hero-carousel" id="inicio">
         <div class="carousel-slide active">
-            <img src="img/actividades/20260424_085156.jpg" alt="I.E. José Carlos Mariátegui">
+            <img src="img/Portada/20260504_115236.jpg" alt="I.E. José Carlos Mariátegui">
             <div class="carousel-overlay"></div>
         </div>
         <div class="carousel-slide">
-            <img src="img/actividades/20260424_091104.jpg" alt="Juegos Escolares Institucionales">
+            <img src="img/Portada/20260504_115247.jpg" alt="Vista institucional">
             <div class="carousel-overlay"></div>
         </div>
         <div class="carousel-slide">
-            <img src="img/actividades/20260424_093752.jpg" alt="Actividades deportivas">
+            <img src="img/Portada/20260504_115331.jpg" alt="Comunidad educativa">
             <div class="carousel-overlay"></div>
         </div>
         <div class="carousel-slide">
-            <img src="img/actividades/20260424_101204.jpg" alt="Vida estudiantil">
+            <img src="img/Portada/20260504_115404.jpg" alt="Socchabamba - Ayabaca">
             <div class="carousel-overlay"></div>
         </div>
         <div class="carousel-slide">
-            <img src="img/actividades/20260424_095341.jpg" alt="Comunidad educativa">
+            <img src="img/actividades/20260424_085156.jpg" alt="Juegos Escolares Institucionales">
+            <div class="carousel-overlay"></div>
+        </div>
+        <div class="carousel-slide">
+            <img src="img/actividades/20260424_091104.jpg" alt="Actividades deportivas">
             <div class="carousel-overlay"></div>
         </div>
 
@@ -72,6 +76,7 @@
 
         <div class="carousel-indicators">
             <span class="dot active"></span>
+            <span class="dot"></span>
             <span class="dot"></span>
             <span class="dot"></span>
             <span class="dot"></span>
@@ -188,110 +193,128 @@
                 <p>Eventos y momentos destacados de nuestra institución</p>
             </div>
 
-            <div class="activity-single">
-                <div class="activity-header fade-in">
-                    <div class="activity-title-block">
-                        <span class="activity-badge">Actividad Destacada</span>
-                        <h3>Juegos Escolares Institucionales</h3>
-                        <p>Competencias deportivas que fortalecen el espíritu de equipo, la disciplina y los valores de nuestros estudiantes. Una jornada de sana competencia y fraternidad institucional.</p>
-                    </div>
-                    <div class="activity-featured-img">
-                        <img src="img/actividades/20260424_085156.jpg" alt="Juegos Escolares Institucionales - Vista principal" onclick="openLightboxAt(0)">
+            <!-- Tarjetas de actividades (vista general) -->
+            <div class="activities-grid fade-in" id="activities-grid">
+                <div class="activity-card" onclick="showActivity('juegos-escolares')">
+                    <img src="img/actividades/20260424_085156.jpg" alt="Juegos Escolares Institucionales">
+                    <div class="card-body">
+                        <h4>Juegos Escolares Institucionales</h4>
+                        <p>Competencias deportivas que fortalecen el espíritu de equipo y los valores.</p>
+                        <span class="card-arrow">Ver galería &#10140;</span>
                     </div>
                 </div>
+                <!-- Para agregar más actividades, copia el bloque .activity-card y cambia el ID -->
+            </div>
 
-                <div class="activity-gallery fade-in">
-                    <h4> Galería fotográfica - 30 imágenes</h4>
-                    <div class="gallery-grid">
-                        <div class="gallery-item" onclick="openLightboxAt(0)">
-                            <img src="img/actividades/20260424_084526.jpg" alt="Juegos Escolares 1" loading="lazy">
+            <!-- Galería individual: Juegos Escolares -->
+            <div class="activity-detail" id="activity-juegos-escolares">
+                <button class="btn-back" onclick="hideActivity('juegos-escolares')">&#10094; Volver a actividades</button>
+
+                <div class="activity-single">
+                    <div class="activity-header fade-in">
+                        <div class="activity-title-block">
+                            <span class="activity-badge">Actividad Destacada</span>
+                            <h3>Juegos Escolares Institucionales</h3>
+                            <p>Competencias deportivas que fortalecen el espíritu de equipo, la disciplina y los valores de nuestros estudiantes. Una jornada de sana competencia y fraternidad institucional.</p>
                         </div>
-                        <div class="gallery-item" onclick="openLightboxAt(1)">
-                            <img src="img/actividades/20260424_085016.jpg" alt="Juegos Escolares 2" loading="lazy">
+                        <div class="activity-featured-img">
+                            <img src="img/actividades/20260424_085156.jpg" alt="Juegos Escolares Institucionales - Vista principal" onclick="openLightboxAt('juegos-escolares', 0)">
                         </div>
-                        <div class="gallery-item" onclick="openLightboxAt(2)">
-                            <img src="img/actividades/20260424_085119.jpg" alt="Juegos Escolares 3" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(3)">
-                            <img src="img/actividades/20260424_085246.jpg" alt="Juegos Escolares 4" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(4)">
-                            <img src="img/actividades/20260424_085252.jpg" alt="Juegos Escolares 5" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(5)">
-                            <img src="img/actividades/20260424_085320.jpg" alt="Juegos Escolares 6" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(6)">
-                            <img src="img/actividades/20260424_085330.jpg" alt="Juegos Escolares 7" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(7)">
-                            <img src="img/actividades/20260424_085344.jpg" alt="Juegos Escolares 8" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(8)">
-                            <img src="img/actividades/20260424_085409.jpg" alt="Juegos Escolares 9" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(9)">
-                            <img src="img/actividades/20260424_085650.jpg" alt="Juegos Escolares 10" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(10)">
-                            <img src="img/actividades/20260424_085704.jpg" alt="Juegos Escolares 11" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(11)">
-                            <img src="img/actividades/20260424_085740.jpg" alt="Juegos Escolares 12" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(12)">
-                            <img src="img/actividades/20260424_090131.jpg" alt="Juegos Escolares 13" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(13)">
-                            <img src="img/actividades/20260424_090338.jpg" alt="Juegos Escolares 14" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(14)">
-                            <img src="img/actividades/20260424_090757.jpg" alt="Juegos Escolares 15" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(15)">
-                            <img src="img/actividades/20260424_091104.jpg" alt="Juegos Escolares 16" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(16)">
-                            <img src="img/actividades/20260424_091331.jpg" alt="Juegos Escolares 17" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(17)">
-                            <img src="img/actividades/20260424_091549.jpg" alt="Juegos Escolares 18" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(18)">
-                            <img src="img/actividades/20260424_091848.jpg" alt="Juegos Escolares 19" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(19)">
-                            <img src="img/actividades/20260424_093032.jpg" alt="Juegos Escolares 20" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(20)">
-                            <img src="img/actividades/20260424_093752.jpg" alt="Juegos Escolares 21" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(21)">
-                            <img src="img/actividades/20260424_093817.jpg" alt="Juegos Escolares 22" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(22)">
-                            <img src="img/actividades/20260424_093845.jpg" alt="Juegos Escolares 23" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(23)">
-                            <img src="img/actividades/20260424_094258.jpg" alt="Juegos Escolares 24" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(24)">
-                            <img src="img/actividades/20260424_094640.jpg" alt="Juegos Escolares 25" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(25)">
-                            <img src="img/actividades/20260424_094853.jpg" alt="Juegos Escolares 26" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(26)">
-                            <img src="img/actividades/20260424_095341.jpg" alt="Juegos Escolares 27" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(27)">
-                            <img src="img/actividades/20260424_101204.jpg" alt="Juegos Escolares 28" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(28)">
-                            <img src="img/actividades/20260424_101601.jpg" alt="Juegos Escolares 29" loading="lazy">
-                        </div>
-                        <div class="gallery-item" onclick="openLightboxAt(29)">
-                            <img src="img/actividades/20260424_114506.jpg" alt="Juegos Escolares 30" loading="lazy">
+                    </div>
+
+                    <div class="activity-gallery fade-in">
+                        <h4>Galería fotográfica - 30 imágenes</h4>
+                        <div class="gallery-grid">
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 0)">
+                                <img src="img/actividades/20260424_084526.jpg" alt="Juegos Escolares 1" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 1)">
+                                <img src="img/actividades/20260424_085016.jpg" alt="Juegos Escolares 2" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 2)">
+                                <img src="img/actividades/20260424_085119.jpg" alt="Juegos Escolares 3" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 3)">
+                                <img src="img/actividades/20260424_085246.jpg" alt="Juegos Escolares 4" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 4)">
+                                <img src="img/actividades/20260424_085252.jpg" alt="Juegos Escolares 5" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 5)">
+                                <img src="img/actividades/20260424_085320.jpg" alt="Juegos Escolares 6" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 6)">
+                                <img src="img/actividades/20260424_085330.jpg" alt="Juegos Escolares 7" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 7)">
+                                <img src="img/actividades/20260424_085344.jpg" alt="Juegos Escolares 8" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 8)">
+                                <img src="img/actividades/20260424_085409.jpg" alt="Juegos Escolares 9" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 9)">
+                                <img src="img/actividades/20260424_085650.jpg" alt="Juegos Escolares 10" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 10)">
+                                <img src="img/actividades/20260424_085704.jpg" alt="Juegos Escolares 11" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 11)">
+                                <img src="img/actividades/20260424_085740.jpg" alt="Juegos Escolares 12" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 12)">
+                                <img src="img/actividades/20260424_090131.jpg" alt="Juegos Escolares 13" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 13)">
+                                <img src="img/actividades/20260424_090338.jpg" alt="Juegos Escolares 14" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 14)">
+                                <img src="img/actividades/20260424_090757.jpg" alt="Juegos Escolares 15" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 15)">
+                                <img src="img/actividades/20260424_091104.jpg" alt="Juegos Escolares 16" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 16)">
+                                <img src="img/actividades/20260424_091331.jpg" alt="Juegos Escolares 17" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 17)">
+                                <img src="img/actividades/20260424_091549.jpg" alt="Juegos Escolares 18" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 18)">
+                                <img src="img/actividades/20260424_091848.jpg" alt="Juegos Escolares 19" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 19)">
+                                <img src="img/actividades/20260424_093032.jpg" alt="Juegos Escolares 20" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 20)">
+                                <img src="img/actividades/20260424_093752.jpg" alt="Juegos Escolares 21" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 21)">
+                                <img src="img/actividades/20260424_093817.jpg" alt="Juegos Escolares 22" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 22)">
+                                <img src="img/actividades/20260424_093845.jpg" alt="Juegos Escolares 23" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 23)">
+                                <img src="img/actividades/20260424_094258.jpg" alt="Juegos Escolares 24" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 24)">
+                                <img src="img/actividades/20260424_094640.jpg" alt="Juegos Escolares 25" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 25)">
+                                <img src="img/actividades/20260424_094853.jpg" alt="Juegos Escolares 26" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 26)">
+                                <img src="img/actividades/20260424_095341.jpg" alt="Juegos Escolares 27" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 27)">
+                                <img src="img/actividades/20260424_101204.jpg" alt="Juegos Escolares 28" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 28)">
+                                <img src="img/actividades/20260424_101601.jpg" alt="Juegos Escolares 29" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('juegos-escolares', 29)">
+                                <img src="img/actividades/20260424_114506.jpg" alt="Juegos Escolares 30" loading="lazy">
+                            </div>
                         </div>
                     </div>
                 </div>

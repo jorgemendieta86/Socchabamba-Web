@@ -116,8 +116,28 @@ window.addEventListener('scroll', () => {
 });
 
 /* ============================================
-   LIGHTBOX GALERÍA
-   ============================================ */
+    ACTIVIDADES - MOSTRAR/OCULTAR GALERÍAS
+    ============================================ */
+function showActivity(id) {
+    const grid = document.getElementById('activities-grid');
+    const detail = document.getElementById('activity-' + id);
+    if (grid) grid.style.display = 'none';
+    if (detail) {
+        detail.classList.add('active');
+        detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+function hideActivity(id) {
+    const grid = document.getElementById('activities-grid');
+    const detail = document.getElementById('activity-' + id);
+    if (detail) detail.classList.remove('active');
+    if (grid) grid.style.display = 'grid';
+}
+
+/* ============================================
+    LIGHTBOX GALERÍA POR ACTIVIDAD
+    ============================================ */
 const lightbox = document.querySelector('.lightbox');
 const lightboxImg = document.querySelector('.lightbox img');
 const lightboxClose = document.querySelector('.lightbox-close');
@@ -126,22 +146,20 @@ const lightboxNext = document.querySelector('.lightbox-nav.next');
 let lightboxIndex = 0;
 let lightboxImages = [];
 
-// Collect all gallery images
-function collectImages() {
-    lightboxImages = [];
-    const featuredImg = document.querySelector('.activity-featured-img img');
-    if (featuredImg) {
-        lightboxImages.push(featuredImg.src);
-    }
-    const galleryItems = document.querySelectorAll('.gallery-item img');
-    galleryItems.forEach(img => {
-        lightboxImages.push(img.src);
-    });
-}
+// Definir las imágenes de cada actividad
+const activityGalleries = {
+    'juegos-escolares': (function() {
+        const imgs = [];
+        const featured = 'img/actividades/20260424_085156.jpg';
+        imgs.push(featured);
+        const galleryImgs = document.querySelectorAll('#activity-juegos-escolares .gallery-item img');
+        galleryImgs.forEach(img => imgs.push(img.src));
+        return imgs;
+    })()
+};
 
-collectImages();
-
-function openLightboxAt(index) {
+function openLightboxAt(activityId, index) {
+    lightboxImages = activityGalleries[activityId] || [];
     lightboxIndex = index;
     lightboxImg.src = lightboxImages[index];
     lightbox.classList.add('active');
@@ -149,6 +167,8 @@ function openLightboxAt(index) {
 }
 
 function openLightbox(src) {
+    lightboxImages = [src];
+    lightboxIndex = 0;
     lightboxImg.src = src;
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -171,6 +191,7 @@ if (lightbox) {
 
 if (lightboxPrev) {
     lightboxPrev.addEventListener('click', () => {
+        if (lightboxImages.length <= 1) return;
         lightboxIndex = (lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
         lightboxImg.src = lightboxImages[lightboxIndex];
     });
@@ -178,6 +199,7 @@ if (lightboxPrev) {
 
 if (lightboxNext) {
     lightboxNext.addEventListener('click', () => {
+        if (lightboxImages.length <= 1) return;
         lightboxIndex = (lightboxIndex + 1) % lightboxImages.length;
         lightboxImg.src = lightboxImages[lightboxIndex];
     });
