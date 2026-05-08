@@ -399,6 +399,39 @@ ul { list-style: none; }
 .contacto-item h4 { color: #0f4156; margin-bottom: 4px; }
 .contacto-item p { color: var(--muted); }
 
+.comunicados-grid {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.comunicado-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--gold-500);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    padding: 24px;
+}
+
+.comunicado-tag {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #5f460f;
+    background: #f9edcf;
+}
+
+.comunicado-card h4 {
+    color: #0f4156;
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+}
+
+.comunicado-card p { color: var(--muted); }
+
 .footer {
     margin-top: 20px;
     background: linear-gradient(180deg, #0d3a4b 0%, #0b2f3d 100%);

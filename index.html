@@ -34,6 +34,7 @@
                 <a href="#institucion">Institución</a>
                 <a href="#actividades">Actividades</a>
                 <a href="#matricula">Matrícula</a>
+                <a href="#comunicados">Comunicados</a>
                 <a href="#contacto" class="btn-contacto">Contacto</a>
             </nav>
             <div class="hamburger" id="hamburger">
@@ -207,7 +208,7 @@
 
             <!-- Tarjetas de actividades (vista general) -->
             <div class="activities-grid fade-in" id="activities-grid">
-                <div class="activity-card" onclick="showActivity('juegos-escolares')">
+                <div class="activity-card" onclick="openGallery('juegos-escolares')">
                     <img src="img/actividades/20260424_085156.jpg" alt="Juegos Escolares Institucionales">
                     <div class="card-body">
                         <h4>Juegos Escolares Institucionales</h4>
@@ -215,7 +216,14 @@
                         <span class="card-arrow">Ver galería &#10140;</span>
                     </div>
                 </div>
-                <!-- Para agregar más actividades, copia el bloque .activity-card y cambia el ID -->
+                <div class="activity-card" onclick="openGallery('dia-madre-2026')">
+                    <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.20 AM.jpeg" alt="Celebración del Día de la Madre 2026">
+                    <div class="card-body">
+                        <h4>Celebración del Día de la Madre 2026</h4>
+                        <p>Jornada realizada el 07 de mayo de 2026 para homenajear a las madres de la comunidad educativa.</p>
+                        <span class="card-arrow">Ver galería &#10140;</span>
+                    </div>
+                </div>
             </div>
 
             <!-- Galería individual: Juegos Escolares -->
@@ -331,6 +339,264 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Galería individual: Día de la Madre 2026 -->
+            <div class="activity-detail" id="activity-dia-madre-2026">
+                <button class="btn-back" onclick="hideActivity('dia-madre-2026')">&#10094; Volver a actividades</button>
+
+                <div class="activity-single">
+                    <div class="activity-header fade-in">
+                        <div class="activity-title-block">
+                            <span class="activity-badge">Actividad Especial</span>
+                            <h3>Celebración del Día de la Madre 2026</h3>
+                            <p>Celebración realizada el día 07 de mayo del 2026 para homenajear a las madres de la comunidad educativa, compartiendo un momento de gratitud, alegría y reconocimiento.</p>
+                        </div>
+                        <div class="activity-featured-img">
+                            <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.20 AM.jpeg" alt="Celebración del Día de la Madre 2026 - Vista principal" onclick="openLightboxAt('dia-madre-2026', 0)">
+                        </div>
+                    </div>
+
+                    <div class="activity-gallery fade-in">
+                        <h4>Galería fotográfica - 78 imágenes</h4>
+                        <div class="gallery-grid">
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 0)">
+                                <img src="img/madre/20260507_104512.jpg" alt="Celebracion del Dia de la Madre 1" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 1)">
+                                <img src="img/madre/20260507_105019.jpg" alt="Celebracion del Dia de la Madre 2" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 2)">
+                                <img src="img/madre/20260507_105141.jpg" alt="Celebracion del Dia de la Madre 3" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 3)">
+                                <img src="img/madre/20260507_105711.jpg" alt="Celebracion del Dia de la Madre 4" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 4)">
+                                <img src="img/madre/20260507_105732.jpg" alt="Celebracion del Dia de la Madre 5" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 5)">
+                                <img src="img/madre/20260507_110506.jpg" alt="Celebracion del Dia de la Madre 6" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 6)">
+                                <img src="img/madre/20260507_111529.jpg" alt="Celebracion del Dia de la Madre 7" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 7)">
+                                <img src="img/madre/20260507_112344.jpg" alt="Celebracion del Dia de la Madre 8" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 8)">
+                                <img src="img/madre/20260507_112712.jpg" alt="Celebracion del Dia de la Madre 9" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 9)">
+                                <img src="img/madre/20260507_112927.jpg" alt="Celebracion del Dia de la Madre 10" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 10)">
+                                <img src="img/madre/20260507_113442.jpg" alt="Celebracion del Dia de la Madre 11" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 11)">
+                                <img src="img/madre/20260507_113800.jpg" alt="Celebracion del Dia de la Madre 12" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 12)">
+                                <img src="img/madre/20260507_114844.jpg" alt="Celebracion del Dia de la Madre 13" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 13)">
+                                <img src="img/madre/20260507_115202.jpg" alt="Celebracion del Dia de la Madre 14" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 14)">
+                                <img src="img/madre/20260507_115217.jpg" alt="Celebracion del Dia de la Madre 15" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 15)">
+                                <img src="img/madre/20260507_115317.jpg" alt="Celebracion del Dia de la Madre 16" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 16)">
+                                <img src="img/madre/20260507_115348.jpg" alt="Celebracion del Dia de la Madre 17" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 17)">
+                                <img src="img/madre/20260507_115430.jpg" alt="Celebracion del Dia de la Madre 18" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 18)">
+                                <img src="img/madre/20260507_115509.jpg" alt="Celebracion del Dia de la Madre 19" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 19)">
+                                <img src="img/madre/20260507_115547.jpg" alt="Celebracion del Dia de la Madre 20" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 20)">
+                                <img src="img/madre/20260507_115625.jpg" alt="Celebracion del Dia de la Madre 21" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 21)">
+                                <img src="img/madre/20260507_115709.jpg" alt="Celebracion del Dia de la Madre 22" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 22)">
+                                <img src="img/madre/20260507_115747.jpg" alt="Celebracion del Dia de la Madre 23" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 23)">
+                                <img src="img/madre/20260507_115824.jpg" alt="Celebracion del Dia de la Madre 24" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 24)">
+                                <img src="img/madre/20260507_120212.jpg" alt="Celebracion del Dia de la Madre 25" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 25)">
+                                <img src="img/madre/20260507_121935.jpg" alt="Celebracion del Dia de la Madre 26" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 26)">
+                                <img src="img/madre/20260507_122220.jpg" alt="Celebracion del Dia de la Madre 27" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 27)">
+                                <img src="img/madre/20260507_122322.jpg" alt="Celebracion del Dia de la Madre 28" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 28)">
+                                <img src="img/madre/20260507_122824.jpg" alt="Celebracion del Dia de la Madre 29" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 29)">
+                                <img src="img/madre/20260507_123147.jpg" alt="Celebracion del Dia de la Madre 30" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 30)">
+                                <img src="img/madre/20260507_123344.jpg" alt="Celebracion del Dia de la Madre 31" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 31)">
+                                <img src="img/madre/20260507_123626.jpg" alt="Celebracion del Dia de la Madre 32" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 32)">
+                                <img src="img/madre/20260507_123746.jpg" alt="Celebracion del Dia de la Madre 33" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 33)">
+                                <img src="img/madre/20260507_124038.jpg" alt="Celebracion del Dia de la Madre 34" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 34)">
+                                <img src="img/madre/20260507_124149.jpg" alt="Celebracion del Dia de la Madre 35" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 35)">
+                                <img src="img/madre/20260507_124225.jpg" alt="Celebracion del Dia de la Madre 36" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 36)">
+                                <img src="img/madre/20260507_124325.jpg" alt="Celebracion del Dia de la Madre 37" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 37)">
+                                <img src="img/madre/20260507_124440.jpg" alt="Celebracion del Dia de la Madre 38" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 38)">
+                                <img src="img/madre/20260507_124539.jpg" alt="Celebracion del Dia de la Madre 39" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 39)">
+                                <img src="img/madre/20260507_124611.jpg" alt="Celebracion del Dia de la Madre 40" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 40)">
+                                <img src="img/madre/20260507_124709.jpg" alt="Celebracion del Dia de la Madre 41" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 41)">
+                                <img src="img/madre/20260507_124756.jpg" alt="Celebracion del Dia de la Madre 42" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 42)">
+                                <img src="img/madre/20260507_124840.jpg" alt="Celebracion del Dia de la Madre 43" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 43)">
+                                <img src="img/madre/20260507_124851.jpg" alt="Celebracion del Dia de la Madre 44" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 44)">
+                                <img src="img/madre/20260507_125006.jpg" alt="Celebracion del Dia de la Madre 45" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 45)">
+                                <img src="img/madre/20260507_125052.jpg" alt="Celebracion del Dia de la Madre 46" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 46)">
+                                <img src="img/madre/20260507_125142(0).jpg" alt="Celebracion del Dia de la Madre 47" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 47)">
+                                <img src="img/madre/20260507_125231.jpg" alt="Celebracion del Dia de la Madre 48" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 48)">
+                                <img src="img/madre/20260507_130054.jpg" alt="Celebracion del Dia de la Madre 49" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 49)">
+                                <img src="img/madre/20260507_135001.jpg" alt="Celebracion del Dia de la Madre 50" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 50)">
+                                <img src="img/madre/20260507_135711.jpg" alt="Celebracion del Dia de la Madre 51" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 51)">
+                                <img src="img/madre/20260507_135839.jpg" alt="Celebracion del Dia de la Madre 52" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 52)">
+                                <img src="img/madre/20260507_140803.jpg" alt="Celebracion del Dia de la Madre 53" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 53)">
+                                <img src="img/madre/20260507_142618.jpg" alt="Celebracion del Dia de la Madre 54" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 54)">
+                                <img src="img/madre/20260507_142822.jpg" alt="Celebracion del Dia de la Madre 55" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 55)">
+                                <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.17 AM.jpeg" alt="Celebracion del Dia de la Madre 56" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 56)">
+                                <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.18 AM (2).jpeg" alt="Celebracion del Dia de la Madre 57" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 57)">
+                                <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.18 AM.jpeg" alt="Celebracion del Dia de la Madre 58" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 58)">
+                                <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.19 AM (1).jpeg" alt="Celebracion del Dia de la Madre 59" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 59)">
+                                <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.20 AM (1).jpeg" alt="Celebracion del Dia de la Madre 60" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 60)">
+                                <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.20 AM.jpeg" alt="Celebracion del Dia de la Madre 61" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 61)">
+                                <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.21 AM (1).jpeg" alt="Celebracion del Dia de la Madre 62" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 62)">
+                                <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.21 AM.jpeg" alt="Celebracion del Dia de la Madre 63" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 63)">
+                                <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.25 AM (1).jpeg" alt="Celebracion del Dia de la Madre 64" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 64)">
+                                <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.25 AM (2).jpeg" alt="Celebracion del Dia de la Madre 65" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 65)">
+                                <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.26 AM (1).jpeg" alt="Celebracion del Dia de la Madre 66" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 66)">
+                                <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.26 AM (4).jpeg" alt="Celebracion del Dia de la Madre 67" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 67)">
+                                <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.26 AM.jpeg" alt="Celebracion del Dia de la Madre 68" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 68)">
+                                <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.28 AM (1).jpeg" alt="Celebracion del Dia de la Madre 69" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 69)">
+                                <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.28 AM (3).jpeg" alt="Celebracion del Dia de la Madre 70" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 70)">
+                                <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.28 AM (4).jpeg" alt="Celebracion del Dia de la Madre 71" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 71)">
+                                <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.29 AM (4).jpeg" alt="Celebracion del Dia de la Madre 72" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 72)">
+                                <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.30 AM (1).jpeg" alt="Celebracion del Dia de la Madre 73" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 73)">
+                                <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.30 AM (3).jpeg" alt="Celebracion del Dia de la Madre 74" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 74)">
+                                <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.31 AM (1).jpeg" alt="Celebracion del Dia de la Madre 75" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 75)">
+                                <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.31 AM (2).jpeg" alt="Celebracion del Dia de la Madre 76" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 76)">
+                                <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.31 AM (3).jpeg" alt="Celebracion del Dia de la Madre 77" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 77)">
+                                <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.31 AM.jpeg" alt="Celebracion del Dia de la Madre 78" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -374,6 +640,26 @@
                         <p>Una vez revisados los documentos, se procederá con la matrícula oficial.</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECCIÓN COMUNICADOS
+         ============================================ -->
+    <section class="section comunicados" id="comunicados">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Comunicados</h2>
+                <p>Espacio para emitir comunicados y avisos importantes a la comunidad educativa</p>
+            </div>
+
+            <div class="comunicados-grid fade-in">
+                <article class="comunicado-card">
+                    <span class="comunicado-tag">Aviso importante</span>
+                    <h4>Sección de comunicados habilitada</h4>
+                    <p>Desde este espacio se publicarán oportunamente comunicados institucionales, avisos académicos y anuncios de interés general para estudiantes, madres, padres y apoderados.</p>
+                </article>
             </div>
         </div>
     </section>
@@ -453,6 +739,7 @@
                         <li><a href="#institucion">Institución</a></li>
                         <li><a href="#actividades">Actividades</a></li>
                         <li><a href="#matricula">Matrícula</a></li>
+                        <li><a href="#comunicados">Comunicados</a></li>
                         <li><a href="#contacto">Contacto</a></li>
                     </ul>
                 </div>

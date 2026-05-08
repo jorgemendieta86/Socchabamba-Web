@@ -135,6 +135,10 @@ function hideActivity(id) {
     if (grid) grid.style.display = 'grid';
 }
 
+function openGallery(activityId) {
+    openLightboxAt(activityId, 0);
+}
+
 /* ============================================
     LIGHTBOX GALERÍA POR ACTIVIDAD
     ============================================ */
@@ -153,6 +157,14 @@ const activityGalleries = {
         const featured = 'img/actividades/20260424_085156.jpg';
         imgs.push(featured);
         const galleryImgs = document.querySelectorAll('#activity-juegos-escolares .gallery-item img');
+        galleryImgs.forEach(img => imgs.push(img.src));
+        return imgs;
+    })(),
+    'dia-madre-2026': (function() {
+        const imgs = [];
+        const featured = 'img/madre/WhatsApp Image 2026-05-08 at 11.14.20 AM.jpeg';
+        imgs.push(featured);
+        const galleryImgs = document.querySelectorAll('#activity-dia-madre-2026 .gallery-item img');
         galleryImgs.forEach(img => imgs.push(img.src));
         return imgs;
     })()
