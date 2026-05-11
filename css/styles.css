@@ -216,7 +216,12 @@ ul { list-style: none; }
 }
 .welcome-text { padding: 30px 30px 24px; }
 .welcome-text h3 { font-size: 2rem; line-height: 1.1; margin-bottom: 14px; color: #0f4156; }
-.welcome-text p { color: var(--muted); margin-bottom: 12px; }
+.welcome-text p {
+    color: var(--muted);
+    margin-bottom: 12px;
+    text-align: justify;
+    text-justify: inter-word;
+}
 .welcome-stats { margin-top: 18px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .stat-item {
     background: linear-gradient(160deg, #f5fafc, #e8f3f7);
@@ -241,7 +246,11 @@ ul { list-style: none; }
 }
 .inst-card .icon { font-size: 2rem; margin-bottom: 10px; }
 .inst-card h3 { color: #0f4156; margin-bottom: 10px; font-size: 1.5rem; }
-.inst-card p { color: var(--muted); }
+.inst-card p {
+    color: var(--muted);
+    text-align: justify;
+    text-justify: inter-word;
+}
 
 .inst-valores {
     margin-top: 18px;
