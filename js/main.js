@@ -139,6 +139,24 @@ function openGallery(activityId) {
     openLightboxAt(activityId, 0);
 }
 
+function sortActivityCardsByDate() {
+    const grid = document.getElementById('activities-grid');
+    if (!grid) return;
+
+    const cards = Array.from(grid.querySelectorAll('.activity-card'));
+    if (!cards.length) return;
+
+    cards.sort((a, b) => {
+        const dateA = Date.parse(a.dataset.date || '1970-01-01');
+        const dateB = Date.parse(b.dataset.date || '1970-01-01');
+        return dateB - dateA;
+    });
+
+    cards.forEach(card => grid.appendChild(card));
+}
+
+sortActivityCardsByDate();
+
 /* ============================================
     LIGHTBOX GALERÍA POR ACTIVIDAD
     ============================================ */
@@ -165,6 +183,14 @@ const activityGalleries = {
         const featured = 'img/madre/WhatsApp Image 2026-05-08 at 11.14.20 AM.jpeg';
         imgs.push(featured);
         const galleryImgs = document.querySelectorAll('#activity-dia-madre-2026 .gallery-item img');
+        galleryImgs.forEach(img => imgs.push(img.src));
+        return imgs;
+    })(),
+    'inicio-semana-academica-2026': (function() {
+        const imgs = [];
+        const featured = 'img/11 DE MAYO/photo_2026-05-11_08-39-19.jpg';
+        imgs.push(featured);
+        const galleryImgs = document.querySelectorAll('#activity-inicio-semana-academica-2026 .gallery-item img');
         galleryImgs.forEach(img => imgs.push(img.src));
         return imgs;
     })()

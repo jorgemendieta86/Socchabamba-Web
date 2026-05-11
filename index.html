@@ -208,7 +208,7 @@
 
             <!-- Tarjetas de actividades (vista general) -->
             <div class="activities-grid fade-in" id="activities-grid">
-                <div class="activity-card" onclick="openGallery('juegos-escolares')">
+                <div class="activity-card" data-date="2026-04-24" onclick="openGallery('juegos-escolares')">
                     <img src="img/actividades/20260424_085156.jpg" alt="Juegos Escolares Institucionales">
                     <div class="card-body">
                         <h4>Juegos Escolares Institucionales</h4>
@@ -216,11 +216,19 @@
                         <span class="card-arrow">Ver galería &#10140;</span>
                     </div>
                 </div>
-                <div class="activity-card" onclick="openGallery('dia-madre-2026')">
+                <div class="activity-card" data-date="2026-05-07" onclick="openGallery('dia-madre-2026')">
                     <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.20 AM.jpeg" alt="Celebración del Día de la Madre 2026">
                     <div class="card-body">
                         <h4>Celebración del Día de la Madre 2026</h4>
                         <p>Jornada realizada el 07 de mayo de 2026 para homenajear a las madres de la comunidad educativa.</p>
+                        <span class="card-arrow">Ver galería &#10140;</span>
+                    </div>
+                </div>
+                <div class="activity-card" data-date="2026-05-11" onclick="openGallery('inicio-semana-academica-2026')">
+                    <img src="img/11 DE MAYO/photo_2026-05-11_08-39-19.jpg" alt="Inicio de la semana académica y acto cívico escolar">
+                    <div class="card-body">
+                        <h4>Inicio de Semana Académica y Acto Cívico Escolar</h4>
+                        <p>Ceremonia del 11 de mayo con izamiento del pabellón nacional y charla sobre la vida de María Parado de Bellido, a cargo de un docente según el calendario cívico escolar.</p>
                         <span class="card-arrow">Ver galería &#10140;</span>
                     </div>
                 </div>
@@ -592,6 +600,54 @@
                             </div>
                             <div class="gallery-item" onclick="openLightboxAt('dia-madre-2026', 77)">
                                 <img src="img/madre/WhatsApp Image 2026-05-08 at 11.14.31 AM.jpeg" alt="Celebracion del Dia de la Madre 78" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Galería individual: Inicio de semana académica y acto cívico -->
+            <div class="activity-detail" id="activity-inicio-semana-academica-2026">
+                <button class="btn-back" onclick="hideActivity('inicio-semana-academica-2026')">&#10094; Volver a actividades</button>
+
+                <div class="activity-single">
+                    <div class="activity-header fade-in">
+                        <div class="activity-title-block">
+                            <span class="activity-badge">Calendario Cívico Escolar</span>
+                            <h3>Inicio de Semana Académica, Izamiento y Charla Cívica</h3>
+                            <p>Como parte del inicio de la semana académica, nuestra comunidad educativa participó en el izamiento del pabellón nacional y en una charla sobre la vida de María Parado de Bellido, desarrollada por un docente de la institución conforme al calendario cívico escolar.</p>
+                        </div>
+                        <div class="activity-featured-img">
+                            <img src="img/11 DE MAYO/photo_2026-05-11_08-39-19.jpg" alt="Inicio de semana académica - Vista principal" onclick="openLightboxAt('inicio-semana-academica-2026', 0)">
+                        </div>
+                    </div>
+
+                    <div class="activity-gallery fade-in">
+                        <h4>Galería fotográfica - 8 imágenes</h4>
+                        <div class="gallery-grid">
+                            <div class="gallery-item" onclick="openLightboxAt('inicio-semana-academica-2026', 0)">
+                                <img src="img/11 DE MAYO/photo_2026-05-11_08-39-19.jpg" alt="Inicio de semana académica 1" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('inicio-semana-academica-2026', 1)">
+                                <img src="img/11 DE MAYO/photo_2026-05-11_08-39-52.jpg" alt="Inicio de semana académica 2" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('inicio-semana-academica-2026', 2)">
+                                <img src="img/11 DE MAYO/photo_2026-05-11_08-39-55.jpg" alt="Inicio de semana académica 3" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('inicio-semana-academica-2026', 3)">
+                                <img src="img/11 DE MAYO/photo_2026-05-11_08-39-58.jpg" alt="Inicio de semana académica 4" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('inicio-semana-academica-2026', 4)">
+                                <img src="img/11 DE MAYO/photo_2026-05-11_08-40-00.jpg" alt="Inicio de semana académica 5" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('inicio-semana-academica-2026', 5)">
+                                <img src="img/11 DE MAYO/photo_2026-05-11_08-40-04.jpg" alt="Inicio de semana académica 6" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('inicio-semana-academica-2026', 6)">
+                                <img src="img/11 DE MAYO/photo_2026-05-11_08-40-09.jpg" alt="Inicio de semana académica 7" loading="lazy">
+                            </div>
+                            <div class="gallery-item" onclick="openLightboxAt('inicio-semana-academica-2026', 7)">
+                                <img src="img/11 DE MAYO/photo_2026-05-11_08-40-12.jpg" alt="Inicio de semana académica 8" loading="lazy">
                             </div>
                         </div>
                     </div>
