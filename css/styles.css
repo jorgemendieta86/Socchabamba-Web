@@ -232,8 +232,25 @@ ul { list-style: none; }
 }
 .number { color: var(--teal-700); font-size: 1.55rem; font-weight: 800; }
 .label { color: #46616e; font-size: 0.82rem; font-weight: 600; }
-.welcome-image { overflow: hidden; min-height: 100%; }
-.welcome-image img { width: 100%; height: 100%; object-fit: cover; }
+.welcome-image {
+    overflow: hidden;
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background: #f6fbfd;
+}
+.welcome-image img {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    object-position: top center;
+    border-radius: 10px;
+    transform: scale(1.08);
+    transform-origin: top center;
+}
 
 .inst-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
 .inst-card {
