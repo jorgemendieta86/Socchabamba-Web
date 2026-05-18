@@ -193,6 +193,14 @@ const activityGalleries = {
         const galleryImgs = document.querySelectorAll('#activity-inicio-semana-academica-2026 .gallery-item img');
         galleryImgs.forEach(img => imgs.push(img.src));
         return imgs;
+    })(),
+    'semana-academica-dia-familia-2026': (function() {
+        const imgs = [];
+        const featured = 'img/mayo 18/photo_1_2026-05-18_09-24-12.jpg';
+        imgs.push(featured);
+        const galleryImgs = document.querySelectorAll('#activity-semana-academica-dia-familia-2026 .gallery-item img');
+        galleryImgs.forEach(img => imgs.push(img.src));
+        return imgs;
     })()
 };
 
