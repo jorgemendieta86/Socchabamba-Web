@@ -201,6 +201,14 @@ const activityGalleries = {
         const galleryImgs = document.querySelectorAll('#activity-semana-academica-dia-familia-2026 .gallery-item img');
         galleryImgs.forEach(img => imgs.push(img.src));
         return imgs;
+    })(),
+    'mes-mariano-2026': (function() {
+        const imgs = [];
+        const featured = 'img/Mes Mariano/20 mayo/photo_2026-05-20_17-08-03.jpg';
+        imgs.push(featured);
+        const galleryImgs = document.querySelectorAll('#activity-mes-mariano-2026 .gallery-item img');
+        galleryImgs.forEach(img => imgs.push(img.src));
+        return imgs;
     })()
 };
 
