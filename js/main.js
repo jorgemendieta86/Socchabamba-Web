@@ -209,6 +209,14 @@ const activityGalleries = {
         const galleryImgs = document.querySelectorAll('#activity-mes-mariano-2026 .gallery-item img');
         galleryImgs.forEach(img => imgs.push(img.src));
         return imgs;
+    })(),
+    'taller-escuela-familia-2026': (function() {
+        const imgs = [];
+        const featured = 'img/Escuela familia/20260521_094332.jpg';
+        imgs.push(featured);
+        const galleryImgs = document.querySelectorAll('#activity-taller-escuela-familia-2026 .gallery-item img');
+        galleryImgs.forEach(img => imgs.push(img.src));
+        return imgs;
     })()
 };
 
