@@ -155,7 +155,9 @@ function sortActivityCardsByDate() {
     cards.forEach(card => grid.appendChild(card));
 }
 
-sortActivityCardsByDate();
+document.addEventListener('DOMContentLoaded', () => {
+    sortActivityCardsByDate();
+});
 
 /* ============================================
     LIGHTBOX GALERÍA POR ACTIVIDAD
@@ -215,6 +217,14 @@ const activityGalleries = {
         const featured = 'img/Escuela familia/20260521_094332.jpg';
         imgs.push(featured);
         const galleryImgs = document.querySelectorAll('#activity-taller-escuela-familia-2026 .gallery-item img');
+        galleryImgs.forEach(img => imgs.push(img.src));
+        return imgs;
+    })(),
+    'manana-deportiva-2026': (function() {
+        const imgs = [];
+        const featured = 'img/manana-deportiva/photo_2026-05-26_09-49-39.jpg';
+        imgs.push(featured);
+        const galleryImgs = document.querySelectorAll('#activity-manana-deportiva-2026 .gallery-item img');
         galleryImgs.forEach(img => imgs.push(img.src));
         return imgs;
     })()
