@@ -227,6 +227,14 @@ const activityGalleries = {
         const galleryImgs = document.querySelectorAll('#activity-manana-deportiva-2026 .gallery-item img');
         galleryImgs.forEach(img => imgs.push(img.src));
         return imgs;
+    })(),
+    'simulacro-nacional-2026': (function() {
+        const imgs = [];
+        const featured = 'img/simulacro/20260529_093044.jpg';
+        imgs.push(featured);
+        const galleryImgs = document.querySelectorAll('#activity-simulacro-nacional-2026 .gallery-item img');
+        galleryImgs.forEach(img => imgs.push(img.src));
+        return imgs;
     })()
 };
 
