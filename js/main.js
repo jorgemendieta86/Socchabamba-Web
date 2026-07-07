@@ -235,6 +235,22 @@ const activityGalleries = {
         const galleryImgs = document.querySelectorAll('#activity-simulacro-nacional-2026 .gallery-item img');
         galleryImgs.forEach(img => imgs.push(img.src));
         return imgs;
+    })(),
+    'dia-padre-2026': (function() {
+        const imgs = [];
+        const featured = 'img/Padre/photo_1_2026-07-07_18-14-08.jpg';
+        imgs.push(featured);
+        const galleryImgs = document.querySelectorAll('#activity-dia-padre-2026 .gallery-item img');
+        galleryImgs.forEach(img => imgs.push(img.src));
+        return imgs;
+    })(),
+    'dia-maestro-2026': (function() {
+        const imgs = [];
+        const featured = 'img/Maestros/photo_2_2026-07-07_18-15-15.jpg';
+        imgs.push(featured);
+        const galleryImgs = document.querySelectorAll('#activity-dia-maestro-2026 .gallery-item img');
+        galleryImgs.forEach(img => imgs.push(img.src));
+        return imgs;
     })()
 };
 
