@@ -259,6 +259,14 @@ const activityGalleries = {
         const galleryImgs = document.querySelectorAll('#activity-onem-2026 .gallery-item img');
         galleryImgs.forEach(img => imgs.push(img.src));
         return imgs;
+    })(),
+    'aniversario-42': (function() {
+        const imgs = [];
+        const featured = 'img/Aniversario/photo_16_2026-07-09_18-00-34.jpg';
+        imgs.push(featured);
+        const galleryImgs = document.querySelectorAll('#activity-aniversario-42 .gallery-item img');
+        galleryImgs.forEach(img => imgs.push(img.src));
+        return imgs;
     })()
 };
 
