@@ -267,6 +267,16 @@ const activityGalleries = {
         const galleryImgs = document.querySelectorAll('#activity-aniversario-42 .gallery-item img');
         galleryImgs.forEach(img => imgs.push(img.src));
         return imgs;
+    })(),
+    'semana-patriotica-205': (function() {
+        return [
+            'img/Independencia/20260723_090722.webp',
+            'img/Independencia/20260723_095557.webp',
+            'img/Independencia/20260723_121534.webp',
+            'img/Independencia/20260723_123354.webp',
+            'img/Independencia/20260723_123458.webp',
+            'img/Independencia/20260723_134724.webp'
+        ];
     })()
 };
 

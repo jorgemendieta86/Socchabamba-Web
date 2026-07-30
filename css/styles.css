@@ -303,6 +303,23 @@ ul { list-style: none; }
 .card-body h4 { color: #0f4156; margin-bottom: 8px; }
 .card-body p { color: var(--muted); margin-bottom: 8px; }
 .card-arrow { color: var(--teal-700); font-weight: 700; }
+.activity-card-tag {
+    display: inline-flex;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #7d1212;
+    background: #fff0f0;
+}
+.activity-card-patriotica {
+    border-color: #f0d6d6;
+    background:
+        linear-gradient(180deg, rgba(255, 247, 247, 0.96), rgba(255, 255, 255, 1));
+}
 
 .activity-detail { display: none; }
 .activity-detail.active { display: block; animation: fadeIn 0.35s ease; }
@@ -348,6 +365,48 @@ ul { list-style: none; }
 .gallery-item { border-radius: 8px; overflow: hidden; cursor: pointer; }
 .gallery-item img { width: 100%; height: 140px; object-fit: cover; transition: transform var(--ease); }
 .gallery-item:hover img { transform: scale(1.04); }
+.activity-single-patriotica .activity-header {
+    align-items: center;
+}
+.patriotic-block {
+    border-color: #f1d4d4;
+    background:
+        radial-gradient(circle at top left, rgba(177, 20, 20, 0.08), transparent 34%),
+        linear-gradient(180deg, #fff8f8 0%, #ffffff 100%);
+}
+.patriotic-featured {
+    border-color: #f1d4d4;
+    box-shadow: 0 18px 38px rgba(122, 18, 18, 0.14);
+}
+.patriotic-gallery-shell {
+    border-color: #f1d4d4;
+}
+.patriotic-quote {
+    margin-top: 18px;
+    padding: 18px;
+    border-left: 4px solid #c91f1f;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #fff1f1, #fff8f8);
+    color: var(--text);
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.5;
+}
+.patriotic-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+.patriotic-pill {
+    padding: 9px 14px;
+    border: 1px solid #efcdcd;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #0f4156;
+    font-weight: 700;
+    box-shadow: 0 10px 20px rgba(122, 18, 18, 0.08);
+}
 
 .matricula-steps-only {
     max-width: 900px;
@@ -569,4 +628,5 @@ ul { list-style: none; }
     .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(125px, 1fr)); }
     .gallery-item img { height: 112px; }
     .hero-actions { flex-direction: column; align-items: flex-start; }
+    .patriotic-quote { font-size: 0.98rem; padding: 16px; }
 }
