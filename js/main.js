@@ -277,6 +277,28 @@ const activityGalleries = {
             'img/Independencia/20260723_123458.webp',
             'img/Independencia/20260723_134724.webp'
         ];
+    })(),
+    'berbena-virgen-fatima-2026': (function() {
+        return [
+            'img/berbena/berbena-18.webp',
+            'img/berbena/berbena-17.webp',
+            'img/berbena/berbena-16.webp',
+            'img/berbena/berbena-15.webp',
+            'img/berbena/berbena-14.webp',
+            'img/berbena/berbena-13.webp',
+            'img/berbena/berbena-12.webp',
+            'img/berbena/berbena-11.webp',
+            'img/berbena/berbena-10.webp',
+            'img/berbena/berbena-07.webp',
+            'img/berbena/berbena-09.webp',
+            'img/berbena/berbena-08.webp',
+            'img/berbena/berbena-06.webp',
+            'img/berbena/berbena-05.webp',
+            'img/berbena/berbena-04.webp',
+            'img/berbena/berbena-03.webp',
+            'img/berbena/berbena-02.webp',
+            'img/berbena/berbena-01.webp'
+        ];
     })()
 };
 
