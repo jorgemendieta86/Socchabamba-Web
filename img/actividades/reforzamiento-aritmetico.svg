@@ -1,0 +1,39 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f697f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#117f9a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.95" />
+      <stop offset="100%" style="stop-color:#e8f5f7;stop-opacity:0.95" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" rx="20" fill="url(#bg)"/>
+  <rect x="40" y="40" width="720" height="520" rx="16" fill="url(#cardBg)" stroke="#d6a332" stroke-width="4"/>
+  <text x="400" y="120" text-anchor="middle" font-family="Trebuchet MS, sans-serif" font-size="48" font-weight="800" fill="#0f4156">4 Operaciones Básicas</text>
+  <text x="400" y="175" text-anchor="middle" font-family="Trebuchet MS, sans-serif" font-size="22" fill="#506a77">Reforzamiento Aritmético</text>
+  <g transform="translate(120, 240)">
+    <rect x="0" y="0" width="140" height="120" rx="12" fill="#e8f2f6" stroke="#0f6b82" stroke-width="3"/>
+    <text x="70" y="50" text-anchor="middle" font-family="Trebuchet MS, sans-serif" font-size="60" font-weight="800" fill="#0f4156">+</text>
+    <text x="70" y="95" text-anchor="middle" font-family="Trebuchet MS, sans-serif" font-size="18" fill="#506a77">Suma</text>
+  </g>
+  <g transform="translate(280, 240)">
+    <rect x="0" y="0" width="140" height="120" rx="12" fill="#fff0f0" stroke="#c91f1f" stroke-width="3"/>
+    <text x="70" y="50" text-anchor="middle" font-family="Trebuchet MS, sans-serif" font-size="60" font-weight="800" fill="#0f4156">−</text>
+    <text x="70" y="95" text-anchor="middle" font-family="Trebuchet MS, sans-serif" font-size="18" fill="#506a77">Resta</text>
+  </g>
+  <g transform="translate(440, 240)">
+    <rect x="0" y="0" width="140" height="120" rx="12" fill="#fff5df" stroke="#d6a332" stroke-width="3"/>
+    <text x="70" y="50" text-anchor="middle" font-family="Trebuchet MS, sans-serif" font-size="60" font-weight="800" fill="#0f4156">×</text>
+    <text x="70" y="95" text-anchor="middle" font-family="Trebuchet MS, sans-serif" font-size="18" fill="#506a77">Multiplicación</text>
+  </g>
+  <g transform="translate(600, 240)">
+    <rect x="0" y="0" width="140" height="120" rx="12" fill="#e8f5e9" stroke="#1a7a3c" stroke-width="3"/>
+    <text x="70" y="50" text-anchor="middle" font-family="Trebuchet MS, sans-serif" font-size="60" font-weight="800" fill="#0f4156">÷</text>
+    <text x="70" y="95" text-anchor="middle" font-family="Trebuchet MS, sans-serif" font-size="18" fill="#506a77">División</text>
+  </g>
+  <text x="400" y="460" text-anchor="middle" font-family="Trebuchet MS, sans-serif" font-size="20" font-weight="700" fill="#0f6b82">¡Aprende y practica matemáticas!</text>
+  <text x="400" y="500" text-anchor="middle" font-family="Trebuchet MS, sans-serif" font-size="16" fill="#506a77">Visítanos en jmcrefuerzo.netlify.app</text>
+</svg>

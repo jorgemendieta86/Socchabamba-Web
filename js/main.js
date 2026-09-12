@@ -435,8 +435,44 @@ const observer = new IntersectionObserver((entries) => {
 fadeElements.forEach(el => observer.observe(el));
 
 /* ============================================
-   ANIMACIONES SCROLL (FADE IN)
-   ============================================ */
+    POPUP REFORZAMIENTO ARITMÉTICO
+    ============================================ */
+const popupOverlay = document.getElementById('refuerzo-popup');
+const popupClose = document.getElementById('popup-close');
+
+function showPopup() {
+    if (popupOverlay) {
+        popupOverlay.classList.remove('hidden');
+    }
+}
+
+function hidePopup() {
+    if (popupOverlay) {
+        popupOverlay.classList.add('hidden');
+    }
+}
+
+if (popupOverlay) {
+    showPopup();
+    setTimeout(() => {
+        popupOverlay.classList.add('fading');
+    }, 5000);
+    setTimeout(hidePopup, 7000);
+}
+
+if (popupClose) {
+    popupClose.addEventListener('click', hidePopup);
+}
+
+if (popupOverlay) {
+    popupOverlay.addEventListener('click', (e) => {
+        if (e.target === popupOverlay) hidePopup();
+    });
+}
+
+/* ============================================
+    CONTACTO FORM
+    ============================================ */
 const contactoForm = document.querySelector('.contacto-form form');
 
 if (contactoForm) {
