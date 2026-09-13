@@ -548,7 +548,65 @@ ul { list-style: none; }
     border-left: 4px solid var(--gold-500);
     border-radius: var(--radius);
     box-shadow: var(--shadow-sm);
-    padding: 24px;
+    overflow: hidden;
+}
+
+.comunicado-destacado {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    border-left-width: 0;
+    border-top: 4px solid var(--gold-500);
+    box-shadow: var(--shadow-md);
+}
+
+.comunicado-image-wrap {
+    min-width: 0;
+    min-height: 100%;
+    position: relative;
+    background: linear-gradient(145deg, #0f697f, #0f4156);
+    overflow: hidden;
+}
+
+.comunicado-image-wrap img {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    min-height: 330px;
+    object-fit: contain;
+}
+
+.comunicado-featured {
+    position: absolute;
+    left: 18px;
+    bottom: 18px;
+    padding: 8px 13px;
+    border-radius: 999px;
+    background: var(--gold-500);
+    color: #163746;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.comunicado-content {
+    min-width: 0;
+    padding: 30px 32px 32px;
+}
+
+.comunicado-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.comunicado-date {
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
 }
 
 .comunicado-tag {
@@ -565,10 +623,63 @@ ul { list-style: none; }
 .comunicado-card h4 {
     color: #0f4156;
     margin-bottom: 8px;
-    font-size: 1.2rem;
+    font-size: clamp(1.45rem, 2.5vw, 2rem);
+    line-height: 1.15;
 }
 
 .comunicado-card p { color: var(--muted); }
+
+.comunicado-lead {
+    color: var(--text) !important;
+    font-size: 1.03rem;
+    margin-bottom: 10px;
+}
+
+.comunicado-highlights {
+    display: grid;
+    gap: 8px;
+    margin: 20px 0 24px;
+}
+
+.comunicado-highlights li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+.comunicado-highlights li span {
+    display: grid;
+    width: 25px;
+    height: 25px;
+    flex-shrink: 0;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--teal-100);
+    color: var(--teal-700);
+    font-weight: 800;
+}
+
+.comunicado-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 19px;
+    border-radius: 999px;
+    background: var(--teal-700);
+    color: #fff;
+    font-size: 0.92rem;
+    font-weight: 800;
+    transition: var(--ease);
+}
+
+.comunicado-btn:hover {
+    background: var(--ink-700);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
+}
 
 .mapa-wrapper {
     max-width: 960px;
@@ -747,6 +858,7 @@ ul { list-style: none; }
     .inst-valores { grid-template-columns: repeat(2, 1fr); }
     .matricula-steps-only { grid-template-columns: repeat(2, 1fr); }
     .contacto-info-only { grid-template-columns: 1fr; }
+    .comunicado-destacado { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); }
 }
 
 @media (max-width: 860px) {
@@ -784,6 +896,17 @@ ul { list-style: none; }
     .section { padding: 54px 0; }
 }
 
+@media (max-width: 760px) {
+    .comunicado-destacado { grid-template-columns: 1fr; }
+    .comunicado-image-wrap { min-height: 0; }
+    .comunicado-image-wrap img {
+        height: auto;
+        min-height: 0;
+        aspect-ratio: 4 / 3;
+    }
+    .comunicado-featured { left: 14px; bottom: 14px; }
+}
+
 @media (max-width: 640px) {
     .container { width: min(1180px, calc(100% - 1.2rem)); }
     .welcome-text { padding: 22px 18px; }
@@ -798,4 +921,9 @@ ul { list-style: none; }
     .hero-actions { flex-direction: column; align-items: flex-start; }
     .patriotic-quote,
     .berbena-quote { font-size: 0.98rem; padding: 16px; }
+    .comunicado-content { padding: 24px 20px 26px; }
+    .comunicado-image-wrap img { min-height: 0; }
+    .comunicado-meta { align-items: flex-start; flex-direction: column; gap: 8px; }
+    .comunicado-date { white-space: normal; }
+    .comunicado-btn { width: 100%; justify-content: center; }
 }
