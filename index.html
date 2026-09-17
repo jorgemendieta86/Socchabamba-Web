@@ -253,7 +253,7 @@
                         <span class="card-arrow">Ver galería &#10140;</span>
                     </div>
                 </div>
-<div class="activity-card" data-date="2026-09-05" onclick="showActivity('manana-deportiva-2026')">
+                <div class="activity-card" data-date="2026-09-05" onclick="showActivity('manana-deportiva-2026')">
                     <img src="img/mañanadeportiva/photo_1_2026-09-05_10-58-40.jpg" alt="Mañana de Integración Deportiva - Estudiantes, docentes y personal administrativo participando en actividades deportivas" loading="lazy">
                     <div class="card-body">
                         <h4>Mañana de Integración Deportiva</h4>
@@ -261,7 +261,16 @@
                         <span class="card-arrow">Ver detalles &#10140;</span>
                     </div>
                 </div>
-                <div class="activity-card" data-date="2026-04-24" onclick="openGallery('juegos-escolares')">
+                <div class="activity-card activity-card-reinado" data-date="2026-09-17" onclick="showActivity('reinado-primavera-2026')">
+                    <img src="img/REYNADO/20260917_140200.webp" alt="Tres candidatas del Reinado de la Primavera 2026" fetchpriority="high">
+                    <div class="card-body">
+                        <span class="activity-card-tag activity-card-tag-reinado">Celebración institucional</span>
+                        <h4>Reinado de la Primavera 2026</h4>
+                        <p>Una celebración de alegría, talento y convivencia que reunió a estudiantes, docentes, familias y toda la comunidad educativa.</p>
+                        <span class="card-arrow">Ver galería &#10140;</span>
+                    </div>
+                </div>
+<div class="activity-card" data-date="2026-04-24" onclick="openGallery('juegos-escolares')">
                     <img src="img/actividades/20260424_085156.jpg" alt="Juegos Escolares Institucionales">
                     <div class="card-body">
                         <h4>Juegos Escolares Institucionales</h4>
@@ -1532,6 +1541,35 @@
                                 <img src="img/berbena/berbena-01.webp" alt="Berbena 18" loading="lazy">
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Galería individual: Reinado de la Primavera 2026 -->
+            <div class="activity-detail" id="activity-reinado-primavera-2026">
+                <button class="btn-back" onclick="hideActivity('reinado-primavera-2026')">&#10094; Volver a actividades</button>
+
+                <div class="activity-single activity-single-reinado">
+                    <div class="activity-header fade-in">
+                        <div class="activity-title-block reinado-block">
+                            <span class="activity-badge">Celebración institucional</span>
+                            <h3>Reinado de la Primavera 2026</h3>
+                            <p>La I.E. José Carlos Mariátegui celebró el Reinado de la Primavera como un espacio de alegría, expresión artística y convivencia. Las candidatas compartieron su talento y entusiasmo en una jornada que fortaleció los vínculos entre estudiantes, docentes, familias y personal de la institución.</p>
+                            <p class="reinado-quote">La primavera florece cuando toda la comunidad educativa participa, celebra y construye recuerdos juntos.</p>
+                            <div class="patriotic-highlights reinado-highlights">
+                                <div class="reinado-pill">Participación comunitaria</div>
+                                <div class="reinado-pill">Talento estudiantil</div>
+                                <div class="reinado-pill">Convivencia escolar</div>
+                            </div>
+                        </div>
+                        <div class="activity-featured-img reinado-featured">
+                            <img src="img/REYNADO/20260917_140200.webp" alt="Tres candidatas del Reinado de la Primavera 2026" onclick="openLightboxAt('reinado-primavera-2026', 0)">
+                        </div>
+                    </div>
+
+                    <div class="activity-gallery fade-in reinado-gallery-shell">
+                        <h4>Galería fotográfica - 65 imágenes optimizadas</h4>
+                        <div class="gallery-grid" id="reinado-gallery-grid"></div>
                     </div>
                 </div>
             </div>

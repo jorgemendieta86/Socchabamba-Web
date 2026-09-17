@@ -170,6 +170,74 @@ const lightboxNext = document.querySelector('.lightbox-nav.next');
 let lightboxIndex = 0;
 let lightboxImages = [];
 
+const reinadoImages = [
+    'img/REYNADO/20260917_140200.webp',
+    'img/REYNADO/20260917_132333.webp',
+    'img/REYNADO/20260917_132428.webp',
+    'img/REYNADO/20260917_132441.webp',
+    'img/REYNADO/20260917_134746.webp',
+    'img/REYNADO/20260917_134809.webp',
+    'img/REYNADO/20260917_135122.webp',
+    'img/REYNADO/20260917_135131.webp',
+    'img/REYNADO/20260917_135345.webp',
+    'img/REYNADO/20260917_135346.webp',
+    'img/REYNADO/20260917_135719.webp',
+    'img/REYNADO/20260917_135723.webp',
+    'img/REYNADO/20260917_135728(0).webp',
+    'img/REYNADO/20260917_135728.webp',
+    'img/REYNADO/20260917_135822.webp',
+    'img/REYNADO/20260917_135829.webp',
+    'img/REYNADO/20260917_135836.webp',
+    'img/REYNADO/20260917_135941.webp',
+    'img/REYNADO/20260917_135951.webp',
+    'img/REYNADO/20260917_135955.webp',
+    'img/REYNADO/20260917_140000.webp',
+    'img/REYNADO/20260917_140044.webp',
+    'img/REYNADO/20260917_140133.webp',
+    'img/REYNADO/20260917_140238.webp',
+    'img/REYNADO/20260917_140317.webp',
+    'img/REYNADO/20260917_140321.webp',
+    'img/REYNADO/20260917_140423.webp',
+    'img/REYNADO/20260917_140431.webp',
+    'img/REYNADO/20260917_140919.webp',
+    'img/REYNADO/20260917_142033.webp',
+    'img/REYNADO/20260917_142039.webp',
+    'img/REYNADO/20260917_142044.webp',
+    'img/REYNADO/20260917_142348.webp',
+    'img/REYNADO/20260917_142353.webp',
+    'img/REYNADO/20260917_142401.webp',
+    'img/REYNADO/20260917_142403.webp',
+    'img/REYNADO/20260917_142830.webp',
+    'img/REYNADO/20260917_142834.webp',
+    'img/REYNADO/20260917_142839.webp',
+    'img/REYNADO/20260917_143520.webp',
+    'img/REYNADO/20260917_143521.webp',
+    'img/REYNADO/20260917_143536.webp',
+    'img/REYNADO/20260917_144024.webp',
+    'img/REYNADO/20260917_144942.webp',
+    'img/REYNADO/20260917_145005.webp',
+    'img/REYNADO/20260917_145036.webp',
+    'img/REYNADO/20260917_145834.webp',
+    'img/REYNADO/20260917_145835.webp',
+    'img/REYNADO/20260917_150833(0).webp',
+    'img/REYNADO/20260917_150833.webp',
+    'img/REYNADO/20260917_151258.webp',
+    'img/REYNADO/20260917_152623.webp',
+    'img/REYNADO/20260917_152651.webp',
+    'img/REYNADO/20260917_152912.webp',
+    'img/REYNADO/20260917_153355.webp',
+    'img/REYNADO/20260917_153401(0).webp',
+    'img/REYNADO/20260917_153401.webp',
+    'img/REYNADO/20260917_153405.webp',
+    'img/REYNADO/20260917_153406.webp',
+    'img/REYNADO/20260917_153419.webp',
+    'img/REYNADO/20260917_153424.webp',
+    'img/REYNADO/20260917_153425.webp',
+    'img/REYNADO/20260917_153432.webp',
+    'img/REYNADO/20260917_153446.webp',
+    'img/REYNADO/20260917_153447.webp'
+];
+
 // Definir las imágenes de cada actividad
 const activityGalleries = {
     'juegos-escolares': (function() {
@@ -300,6 +368,7 @@ const activityGalleries = {
             'img/berbena/berbena-01.webp'
         ];
     })(),
+    'reinado-primavera-2026': reinadoImages,
     'eureka-2026': (function() {
         return [
             'img/Eureka/photo_1_2026-08-27_12-21-40.webp',
@@ -358,6 +427,26 @@ const activityGalleries = {
         ];
     })()
 };
+
+function renderReinadoGallery() {
+    const grid = document.getElementById('reinado-gallery-grid');
+    if (!grid) return;
+
+    reinadoImages.forEach((src, index) => {
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        item.addEventListener('click', () => openLightboxAt('reinado-primavera-2026', index));
+
+        const image = document.createElement('img');
+        image.src = src;
+        image.alt = `Reinado de la Primavera 2026 - imagen ${index + 1}`;
+        image.loading = 'lazy';
+        item.appendChild(image);
+        grid.appendChild(item);
+    });
+}
+
+renderReinadoGallery();
 
 function openLightboxAt(activityId, index) {
     lightboxImages = activityGalleries[activityId] || [];
