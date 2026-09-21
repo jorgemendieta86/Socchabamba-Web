@@ -340,6 +340,19 @@ ul { list-style: none; }
     color: #a52b5b;
     background: #ffe8f0;
 }
+.activity-card-analogias {
+    border-color: #f2c6bd;
+    background: linear-gradient(180deg, #fff8f5, #ffffff);
+}
+.activity-card-analogias img {
+    object-fit: contain;
+    background: #f7f1e5;
+    padding: 10px;
+}
+.activity-card-tag-analogias {
+    color: #b3433b;
+    background: #ffe5df;
+}
 
 .activity-detail { display: none; }
 .activity-detail.active { display: block; animation: fadeIn 0.35s ease; }
@@ -579,8 +592,12 @@ ul { list-style: none; }
 .contacto-item p { color: var(--muted); }
 
 .comunicados-grid {
-    max-width: 900px;
+    max-width: 1180px;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    align-items: stretch;
 }
 
 .comunicado-card {
@@ -593,16 +610,17 @@ ul { list-style: none; }
 }
 
 .comunicado-destacado {
-    display: grid;
-    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    display: flex;
+    flex-direction: column;
     border-left-width: 0;
     border-top: 4px solid var(--gold-500);
     box-shadow: var(--shadow-md);
+    height: 100%;
 }
 
 .comunicado-image-wrap {
     min-width: 0;
-    min-height: 100%;
+    min-height: 0;
     position: relative;
     background: linear-gradient(145deg, #0f697f, #0f4156);
     overflow: hidden;
@@ -611,8 +629,8 @@ ul { list-style: none; }
 .comunicado-image-wrap img {
     width: 100%;
     max-width: 100%;
-    height: 100%;
-    min-height: 330px;
+    height: 190px;
+    min-height: 0;
     object-fit: contain;
 }
 
@@ -632,15 +650,18 @@ ul { list-style: none; }
 
 .comunicado-content {
     min-width: 0;
-    padding: 30px 32px 32px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 22px 22px 24px;
 }
 
 .comunicado-meta {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 12px;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 .comunicado-date {
@@ -652,7 +673,7 @@ ul { list-style: none; }
 
 .comunicado-tag {
     display: inline-block;
-    margin-bottom: 10px;
+    margin-bottom: 0;
     padding: 5px 10px;
     border-radius: 999px;
     font-size: 0.78rem;
@@ -664,7 +685,7 @@ ul { list-style: none; }
 .comunicado-card h4 {
     color: #0f4156;
     margin-bottom: 8px;
-    font-size: clamp(1.45rem, 2.5vw, 2rem);
+    font-size: clamp(1.2rem, 1.7vw, 1.55rem);
     line-height: 1.15;
 }
 
@@ -679,7 +700,7 @@ ul { list-style: none; }
 .comunicado-highlights {
     display: grid;
     gap: 8px;
-    margin: 20px 0 24px;
+    margin: 16px 0 20px;
 }
 
 .comunicado-highlights li {
@@ -706,6 +727,7 @@ ul { list-style: none; }
 .comunicado-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     padding: 12px 19px;
     border-radius: 999px;
@@ -714,12 +736,25 @@ ul { list-style: none; }
     font-size: 0.92rem;
     font-weight: 800;
     transition: var(--ease);
+    margin-top: auto;
+    width: 100%;
 }
 
 .comunicado-btn:hover {
     background: var(--ink-700);
     box-shadow: var(--shadow-sm);
     transform: translateY(-2px);
+}
+.comunicado-analogias {
+    border-top-color: #ee695d;
+}
+.comunicado-analogias .comunicado-featured {
+    background: #ee695d;
+    color: #fff;
+}
+.comunicado-analogias .comunicado-tag {
+    color: #b3433b;
+    background: #ffe5df;
 }
 
 .mapa-wrapper {
@@ -899,7 +934,7 @@ ul { list-style: none; }
     .inst-valores { grid-template-columns: repeat(2, 1fr); }
     .matricula-steps-only { grid-template-columns: repeat(2, 1fr); }
     .contacto-info-only { grid-template-columns: 1fr; }
-    .comunicado-destacado { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); }
+    .comunicados-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 860px) {
@@ -938,7 +973,7 @@ ul { list-style: none; }
 }
 
 @media (max-width: 760px) {
-    .comunicado-destacado { grid-template-columns: 1fr; }
+    .comunicados-grid { grid-template-columns: 1fr; }
     .comunicado-image-wrap { min-height: 0; }
     .comunicado-image-wrap img {
         height: auto;
