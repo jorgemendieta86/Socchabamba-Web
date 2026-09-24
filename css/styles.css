@@ -340,6 +340,24 @@ ul { list-style: none; }
     color: #a52b5b;
     background: #ffe8f0;
 }
+.activity-card-primavera {
+    border-color: #c9dfb0;
+    background:
+        radial-gradient(circle at top right, rgba(116, 170, 61, 0.16), transparent 36%),
+        linear-gradient(180deg, #f8fff2 0%, #ffffff 100%);
+}
+.activity-card-tag-primavera {
+    color: #4f7d21;
+    background: #eaf6dc;
+}
+.primavera-block {
+    border-color: #c9dfb0;
+    background: linear-gradient(180deg, #f8fff2 0%, #ffffff 100%);
+}
+.primavera-featured {
+    border-color: #c9dfb0;
+    box-shadow: 0 18px 38px rgba(79, 125, 33, 0.14);
+}
 .activity-card-analogias {
     border-color: #f2c6bd;
     background: linear-gradient(180deg, #fff8f5, #ffffff);

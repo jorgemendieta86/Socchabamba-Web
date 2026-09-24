@@ -238,6 +238,35 @@ const reinadoImages = [
     'img/REYNADO/20260917_153447.webp'
 ];
 
+const primaveraImages = [
+    'img/primavera/20260923_091205.webp', 'img/primavera/20260923_091230.webp', 'img/primavera/20260923_091300.webp',
+    'img/primavera/20260923_100505.webp', 'img/primavera/20260923_100549.webp', 'img/primavera/20260923_100925.webp',
+    'img/primavera/20260923_101457.webp', 'img/primavera/20260923_101544.webp', 'img/primavera/20260923_102242.webp',
+    'img/primavera/20260923_102419.webp', 'img/primavera/20260923_102508.webp', 'img/primavera/20260923_102534.webp',
+    'img/primavera/20260923_103009.webp', 'img/primavera/20260923_103425.webp', 'img/primavera/20260923_104654.webp',
+    'img/primavera/20260923_104736.webp', 'img/primavera/20260923_105557.webp', 'img/primavera/20260923_105630.webp',
+    'img/primavera/20260923_105646.webp', 'img/primavera/20260923_105742.webp', 'img/primavera/20260923_110555.webp',
+    'img/primavera/20260923_110656.webp', 'img/primavera/20260923_111549.webp', 'img/primavera/20260923_111701.webp',
+    'img/primavera/20260923_111817.webp', 'img/primavera/20260923_113122.webp', 'img/primavera/20260923_113615.webp',
+    'img/primavera/20260923_113618.webp', 'img/primavera/20260923_114025.webp', 'img/primavera/20260923_114054.webp',
+    'img/primavera/20260923_114525.webp', 'img/primavera/20260923_114715.webp', 'img/primavera/20260923_115034.webp',
+    'img/primavera/20260923_115445.webp', 'img/primavera/20260923_120615.webp', 'img/primavera/20260923_121617.webp',
+    'img/primavera/20260923_122143.webp', 'img/primavera/20260923_122157.webp', 'img/primavera/20260923_122226.webp',
+    'img/primavera/20260923_122248.webp', 'img/primavera/20260923_122524.webp', 'img/primavera/20260923_122603.webp',
+    'img/primavera/20260923_123505.webp', 'img/primavera/20260923_123922.webp', 'img/primavera/20260923_130218.webp',
+    'img/primavera/20260923_130238.webp', 'img/primavera/20260923_131924.webp', 'img/primavera/20260923_142225.webp',
+    'img/primavera/20260923_142330.webp', 'img/primavera/20260923_142423.webp', 'img/primavera/20260923_144233.webp',
+    'img/primavera/20260923_144428.webp', 'img/primavera/20260923_144741.webp', 'img/primavera/20260923_150646.webp',
+    'img/primavera/20260923_151750.webp', 'img/primavera/20260923_151800.webp', 'img/primavera/20260923_151814.webp',
+    'img/primavera/20260923_152223.webp', 'img/primavera/20260923_153246.webp', 'img/primavera/20260923_153401.webp',
+    'img/primavera/20260923_153507.webp', 'img/primavera/20260923_153601.webp', 'img/primavera/20260923_153612.webp',
+    'img/primavera/20260923_153735.webp', 'img/primavera/20260923_153742.webp', 'img/primavera/20260923_153743.webp',
+    'img/primavera/20260923_153815.webp', 'img/primavera/20260923_153826.webp', 'img/primavera/20260923_153834.webp',
+    'img/primavera/20260923_153905.webp', 'img/primavera/20260923_153925.webp', 'img/primavera/20260923_153937.webp',
+    'img/primavera/20260923_153944.webp', 'img/primavera/20260923_153950.webp', 'img/primavera/20260923_153959.webp',
+    'img/primavera/20260923_154009.webp', 'img/primavera/20260923_154443.webp'
+];
+
 // Definir las imágenes de cada actividad
 const activityGalleries = {
     'juegos-escolares': (function() {
@@ -369,6 +398,7 @@ const activityGalleries = {
         ];
     })(),
     'reinado-primavera-2026': reinadoImages,
+    'celebracion-primavera-2026': primaveraImages,
     'eureka-2026': (function() {
         return [
             'img/Eureka/photo_1_2026-08-27_12-21-40.webp',
@@ -447,6 +477,26 @@ function renderReinadoGallery() {
 }
 
 renderReinadoGallery();
+
+function renderPrimaveraGallery() {
+    const grid = document.getElementById('primavera-gallery-grid');
+    if (!grid) return;
+
+    primaveraImages.forEach((src, index) => {
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        item.addEventListener('click', () => openLightboxAt('celebracion-primavera-2026', index));
+
+        const image = document.createElement('img');
+        image.src = src;
+        image.alt = `Celebración de la Primavera 2026 - imagen ${index + 1}`;
+        image.loading = 'lazy';
+        item.appendChild(image);
+        grid.appendChild(item);
+    });
+}
+
+renderPrimaveraGallery();
 
 function openLightboxAt(activityId, index) {
     lightboxImages = activityGalleries[activityId] || [];
