@@ -238,6 +238,7 @@ const reinadoImages = [
     'img/REYNADO/20260917_153447.webp'
 ];
 
+<<<<<<< HEAD
 const escuelaFamilia3Images = [
     'img/Escuela familia 3/WhatsApp Image 2026-09-28 at 11.16.51 AM.webp',
     'img/Escuela familia 3/WhatsApp Image 2026-09-28 at 11.16.49 AM (1).webp',
@@ -253,6 +254,35 @@ const escuelaFamilia3Images = [
     'img/Escuela familia 3/WhatsApp Image 2026-09-28 at 11.16.51 AM (4).webp',
     'img/Escuela familia 3/WhatsApp Image 2026-09-28 at 11.16.52 AM (1).webp',
     'img/Escuela familia 3/WhatsApp Image 2026-09-28 at 11.16.52 AM.webp'
+=======
+const primaveraImages = [
+    'img/primavera/20260923_091205.webp', 'img/primavera/20260923_091230.webp', 'img/primavera/20260923_091300.webp',
+    'img/primavera/20260923_100505.webp', 'img/primavera/20260923_100549.webp', 'img/primavera/20260923_100925.webp',
+    'img/primavera/20260923_101457.webp', 'img/primavera/20260923_101544.webp', 'img/primavera/20260923_102242.webp',
+    'img/primavera/20260923_102419.webp', 'img/primavera/20260923_102508.webp', 'img/primavera/20260923_102534.webp',
+    'img/primavera/20260923_103009.webp', 'img/primavera/20260923_103425.webp', 'img/primavera/20260923_104654.webp',
+    'img/primavera/20260923_104736.webp', 'img/primavera/20260923_105557.webp', 'img/primavera/20260923_105630.webp',
+    'img/primavera/20260923_105646.webp', 'img/primavera/20260923_105742.webp', 'img/primavera/20260923_110555.webp',
+    'img/primavera/20260923_110656.webp', 'img/primavera/20260923_111549.webp', 'img/primavera/20260923_111701.webp',
+    'img/primavera/20260923_111817.webp', 'img/primavera/20260923_113122.webp', 'img/primavera/20260923_113615.webp',
+    'img/primavera/20260923_113618.webp', 'img/primavera/20260923_114025.webp', 'img/primavera/20260923_114054.webp',
+    'img/primavera/20260923_114525.webp', 'img/primavera/20260923_114715.webp', 'img/primavera/20260923_115034.webp',
+    'img/primavera/20260923_115445.webp', 'img/primavera/20260923_120615.webp', 'img/primavera/20260923_121617.webp',
+    'img/primavera/20260923_122143.webp', 'img/primavera/20260923_122157.webp', 'img/primavera/20260923_122226.webp',
+    'img/primavera/20260923_122248.webp', 'img/primavera/20260923_122524.webp', 'img/primavera/20260923_122603.webp',
+    'img/primavera/20260923_123505.webp', 'img/primavera/20260923_123922.webp', 'img/primavera/20260923_130218.webp',
+    'img/primavera/20260923_130238.webp', 'img/primavera/20260923_131924.webp', 'img/primavera/20260923_142225.webp',
+    'img/primavera/20260923_142330.webp', 'img/primavera/20260923_142423.webp', 'img/primavera/20260923_144233.webp',
+    'img/primavera/20260923_144428.webp', 'img/primavera/20260923_144741.webp', 'img/primavera/20260923_150646.webp',
+    'img/primavera/20260923_151750.webp', 'img/primavera/20260923_151800.webp', 'img/primavera/20260923_151814.webp',
+    'img/primavera/20260923_152223.webp', 'img/primavera/20260923_153246.webp', 'img/primavera/20260923_153401.webp',
+    'img/primavera/20260923_153507.webp', 'img/primavera/20260923_153601.webp', 'img/primavera/20260923_153612.webp',
+    'img/primavera/20260923_153735.webp', 'img/primavera/20260923_153742.webp', 'img/primavera/20260923_153743.webp',
+    'img/primavera/20260923_153815.webp', 'img/primavera/20260923_153826.webp', 'img/primavera/20260923_153834.webp',
+    'img/primavera/20260923_153905.webp', 'img/primavera/20260923_153925.webp', 'img/primavera/20260923_153937.webp',
+    'img/primavera/20260923_153944.webp', 'img/primavera/20260923_153950.webp', 'img/primavera/20260923_153959.webp',
+    'img/primavera/20260923_154009.webp', 'img/primavera/20260923_154443.webp'
+>>>>>>> c641b68b4f8f9216f89e7a2b07691abf2bba858c
 ];
 
 // Definir las imágenes de cada actividad
@@ -386,7 +416,11 @@ const activityGalleries = {
         ];
     })(),
     'reinado-primavera-2026': reinadoImages,
+<<<<<<< HEAD
     'tercera-reunion-escuela-familia-2026': escuelaFamilia3Images,
+=======
+    'celebracion-primavera-2026': primaveraImages,
+>>>>>>> c641b68b4f8f9216f89e7a2b07691abf2bba858c
     'eureka-2026': (function() {
         return [
             'img/Eureka/photo_1_2026-08-27_12-21-40.webp',
@@ -466,6 +500,7 @@ function renderReinadoGallery() {
 
 renderReinadoGallery();
 
+<<<<<<< HEAD
 function renderEscuelaFamilia3Gallery() {
     const grid = document.getElementById('tercera-reunion-escuela-familia-gallery-grid');
     if (!grid) return;
@@ -478,13 +513,31 @@ function renderEscuelaFamilia3Gallery() {
         const image = document.createElement('img');
         image.src = src;
         image.alt = `3.ª Reunión de Escuela y Familia - imagen ${index + 1}`;
+=======
+function renderPrimaveraGallery() {
+    const grid = document.getElementById('primavera-gallery-grid');
+    if (!grid) return;
+
+    primaveraImages.forEach((src, index) => {
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        item.addEventListener('click', () => openLightboxAt('celebracion-primavera-2026', index));
+
+        const image = document.createElement('img');
+        image.src = src;
+        image.alt = `Celebración de la Primavera 2026 - imagen ${index + 1}`;
+>>>>>>> c641b68b4f8f9216f89e7a2b07691abf2bba858c
         image.loading = 'lazy';
         item.appendChild(image);
         grid.appendChild(item);
     });
 }
 
+<<<<<<< HEAD
 renderEscuelaFamilia3Gallery();
+=======
+renderPrimaveraGallery();
+>>>>>>> c641b68b4f8f9216f89e7a2b07691abf2bba858c
 
 function openLightboxAt(activityId, index) {
     lightboxImages = activityGalleries[activityId] || [];
@@ -538,6 +591,173 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeLightbox();
     if (e.key === 'ArrowLeft') lightboxPrev.click();
     if (e.key === 'ArrowRight') lightboxNext.click();
+});
+
+/* ============================================
+   VISOR PDF REVISTA MARIATEGUISTA
+   ============================================ */
+const magazineViewer = document.getElementById('magazine-viewer');
+const magazineOpen = document.getElementById('revista-open');
+const magazineClose = document.getElementById('magazine-close');
+const magazineCanvas = document.getElementById('magazine-canvas');
+const magazinePage = document.getElementById('magazine-page');
+const magazineStage = document.getElementById('magazine-stage');
+const magazineLoading = document.getElementById('magazine-loading');
+const magazineError = document.getElementById('magazine-error');
+const magazinePrev = document.getElementById('magazine-prev');
+const magazineNext = document.getElementById('magazine-next');
+const magazineCounter = document.getElementById('magazine-counter');
+const magazinePdfUrl = 'revista/Revista_Mariateguista_1ra_Ed.pdf';
+let magazinePdf = null;
+let magazinePageNumber = 1;
+let magazineLoadingTask = null;
+let magazinePreviousFocus = null;
+let magazineTouchStart = 0;
+
+function loadPdfJsLibrary() {
+    if (window.pdfjsLib) return Promise.resolve(window.pdfjsLib);
+
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js';
+        script.onload = () => window.pdfjsLib ? resolve(window.pdfjsLib) : reject(new Error('PDF.js no está disponible'));
+        script.onerror = () => reject(new Error('No se pudo cargar PDF.js desde los CDN disponibles'));
+        document.head.appendChild(script);
+    });
+}
+
+function updateMagazineControls() {
+    if (!magazinePdf) return;
+    magazineCounter.textContent = `Página ${magazinePageNumber} de ${magazinePdf.numPages}`;
+    magazinePrev.disabled = magazinePageNumber <= 1;
+    magazineNext.disabled = magazinePageNumber >= magazinePdf.numPages;
+}
+
+async function renderMagazinePage(pageNumber, direction = 'next') {
+    if (!magazinePdf || pageNumber < 1 || pageNumber > magazinePdf.numPages) return;
+    const page = await magazinePdf.getPage(pageNumber);
+    const baseViewport = page.getViewport({ scale: 1 });
+    const maxWidth = Math.max(magazineStage.clientWidth - 28, 220);
+    const maxHeight = Math.max(magazineStage.clientHeight - 28, 260);
+    const scale = Math.min(maxWidth / baseViewport.width, maxHeight / baseViewport.height);
+    const viewport = page.getViewport({ scale: Math.max(scale, 0.45) });
+    const outputScale = window.devicePixelRatio || 1;
+    const context = magazineCanvas.getContext('2d');
+
+    magazineCanvas.width = Math.floor(viewport.width * outputScale);
+    magazineCanvas.height = Math.floor(viewport.height * outputScale);
+    magazineCanvas.style.width = `${viewport.width}px`;
+    magazineCanvas.style.height = `${viewport.height}px`;
+    magazinePage.classList.remove('turn-next', 'turn-prev');
+    void magazinePage.offsetWidth;
+    magazinePage.classList.add(direction === 'prev' ? 'turn-prev' : 'turn-next');
+
+    await page.render({
+        canvasContext: context,
+        viewport,
+        transform: outputScale !== 1 ? [outputScale, 0, 0, outputScale, 0, 0] : null
+    }).promise;
+    magazinePageNumber = pageNumber;
+    updateMagazineControls();
+}
+
+async function loadMagazine() {
+    if (magazinePdf) {
+        await renderMagazinePage(magazinePageNumber);
+        return;
+    }
+    if (window.location.protocol === 'file:') {
+        throw new Error('La revista necesita ser servida mediante HTTP o HTTPS');
+    }
+
+    const pdfjs = await loadPdfJsLibrary();
+    pdfjs.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    try {
+        magazineLoadingTask = pdfjs.getDocument({ url: magazinePdfUrl });
+        magazinePdf = await magazineLoadingTask.promise;
+    } catch (workerError) {
+        console.warn('PDF.js no pudo iniciar el worker; se usará el modo compatible.', workerError);
+        magazineLoadingTask = pdfjs.getDocument({ url: magazinePdfUrl, disableWorker: true });
+        magazinePdf = await magazineLoadingTask.promise;
+    }
+    magazinePageNumber = 1;
+    await renderMagazinePage(1);
+}
+
+function openMagazine() {
+    if (!magazineViewer) return;
+    magazinePreviousFocus = document.activeElement;
+    magazineViewer.classList.add('active');
+    magazineViewer.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    magazineLoading.hidden = false;
+    magazineError.hidden = true;
+    magazinePage.hidden = true;
+    magazineCanvas.hidden = false;
+    magazineOpen.setAttribute('aria-expanded', 'true');
+    magazineClose.focus();
+
+    loadMagazine().then(() => {
+        magazineLoading.hidden = true;
+        magazinePage.hidden = false;
+    }).catch((error) => {
+        console.error('No se pudo cargar la revista:', error);
+        magazineLoading.hidden = true;
+        magazinePage.hidden = true;
+        magazineError.hidden = false;
+        magazineError.title = error.message;
+    });
+}
+
+function closeMagazine() {
+    if (!magazineViewer) return;
+    magazineViewer.classList.remove('active');
+    magazineViewer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    magazineOpen.setAttribute('aria-expanded', 'false');
+    if (magazinePreviousFocus) magazinePreviousFocus.focus();
+}
+
+if (magazineOpen && magazineViewer) {
+    magazineOpen.setAttribute('aria-expanded', 'false');
+    magazineOpen.addEventListener('click', openMagazine);
+    magazineClose.addEventListener('click', closeMagazine);
+    magazineViewer.addEventListener('click', (event) => {
+        if (event.target === magazineViewer) closeMagazine();
+    });
+    magazinePrev.addEventListener('click', () => renderMagazinePage(magazinePageNumber - 1, 'prev'));
+    magazineNext.addEventListener('click', () => renderMagazinePage(magazinePageNumber + 1, 'next'));
+    magazineStage.addEventListener('touchstart', (event) => {
+        magazineTouchStart = event.changedTouches[0].screenX;
+    }, { passive: true });
+    magazineStage.addEventListener('touchend', (event) => {
+        const distance = event.changedTouches[0].screenX - magazineTouchStart;
+        if (Math.abs(distance) < 45) return;
+        if (distance < 0) magazineNext.click();
+        else magazinePrev.click();
+    }, { passive: true });
+    window.addEventListener('resize', () => {
+        if (magazineViewer.classList.contains('active') && magazinePdf) renderMagazinePage(magazinePageNumber);
+    });
+}
+
+document.addEventListener('keydown', (e) => {
+    if (!magazineViewer || !magazineViewer.classList.contains('active')) return;
+    if (e.key === 'Escape') closeMagazine();
+    if (e.key === 'ArrowLeft') magazinePrev.click();
+    if (e.key === 'ArrowRight') magazineNext.click();
+    if (e.key === 'Tab') {
+        const focusable = magazineViewer.querySelectorAll('button, a[href]');
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+        }
+    }
 });
 
 /* ============================================
