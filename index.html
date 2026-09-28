@@ -1906,6 +1906,27 @@
                         <a href="https://yachayjcm.netlify.app/" target="_blank" rel="noopener noreferrer" class="comunicado-btn">Explorar YACHAY <span aria-hidden="true">&#10140;</span></a>
                     </div>
                 </article>
+                <article class="comunicado-card comunicado-destacado comunicado-revista" id="revista-mariateguista">
+                    <div class="comunicado-image-wrap">
+                        <img src="revista/Portada_Mariateguista_01_2026.jpg" alt="Portada de la primera edición de la revista Marietaguista" loading="lazy">
+                        <span class="comunicado-featured">Primera edición</span>
+                    </div>
+                    <div class="comunicado-content">
+                        <div class="comunicado-meta">
+                            <span class="comunicado-tag">Publicación institucional</span>
+                            <span class="comunicado-date">Septiembre 2026</span>
+                        </div>
+                        <h4>Revista Marietaguista</h4>
+                        <p class="comunicado-lead">Presentamos la primera edición de nuestra revista institucional.</p>
+                        <p>Una publicación para compartir las historias, aprendizajes y experiencias que construyen nuestra comunidad educativa.</p>
+                        <ul class="comunicado-highlights">
+                            <li><span>✦</span> Navega por todas sus páginas</li>
+                            <li><span>✓</span> Disponible desde cualquier dispositivo</li>
+                            <li><span>↓</span> Descarga la edición completa</li>
+                        </ul>
+                        <button type="button" class="comunicado-btn revista-open-btn" id="revista-open">Leer la revista <span aria-hidden="true">&#10140;</span></button>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
@@ -2042,6 +2063,34 @@
     </div>
 
     <!-- ============================================
+          VISOR DE LA REVISTA MARIATEGUISTA
+          ============================================ -->
+    <div class="magazine-viewer" id="magazine-viewer" role="dialog" aria-modal="true" aria-labelledby="magazine-title" aria-hidden="true">
+        <div class="magazine-dialog">
+            <header class="magazine-header">
+                <div>
+                    <p class="magazine-kicker">Publicación institucional</p>
+                    <h2 id="magazine-title">Revista Marietaguista</h2>
+                </div>
+                <button type="button" class="magazine-close" id="magazine-close" aria-label="Cerrar visor">&times;</button>
+            </header>
+            <div class="magazine-stage" id="magazine-stage" aria-live="polite">
+                <div class="magazine-loading" id="magazine-loading">Cargando la revista...</div>
+                <div class="magazine-page" id="magazine-page" hidden>
+                    <canvas id="magazine-canvas" aria-label="Página de la revista"></canvas>
+                </div>
+                <p class="magazine-error" id="magazine-error" hidden>No se pudo cargar el visor. Comprueba que la página se abrió desde un servidor web y vuelve a intentarlo. También puedes abrir o descargar el PDF completo.</p>
+            </div>
+            <footer class="magazine-controls">
+                <button type="button" class="magazine-nav" id="magazine-prev" aria-label="Página anterior">&#10094;<span>Anterior</span></button>
+                <span class="magazine-counter" id="magazine-counter">Página 1 de 1</span>
+                <button type="button" class="magazine-nav" id="magazine-next" aria-label="Página siguiente"><span>Siguiente</span>&#10095;</button>
+            </footer>
+            <a class="magazine-download" href="revista/Revista_Mariateguista_1ra_Ed.pdf" target="_blank" rel="noopener noreferrer">Abrir o descargar PDF completo <span aria-hidden="true">&#8599;</span></a>
+        </div>
+    </div>
+
+    <!-- ============================================
           LIGHTBOX
           ============================================ -->
     <div class="lightbox" id="lightbox">
@@ -2051,6 +2100,7 @@
         <img src="" alt="Vista ampliada">
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

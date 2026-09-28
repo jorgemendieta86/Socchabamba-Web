@@ -553,6 +553,173 @@ document.addEventListener('keydown', (e) => {
 });
 
 /* ============================================
+   VISOR PDF REVISTA MARIATEGUISTA
+   ============================================ */
+const magazineViewer = document.getElementById('magazine-viewer');
+const magazineOpen = document.getElementById('revista-open');
+const magazineClose = document.getElementById('magazine-close');
+const magazineCanvas = document.getElementById('magazine-canvas');
+const magazinePage = document.getElementById('magazine-page');
+const magazineStage = document.getElementById('magazine-stage');
+const magazineLoading = document.getElementById('magazine-loading');
+const magazineError = document.getElementById('magazine-error');
+const magazinePrev = document.getElementById('magazine-prev');
+const magazineNext = document.getElementById('magazine-next');
+const magazineCounter = document.getElementById('magazine-counter');
+const magazinePdfUrl = 'revista/Revista_Mariateguista_1ra_Ed.pdf';
+let magazinePdf = null;
+let magazinePageNumber = 1;
+let magazineLoadingTask = null;
+let magazinePreviousFocus = null;
+let magazineTouchStart = 0;
+
+function loadPdfJsLibrary() {
+    if (window.pdfjsLib) return Promise.resolve(window.pdfjsLib);
+
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js';
+        script.onload = () => window.pdfjsLib ? resolve(window.pdfjsLib) : reject(new Error('PDF.js no está disponible'));
+        script.onerror = () => reject(new Error('No se pudo cargar PDF.js desde los CDN disponibles'));
+        document.head.appendChild(script);
+    });
+}
+
+function updateMagazineControls() {
+    if (!magazinePdf) return;
+    magazineCounter.textContent = `Página ${magazinePageNumber} de ${magazinePdf.numPages}`;
+    magazinePrev.disabled = magazinePageNumber <= 1;
+    magazineNext.disabled = magazinePageNumber >= magazinePdf.numPages;
+}
+
+async function renderMagazinePage(pageNumber, direction = 'next') {
+    if (!magazinePdf || pageNumber < 1 || pageNumber > magazinePdf.numPages) return;
+    const page = await magazinePdf.getPage(pageNumber);
+    const baseViewport = page.getViewport({ scale: 1 });
+    const maxWidth = Math.max(magazineStage.clientWidth - 28, 220);
+    const maxHeight = Math.max(magazineStage.clientHeight - 28, 260);
+    const scale = Math.min(maxWidth / baseViewport.width, maxHeight / baseViewport.height);
+    const viewport = page.getViewport({ scale: Math.max(scale, 0.45) });
+    const outputScale = window.devicePixelRatio || 1;
+    const context = magazineCanvas.getContext('2d');
+
+    magazineCanvas.width = Math.floor(viewport.width * outputScale);
+    magazineCanvas.height = Math.floor(viewport.height * outputScale);
+    magazineCanvas.style.width = `${viewport.width}px`;
+    magazineCanvas.style.height = `${viewport.height}px`;
+    magazinePage.classList.remove('turn-next', 'turn-prev');
+    void magazinePage.offsetWidth;
+    magazinePage.classList.add(direction === 'prev' ? 'turn-prev' : 'turn-next');
+
+    await page.render({
+        canvasContext: context,
+        viewport,
+        transform: outputScale !== 1 ? [outputScale, 0, 0, outputScale, 0, 0] : null
+    }).promise;
+    magazinePageNumber = pageNumber;
+    updateMagazineControls();
+}
+
+async function loadMagazine() {
+    if (magazinePdf) {
+        await renderMagazinePage(magazinePageNumber);
+        return;
+    }
+    if (window.location.protocol === 'file:') {
+        throw new Error('La revista necesita ser servida mediante HTTP o HTTPS');
+    }
+
+    const pdfjs = await loadPdfJsLibrary();
+    pdfjs.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    try {
+        magazineLoadingTask = pdfjs.getDocument({ url: magazinePdfUrl });
+        magazinePdf = await magazineLoadingTask.promise;
+    } catch (workerError) {
+        console.warn('PDF.js no pudo iniciar el worker; se usará el modo compatible.', workerError);
+        magazineLoadingTask = pdfjs.getDocument({ url: magazinePdfUrl, disableWorker: true });
+        magazinePdf = await magazineLoadingTask.promise;
+    }
+    magazinePageNumber = 1;
+    await renderMagazinePage(1);
+}
+
+function openMagazine() {
+    if (!magazineViewer) return;
+    magazinePreviousFocus = document.activeElement;
+    magazineViewer.classList.add('active');
+    magazineViewer.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    magazineLoading.hidden = false;
+    magazineError.hidden = true;
+    magazinePage.hidden = true;
+    magazineCanvas.hidden = false;
+    magazineOpen.setAttribute('aria-expanded', 'true');
+    magazineClose.focus();
+
+    loadMagazine().then(() => {
+        magazineLoading.hidden = true;
+        magazinePage.hidden = false;
+    }).catch((error) => {
+        console.error('No se pudo cargar la revista:', error);
+        magazineLoading.hidden = true;
+        magazinePage.hidden = true;
+        magazineError.hidden = false;
+        magazineError.title = error.message;
+    });
+}
+
+function closeMagazine() {
+    if (!magazineViewer) return;
+    magazineViewer.classList.remove('active');
+    magazineViewer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    magazineOpen.setAttribute('aria-expanded', 'false');
+    if (magazinePreviousFocus) magazinePreviousFocus.focus();
+}
+
+if (magazineOpen && magazineViewer) {
+    magazineOpen.setAttribute('aria-expanded', 'false');
+    magazineOpen.addEventListener('click', openMagazine);
+    magazineClose.addEventListener('click', closeMagazine);
+    magazineViewer.addEventListener('click', (event) => {
+        if (event.target === magazineViewer) closeMagazine();
+    });
+    magazinePrev.addEventListener('click', () => renderMagazinePage(magazinePageNumber - 1, 'prev'));
+    magazineNext.addEventListener('click', () => renderMagazinePage(magazinePageNumber + 1, 'next'));
+    magazineStage.addEventListener('touchstart', (event) => {
+        magazineTouchStart = event.changedTouches[0].screenX;
+    }, { passive: true });
+    magazineStage.addEventListener('touchend', (event) => {
+        const distance = event.changedTouches[0].screenX - magazineTouchStart;
+        if (Math.abs(distance) < 45) return;
+        if (distance < 0) magazineNext.click();
+        else magazinePrev.click();
+    }, { passive: true });
+    window.addEventListener('resize', () => {
+        if (magazineViewer.classList.contains('active') && magazinePdf) renderMagazinePage(magazinePageNumber);
+    });
+}
+
+document.addEventListener('keydown', (e) => {
+    if (!magazineViewer || !magazineViewer.classList.contains('active')) return;
+    if (e.key === 'Escape') closeMagazine();
+    if (e.key === 'ArrowLeft') magazinePrev.click();
+    if (e.key === 'ArrowRight') magazineNext.click();
+    if (e.key === 'Tab') {
+        const focusable = magazineViewer.querySelectorAll('button, a[href]');
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+        }
+    }
+});
+
+/* ============================================
    ANIMACIONES SCROLL (FADE IN)
    ============================================ */
 const fadeElements = document.querySelectorAll('.fade-in');

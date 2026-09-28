@@ -774,6 +774,11 @@ ul { list-style: none; }
     color: #b3433b;
     background: #ffe5df;
 }
+.comunicado-revista { border-top-color: #d7a52b; }
+.comunicado-revista .comunicado-image-wrap { background: #ead7ad; }
+.comunicado-revista .comunicado-image-wrap img { object-fit: cover; }
+.comunicado-revista .comunicado-featured { background: #173f4f; color: #fff; }
+.comunicado-revista .comunicado-tag { color: #82620f; background: #f9edcf; }
 
 .mapa-wrapper {
     max-width: 960px;
@@ -821,6 +826,109 @@ ul { list-style: none; }
 .lightbox-nav { top: 50%; transform: translateY(-50%); font-size: 2.4rem; }
 .lightbox-nav.prev { left: 20px; }
 .lightbox-nav.next { right: 20px; }
+
+/* ============================================
+   VISOR REVISTA MARIATEGUISTA
+   ============================================ */
+.magazine-viewer {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    padding: 18px;
+    background: rgba(5, 27, 36, 0.92);
+    backdrop-filter: blur(9px);
+    overflow-y: auto;
+}
+.magazine-viewer.active { display: grid; place-items: center; }
+.magazine-dialog {
+    width: min(100%, 1060px);
+    max-height: calc(100dvh - 36px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 18px;
+    background: #102f3d;
+    box-shadow: 0 28px 80px rgba(0,0,0,0.38);
+}
+.magazine-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 22px;
+    color: #fff;
+    border-bottom: 1px solid rgba(255,255,255,0.13);
+}
+.magazine-kicker { margin: 0 0 3px; color: #f3d477; font-size: .74rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.magazine-header h2 { margin: 0; color: #fff; font-size: clamp(1.2rem, 2.5vw, 1.65rem); }
+.magazine-close, .magazine-nav { border: 0; cursor: pointer; font: inherit; }
+.magazine-close {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    font-size: 1.8rem;
+    line-height: 1;
+}
+.magazine-close:hover, .magazine-close:focus-visible { background: #e6bd4b; color: #173f4f; }
+.magazine-stage {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: min(68vh, 720px);
+    padding: 20px 70px;
+    background: radial-gradient(circle at 50% 35%, #315d6a, #0b2530 72%);
+    overflow: hidden;
+    touch-action: pan-y;
+}
+.magazine-page {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: min(100%, 700px);
+    height: min(64vh, 670px);
+    min-height: 280px;
+    background: #fff;
+    box-shadow: 0 18px 35px rgba(0,0,0,0.3);
+    transform-origin: left center;
+}
+.magazine-page[hidden] { display: none; }
+.magazine-page canvas { display: block; max-width: 100%; max-height: 100%; }
+.magazine-page.turn-next { animation: magazine-turn-next .42s ease both; }
+.magazine-page.turn-prev { transform-origin: right center; animation: magazine-turn-prev .42s ease both; }
+@keyframes magazine-turn-next { 0% { opacity: .45; transform: perspective(900px) rotateY(-14deg) translateX(20px); } 100% { opacity: 1; transform: perspective(900px) rotateY(0) translateX(0); } }
+@keyframes magazine-turn-prev { 0% { opacity: .45; transform: perspective(900px) rotateY(14deg) translateX(-20px); } 100% { opacity: 1; transform: perspective(900px) rotateY(0) translateX(0); } }
+.magazine-loading, .magazine-error { color: #fff; text-align: center; }
+.magazine-error { max-width: 420px; line-height: 1.5; }
+.magazine-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 13px 22px;
+    color: #fff;
+    border-top: 1px solid rgba(255,255,255,0.13);
+}
+.magazine-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 120px;
+    justify-content: center;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: #e6bd4b;
+    color: #173f4f;
+    font-size: .86rem;
+    font-weight: 800;
+}
+.magazine-nav:disabled { opacity: .35; cursor: not-allowed; }
+.magazine-nav:not(:disabled):hover, .magazine-nav:not(:disabled):focus-visible { background: #fff; }
+.magazine-counter { color: rgba(255,255,255,.86); font-size: .88rem; font-weight: 700; }
+.magazine-download { align-self: center; margin: 0 0 14px; color: #f3d477; font-size: .84rem; font-weight: 700; text-decoration: underline; }
 
 .fade-in {
     opacity: 0;
@@ -1020,4 +1128,18 @@ ul { list-style: none; }
     .comunicado-meta { align-items: flex-start; flex-direction: column; gap: 8px; }
     .comunicado-date { white-space: normal; }
     .comunicado-btn { width: 100%; justify-content: center; }
+    .magazine-viewer { padding: 0; }
+    .magazine-dialog { width: 100%; min-height: 100dvh; max-height: none; border-radius: 0; }
+    .magazine-header { padding: 14px 16px; }
+    .magazine-stage { min-height: 0; flex: 1; padding: 14px 12px; }
+    .magazine-page { height: min(70dvh, 620px); min-height: 220px; }
+    .magazine-controls { padding: 11px 12px; gap: 8px; }
+    .magazine-nav { min-width: 0; width: 44px; height: 42px; padding: 8px; font-size: 1.1rem; }
+    .magazine-nav span { display: none; }
+    .magazine-counter { font-size: .8rem; }
+    .magazine-download { margin-bottom: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .magazine-page.turn-next, .magazine-page.turn-prev { animation: none; }
 }
