@@ -838,46 +838,6 @@ const observer = new IntersectionObserver((entries) => {
 fadeElements.forEach(el => observer.observe(el));
 
 /* ============================================
-    POPUP REFORZAMIENTO ARITMÉTICO
-    ============================================ */
-const popupOverlay = document.getElementById('refuerzo-popup');
-const popupClose = document.getElementById('popup-close');
-
-function showPopup() {
-    if (popupOverlay) {
-        popupOverlay.hidden = false;
-        popupOverlay.classList.remove('hidden');
-    }
-}
-
-function hidePopup() {
-    if (popupOverlay) {
-        popupOverlay.classList.add('hidden');
-        popupOverlay.hidden = true;
-    }
-}
-
-if (popupOverlay) {
-    const popupSeen = sessionStorage.getItem('refuerzo-popup-seen');
-    if (!popupSeen) {
-        showPopup();
-        sessionStorage.setItem('refuerzo-popup-seen', 'true');
-        setTimeout(() => popupOverlay.classList.add('fading'), 5000);
-        setTimeout(hidePopup, 7000);
-    }
-}
-
-if (popupClose) {
-    popupClose.addEventListener('click', hidePopup);
-}
-
-if (popupOverlay) {
-    popupOverlay.addEventListener('click', (e) => {
-        if (e.target === popupOverlay) hidePopup();
-    });
-}
-
-/* ============================================
     CONTACTO FORM
     ============================================ */
 const contactoForm = document.querySelector('.contacto-form form');
