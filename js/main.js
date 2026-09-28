@@ -7,6 +7,8 @@ const prevBtn = document.querySelector('.carousel-btn.prev');
 const nextBtn = document.querySelector('.carousel-btn.next');
 let currentSlide = 0;
 let carouselInterval;
+let carouselTouchStart = 0;
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 function showSlide(index) {
     carouselSlides.forEach(slide => slide.classList.remove('active'));
@@ -26,11 +28,13 @@ function prevSlide() {
 }
 
 function startCarousel() {
+    if (prefersReducedMotion.matches || carouselInterval) return;
     carouselInterval = setInterval(nextSlide, 5000);
 }
 
 function stopCarousel() {
     clearInterval(carouselInterval);
+    carouselInterval = null;
 }
 
 if (prevBtn && nextBtn) {
@@ -57,24 +61,50 @@ carouselDots.forEach((dot, index) => {
 
 startCarousel();
 
+const heroCarousel = document.querySelector('.hero-carousel');
+heroCarousel?.addEventListener('mouseenter', stopCarousel);
+heroCarousel?.addEventListener('mouseleave', startCarousel);
+heroCarousel?.addEventListener('touchstart', event => {
+    carouselTouchStart = event.changedTouches[0].screenX;
+    stopCarousel();
+}, { passive: true });
+heroCarousel?.addEventListener('touchend', event => {
+    const distance = event.changedTouches[0].screenX - carouselTouchStart;
+    if (Math.abs(distance) > 45) distance < 0 ? nextSlide() : prevSlide();
+    startCarousel();
+}, { passive: true });
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopCarousel();
+    else startCarousel();
+});
+
 /* ============================================
    MENÚ HAMBURGUESA
    ============================================ */
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
+const navOverlay = document.querySelector('.nav-overlay');
 const navLinks = document.querySelectorAll('.nav-menu a');
 
 if (hamburger && navMenu) {
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
+    const setMenuState = (isOpen) => {
+        hamburger.classList.toggle('active', isOpen);
+        navMenu.classList.toggle('active', isOpen);
+        navOverlay?.classList.toggle('active', isOpen);
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+        hamburger.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+    };
+
+    hamburger.addEventListener('click', () => setMenuState(!navMenu.classList.contains('active')));
+    navOverlay?.addEventListener('click', () => setMenuState(false));
 
     navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-        });
+        link.addEventListener('click', () => setMenuState(false));
+    });
+
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && navMenu.classList.contains('active')) setMenuState(false);
     });
 }
 
@@ -84,6 +114,7 @@ if (hamburger && navMenu) {
 const header = document.querySelector('.header');
 
 window.addEventListener('scroll', () => {
+    if (!header) return;
     if (window.scrollY > 50) {
         header.classList.add('scrolled');
     } else {
@@ -96,6 +127,16 @@ window.addEventListener('scroll', () => {
    ============================================ */
 const sections = document.querySelectorAll('.section, .hero-carousel');
 const navItems = document.querySelectorAll('.nav-menu a:not(.btn-contacto)');
+
+document.querySelectorAll('.activity-card').forEach(card => {
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.addEventListener('keydown', event => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        card.click();
+    });
+});
 
 window.addEventListener('scroll', () => {
     let current = '';
@@ -169,6 +210,7 @@ const lightboxPrev = document.querySelector('.lightbox-nav.prev');
 const lightboxNext = document.querySelector('.lightbox-nav.next');
 let lightboxIndex = 0;
 let lightboxImages = [];
+let lightboxTouchStart = 0;
 
 const reinadoImages = [
     'img/REYNADO/20260917_140200.webp',
@@ -499,23 +541,32 @@ function renderPrimaveraGallery() {
 renderPrimaveraGallery();
 
 function openLightboxAt(activityId, index) {
+    if (!lightbox || !lightboxImg) return;
     lightboxImages = activityGalleries[activityId] || [];
+    if (!lightboxImages[index]) return;
     lightboxIndex = index;
     lightboxImg.src = lightboxImages[index];
     lightbox.classList.add('active');
+    lightbox.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    lightboxClose?.focus();
 }
 
 function openLightbox(src) {
+    if (!lightbox || !lightboxImg) return;
     lightboxImages = [src];
     lightboxIndex = 0;
     lightboxImg.src = src;
     lightbox.classList.add('active');
+    lightbox.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    lightboxClose?.focus();
 }
 
 function closeLightbox() {
+    if (!lightbox) return;
     lightbox.classList.remove('active');
+    lightbox.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
 }
 
@@ -527,6 +578,15 @@ if (lightbox) {
     lightbox.addEventListener('click', (e) => {
         if (e.target === lightbox) closeLightbox();
     });
+    lightbox.addEventListener('touchstart', event => {
+        lightboxTouchStart = event.changedTouches[0].screenX;
+    }, { passive: true });
+    lightbox.addEventListener('touchend', event => {
+        const distance = event.changedTouches[0].screenX - lightboxTouchStart;
+        if (Math.abs(distance) < 45 || lightboxImages.length <= 1) return;
+        lightboxIndex = (lightboxIndex + (distance < 0 ? 1 : -1) + lightboxImages.length) % lightboxImages.length;
+        lightboxImg.src = lightboxImages[lightboxIndex];
+    }, { passive: true });
 }
 
 if (lightboxPrev) {
@@ -546,7 +606,7 @@ if (lightboxNext) {
 }
 
 document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('active')) return;
+    if (!lightbox?.classList.contains('active')) return;
     if (e.key === 'Escape') closeLightbox();
     if (e.key === 'ArrowLeft') lightboxPrev.click();
     if (e.key === 'ArrowRight') lightboxNext.click();
@@ -748,6 +808,7 @@ const popupClose = document.getElementById('popup-close');
 
 function showPopup() {
     if (popupOverlay) {
+        popupOverlay.hidden = false;
         popupOverlay.classList.remove('hidden');
     }
 }
@@ -755,15 +816,18 @@ function showPopup() {
 function hidePopup() {
     if (popupOverlay) {
         popupOverlay.classList.add('hidden');
+        popupOverlay.hidden = true;
     }
 }
 
 if (popupOverlay) {
-    showPopup();
-    setTimeout(() => {
-        popupOverlay.classList.add('fading');
-    }, 5000);
-    setTimeout(hidePopup, 7000);
+    const popupSeen = sessionStorage.getItem('refuerzo-popup-seen');
+    if (!popupSeen) {
+        showPopup();
+        sessionStorage.setItem('refuerzo-popup-seen', 'true');
+        setTimeout(() => popupOverlay.classList.add('fading'), 5000);
+        setTimeout(hidePopup, 7000);
+    }
 }
 
 if (popupClose) {
