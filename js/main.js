@@ -238,7 +238,6 @@ const reinadoImages = [
     'img/REYNADO/20260917_153447.webp'
 ];
 
-<<<<<<< HEAD
 const escuelaFamilia3Images = [
     'img/Escuela familia 3/WhatsApp Image 2026-09-28 at 11.16.51 AM.webp',
     'img/Escuela familia 3/WhatsApp Image 2026-09-28 at 11.16.49 AM (1).webp',
@@ -254,7 +253,8 @@ const escuelaFamilia3Images = [
     'img/Escuela familia 3/WhatsApp Image 2026-09-28 at 11.16.51 AM (4).webp',
     'img/Escuela familia 3/WhatsApp Image 2026-09-28 at 11.16.52 AM (1).webp',
     'img/Escuela familia 3/WhatsApp Image 2026-09-28 at 11.16.52 AM.webp'
-=======
+];
+
 const primaveraImages = [
     'img/primavera/20260923_091205.webp', 'img/primavera/20260923_091230.webp', 'img/primavera/20260923_091300.webp',
     'img/primavera/20260923_100505.webp', 'img/primavera/20260923_100549.webp', 'img/primavera/20260923_100925.webp',
@@ -282,7 +282,6 @@ const primaveraImages = [
     'img/primavera/20260923_153905.webp', 'img/primavera/20260923_153925.webp', 'img/primavera/20260923_153937.webp',
     'img/primavera/20260923_153944.webp', 'img/primavera/20260923_153950.webp', 'img/primavera/20260923_153959.webp',
     'img/primavera/20260923_154009.webp', 'img/primavera/20260923_154443.webp'
->>>>>>> c641b68b4f8f9216f89e7a2b07691abf2bba858c
 ];
 
 // Definir las imágenes de cada actividad
@@ -416,11 +415,8 @@ const activityGalleries = {
         ];
     })(),
     'reinado-primavera-2026': reinadoImages,
-<<<<<<< HEAD
     'tercera-reunion-escuela-familia-2026': escuelaFamilia3Images,
-=======
     'celebracion-primavera-2026': primaveraImages,
->>>>>>> c641b68b4f8f9216f89e7a2b07691abf2bba858c
     'eureka-2026': (function() {
         return [
             'img/Eureka/photo_1_2026-08-27_12-21-40.webp',
@@ -500,7 +496,6 @@ function renderReinadoGallery() {
 
 renderReinadoGallery();
 
-<<<<<<< HEAD
 function renderEscuelaFamilia3Gallery() {
     const grid = document.getElementById('tercera-reunion-escuela-familia-gallery-grid');
     if (!grid) return;
@@ -513,7 +508,12 @@ function renderEscuelaFamilia3Gallery() {
         const image = document.createElement('img');
         image.src = src;
         image.alt = `3.ª Reunión de Escuela y Familia - imagen ${index + 1}`;
-=======
+        image.loading = 'lazy';
+        item.appendChild(image);
+        grid.appendChild(item);
+    });
+}
+
 function renderPrimaveraGallery() {
     const grid = document.getElementById('primavera-gallery-grid');
     if (!grid) return;
@@ -526,18 +526,14 @@ function renderPrimaveraGallery() {
         const image = document.createElement('img');
         image.src = src;
         image.alt = `Celebración de la Primavera 2026 - imagen ${index + 1}`;
->>>>>>> c641b68b4f8f9216f89e7a2b07691abf2bba858c
         image.loading = 'lazy';
         item.appendChild(image);
         grid.appendChild(item);
     });
 }
 
-<<<<<<< HEAD
 renderEscuelaFamilia3Gallery();
-=======
 renderPrimaveraGallery();
->>>>>>> c641b68b4f8f9216f89e7a2b07691abf2bba858c
 
 function openLightboxAt(activityId, index) {
     lightboxImages = activityGalleries[activityId] || [];
