@@ -76,6 +76,45 @@ ul { list-style: none; }
 }
 .nav-menu a:hover,
 .nav-menu a.active { background: #e8f2f6; color: var(--teal-700); }
+@property --aprendizaje-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+.nav-menu a.nav-aprendizaje {
+    position: relative;
+    isolation: isolate;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+.nav-menu a.nav-aprendizaje::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    z-index: -1;
+    padding: 2px;
+    border-radius: inherit;
+    background: var(--gold-500);
+    background: conic-gradient(
+        from var(--aprendizaje-angle),
+        transparent 0deg 220deg,
+        var(--gold-300) 275deg,
+        var(--gold-500) 320deg,
+        transparent 360deg
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: aprendizaje-border 2.8s linear infinite;
+}
+@keyframes aprendizaje-border {
+    to { --aprendizaje-angle: 360deg; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .nav-menu a.nav-aprendizaje::before { animation: none; }
+}
 .nav-menu .btn-contacto {
     background: var(--teal-700);
     color: var(--paper);
