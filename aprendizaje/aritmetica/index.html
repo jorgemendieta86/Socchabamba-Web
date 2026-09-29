@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reforzando Operaciones Básicas - IE José Carlos Mariátegui</title>
+  <link rel="icon" type="image/png" href="public/img/insignia.png">
+  <link rel="apple-touch-icon" href="public/img/insignia.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="public/css/styles.css">
+</head>
+<body>
+  <nav class="platform-bar" aria-label="Navegación de la plataforma">
+    <a href="../../index.html">Plataforma institucional</a>
+    <span aria-hidden="true">/</span>
+    <a href="../index.html">Aula de aprendizaje</a>
+  </nav>
+  <div class="bg-pattern"></div>
+  <div class="geometric-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+    <div class="shape shape-5"></div>
+  </div>
+  <div class="particles" id="particles"></div>
+  <div class="grid-overlay"></div>
+  <div class="timer" id="timer">00:00</div>
+
+  <header id="mainHeader">
+    <div class="logo-container">
+      <div class="logo-ring"></div>
+      <div class="logo-ring" style="animation-delay: -2s;"></div>
+      <div class="logo-ring" style="animation-delay: -4s;"></div>
+      <div class="logo"><img src="public/img/insignia.png" alt="Insignia de la Institución Educativa José Carlos Mariátegui"></div>
+    </div>
+    <h1>Reforzando <span class="highlight">Operaciones</span> <span class="highlight-alt">Básicas</span></h1>
+    <p class="subtitle">Institución Educativa José Carlos Mariátegui <span class="location">— Ayabaca</span></p>
+    <div class="header-decoration">
+      <span class="decoration-dot"></span>
+      <span class="decoration-line"></span>
+      <span class="decoration-dot"></span>
+    </div>
+  </header>
+
+  <div class="content">
+    <div class="controls" id="controls">
+      <p class="welcome-line">¡Bienvenido, estudiante!</p>
+      <h2>Seleccionar Operaciones</h2>
+      <div class="operation-grid" id="operationGrid">
+        <!-- Botones dinámicos -->
+      </div>
+
+      <section class="progress-history" aria-labelledby="historyTitle">
+        <div class="history-heading">
+          <div>
+            <p class="section-kicker">Seguimiento</p>
+            <h3 id="historyTitle">Avance de los estudiantes</h3>
+          </div>
+          <div class="history-actions">
+            <span class="history-badge" id="historyCount">0 retos</span>
+            <button class="btn-export" id="exportPdfBtn" type="button" title="Selecciona un estudiante para guardar sus resultados" disabled>
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2"/>
+              </svg>
+              Guardar PDF
+            </button>
+          </div>
+        </div>
+        <div class="history-controls">
+          <label for="historyStudentFilter">Mostrar resultados de:</label>
+          <select id="historyStudentFilter">
+            <option value="all">Todos los estudiantes</option>
+          </select>
+        </div>
+        <p class="history-description">Cada reto completado queda registrado para que el progreso de cada operación continúe en el siguiente nivel.</p>
+        <div class="history-table-wrap">
+          <table class="history-table">
+            <thead>
+              <tr>
+                <th>Estudiante</th>
+                <th>Operación</th>
+                <th>Nivel</th>
+                <th>Aciertos</th>
+                <th>Errores</th>
+                <th>Tiempo</th>
+                <th>Fecha</th>
+              </tr>
+            </thead>
+            <tbody id="historyTableBody">
+              <tr class="history-empty">
+                <td colspan="7">Todavía no hay retos registrados.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      </div>
+
+    <div class="game-area" id="gameArea" style="display: none;">
+      <div class="game-header">
+        <button class="back-btn" id="backBtn" title="Volver a la pantalla principal (Esc)">✕</button>
+        <div class="score-display">
+          <div class="score-value" id="score">0</div>
+          <div>Puntos</div>
+        </div>
+        <div class="level-display" id="levelDisplay">Nivel 1</div>
+      </div>
+
+      <div class="question-card" id="questionCard">
+        <div class="question-text" id="questionText"></div>
+      </div>
+
+      <aside class="sign-hint" id="signHint" aria-live="polite">
+        <strong>Pista de ley de signos</strong>
+        <span id="signHintText"></span>
+      </aside>
+
+      <div id="answerButtons" style="display: grid; gap: 1rem;"></div>
+
+      <div class="stats-panel" id="statsPanel">
+        <div class="stat-item correct">
+          <div class="stat-value" id="correctCount">0</div>
+          <div class="stat-label">Correctas</div>
+        </div>
+        <div class="stat-item wrong">
+          <div class="stat-value" id="wrongCount">0</div>
+          <div class="stat-label">Incorrectas</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls-overlay" id="controlsOverlay">
+      <div class="modal-content">
+        <h2>Estadísticas Finales</h2>
+        <p class="subtitle">Has completado la sesión actual.</p>
+        <div class="stats-final">
+          <div class="stat-final correct">
+            <div class="value" id="totalCorrect">0</div>
+            <div class="label">Aciertos</div>
+          </div>
+          <div class="stat-final wrong">
+            <div class="value" id="totalWrong">0</div>
+            <div class="label">Errores</div>
+          </div>
+          <div class="stat-final max">
+            <div class="value" id="maxAciertos">0</div>
+            <div class="label">Máximo</div>
+          </div>
+        </div>
+        <p>Tiempo empleado: <span id="elapsedTime">00:00</span></p>
+        <p>Puntuación final: <span id="finalScore">0</span></p>
+        <p class="inspirational-quote" id="inspirationalQuote"></p>
+        <button class="btn-primary" id="restartBtn">Volver a Jugar</button>
+      </div>
+    </div>
+
+    <!-- Modal para ingreso de nombre -->
+    <div class="controls-overlay" id="nameOverlay">
+      <div class="modal-content name-modal">
+        <div class="name-modal-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </div>
+        <h2>Antes de comenzar</h2>
+        <p class="subtitle">Escribe tu nombre para comenzar tu reto matemático</p>
+        <div class="name-input-group">
+          <label for="studentName">Tu nombre</label>
+          <input type="text" id="studentName" placeholder="Escribe tu nombre aquí..." maxlength="30" autocomplete="off" />
+        </div>
+        <button class="btn-primary" id="startChallengeBtn" disabled>Comenzar Reto</button>
+        <p class="name-hint">Tu nombre aparecerá en tus resultados finales</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer" id="siteFooter">
+    <img class="footer-badge" src="public/img/insignia.png" alt="Insignia IE José Carlos Mariátegui">
+    <p class="footer-title">Institución Educativa José Carlos Mariátegui — Socchabamba, Ayabaca</p>
+    <p class="footer-copy">© 2026 Plataforma de Refuerzo de Operaciones Básicas · Nivel Secundaria · Todos los derechos reservados</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous"></script>
+  <script src="public/js/script.js"></script>
+</body>
+</html>

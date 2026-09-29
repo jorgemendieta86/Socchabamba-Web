@@ -1,0 +1,400 @@
+<!DOCTYPE html><html lang="es"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Plataforma interactiva de razonamiento verbal para aprender analogías."><meta name="theme-color" content="#fff9ef"><title>Laboratorio de Analogías</title><link rel="icon" type="image/png" href="./img/insignia.png"><link rel="stylesheet" href="./_astro/index.E7F0ySjf.css"></head> <body>  <main class="app-shell"> <div class="sun-orb" aria-hidden="true"></div> <div class="grain" aria-hidden="true"></div> <header class="topbar"> <a class="platform-link" href="../../index.html">Plataforma institucional</a> <a class="brand" href="./index.html" aria-label="Ir al inicio"> <img src="./img/insignia.png" alt="Insignia de la Institución Educativa José Carlos Mariátegui"> <span><strong>YACHAY</strong><small>laboratorio de palabras</small></span> </a> <button class="sound-button" id="sound-toggle" type="button" aria-pressed="false"> <span class="sound-icon" aria-hidden="true">♫</span><span id="sound-label">Ambiente sonoro</span> </button> </header> <section class="view intro-view" id="intro-view" aria-labelledby="intro-title"> <div class="intro-copy reveal"> <p class="eyebrow">COMUNICACIÓN · RAZONAMIENTO VERBAL</p> <h1 id="intro-title">Conecta las ideas.<br><em>Descubre la relación.</em></h1> <p class="intro-lead">Entrena tu mirada para encontrar lo que une a dos palabras. Sin prisa, con curiosidad y a tu propio ritmo.</p> <div class="stat-row" aria-label="Características de la actividad"> <span><b>2</b> desafíos disponibles</span><span><b>3</b> niveles</span> </div> </div> <div class="start-card reveal delayed"> <div class="card-marker">01 <span>/ listo para empezar</span></div> <h2>¿Cómo te llamas?</h2> <p>Elige un recorrido y tu nombre aparecerá en el resultado final.</p> <label for="student-name" class="sr-only">Nombre del estudiante</label> <input id="student-name" type="text" maxlength="30" placeholder="Escribe tu nombre" autocomplete="name"> <fieldset class="challenge-picker"> <legend>Selecciona el desafío</legend> <label><input type="radio" name="challenge" value="analogies"> <span>Analogías</span></label> <label><input type="radio" name="challenge" value="adjectives"> <span>Adjetivos</span></label> </fieldset> <p class="challenge-selection-status" id="challenge-selection-status" role="status" aria-live="polite">Selecciona un desafío para continuar.</p> <button class="primary-button hidden" id="start-button" type="button">Comenzar recorrido <span>→</span></button> <button class="secondary-button hidden" id="resume-button" type="button">Continuar recorrido <span>→</span></button> </div> </section> <section class="view history-view" id="history-view" aria-labelledby="history-title"> <div class="history-heading"> <div> <p class="eyebrow">SEGUIMIENTO</p> <h2 id="history-title">Historial de resultados</h2> </div> <label for="history-student-filter">Filtrar por estudiante
+<select id="history-student-filter"> <option value="">Todos los estudiantes</option> </select> </label> </div> <p class="history-status" id="history-status" role="status" aria-live="polite"></p> <div class="history-table-wrap"> <table class="history-table"> <caption class="sr-only">Resultados guardados de los estudiantes</caption> <thead> <tr><th scope="col">Estudiante</th><th scope="col">Desafío</th><th scope="col">Aciertos</th><th scope="col">Errores</th><th scope="col">Nivel</th><th scope="col">Fecha</th></tr> </thead> <tbody id="history-list"></tbody> </table> </div> <div class="history-pdf-actions"> <button class="secondary-button" id="history-print-button" type="button">Guardar resultados en PDF</button> <p class="pdf-status" id="history-pdf-status" role="status" aria-live="polite"></p> </div> </section> <section class="view quiz-view hidden" id="quiz-view" aria-labelledby="question-title"> <div class="quiz-topline"> <div><span class="eyebrow"><span id="challenge-label">DESAFÍO</span> <span id="question-number">01</span></span><span class="difficulty-pill" id="difficulty-pill">BÁSICO</span></div> <div class="score-box"><span>PUNTOS</span><strong id="score">000</strong></div> </div> <div class="progress-track" id="progress-track" role="progressbar" aria-label="Progreso de la actividad" aria-valuemin="0" aria-valuemax="90" aria-valuenow="0"><div id="progress-bar"></div></div> <div class="quiz-layout"> <aside class="quiz-aside"> <p class="type-label" id="type-label">RELACIÓN</p><h2 id="analogy-type">Sinonimia</h2> <div class="aside-tip"><span>✦</span><p id="tip-text"><strong>Observa antes de elegir.</strong><br>Busca qué relación existe entre el primer par.</p></div> <div class="live-stats"><div><strong id="correct-count">0</strong><span>aciertos</span></div><div><strong id="streak-count">0</strong><span>racha</span></div></div> </aside> <div class="question-card"> <p class="question-instruction" id="question-instruction">Completa la analogía</p> <h1 id="question-title">Feliz es a alegre como triste es a...</h1> <div class="options-grid" id="options-list"></div> <div class="feedback hidden" id="feedback" role="status" aria-live="polite"><div class="feedback-icon" id="feedback-icon">✓</div><div><strong id="feedback-title">¡Muy bien!</strong><p id="feedback-text"></p></div></div> <button class="next-button hidden" id="next-button" type="button">Siguiente desafío <span>→</span></button> </div> </div> </section> <section class="view results-view hidden" id="results-view" aria-labelledby="results-title"> <div class="results-badge">✦</div> <p class="eyebrow">RECORRIDO COMPLETADO · <span id="result-challenge">ANALOGÍAS</span></p> <h1 id="results-title">¡Buen trabajo, <span id="result-name">estudiante</span>!</h1> <p class="results-subtitle">Cada respuesta fue una nueva forma de mirar.</p> <p class="result-date" id="result-date"></p> <p class="save-status" id="save-status" role="status" aria-live="polite"></p> <p class="best-result hidden" id="best-result" role="status">Este es tu mejor resultado hasta ahora.</p> <div class="results-panel"> <div class="big-score"><span>PUNTAJE FINAL</span><strong id="final-score">0</strong><small>puntos</small></div> <div class="result-metrics"><div><strong id="final-correct">0</strong><span>aciertos</span></div><div><strong id="final-errors">0</strong><span>errores</span></div><div><strong id="final-percent">0%</strong><span>precisión</span></div><div><strong id="final-streak">0</strong><span>mejor racha</span></div></div> </div> <div class="result-actions"><button class="primary-button" id="restart-button" type="button">Volver a intentarlo <span>↻</span></button><button class="secondary-button" id="print-button" type="button">Guardar resultados en PDF</button></div> <p class="pdf-status" id="pdf-status" role="status" aria-live="polite"></p> </section> <footer><span>I.E. José Carlos Mariátegui</span><span>Socchabamba · Ayabaca</span></footer> </main> <script>(function(){const analogies = [{"id":1,"difficulty":"Básico","type":"Sinonimia","prompt":"Veloz es a rápido como iniciar es a...","options":["terminar","comenzar","detener","esperar"],"answer":1,"explanation":"Veloz y rápido tienen significado semejante; iniciar y comenzar también."},{"id":2,"difficulty":"Básico","type":"Antonimia","prompt":"Cerca es a lejos como entrar es a...","options":["subir","salir","llegar","mirar"],"answer":1,"explanation":"Cerca y lejos son opuestos; entrar y salir también."},{"id":3,"difficulty":"Básico","type":"Género","prompt":"Gallo es a gallina como caballo es a...","options":["potro","yegua","burro","mula"],"answer":1,"explanation":"Gallina es el femenino de gallo; yegua es el femenino de caballo."},{"id":4,"difficulty":"Básico","type":"Animal y alimento","prompt":"Abeja es a néctar como vaca es a...","options":["carne","pasto","fruta","semilla"],"answer":1,"explanation":"La abeja obtiene alimento del néctar; la vaca se alimenta de pasto."},{"id":5,"difficulty":"Básico","type":"Objeto y uso","prompt":"Escoba es a barrer como peine es a...","options":["cortar","peinar","pintar","medir"],"answer":1,"explanation":"La escoba sirve para barrer; el peine sirve para peinar."},{"id":6,"difficulty":"Básico","type":"Profesión y herramienta","prompt":"Carpintero es a martillo como pintor es a...","options":["pincel","balanza","silbato","regla"],"answer":0,"explanation":"El carpintero utiliza un martillo; el pintor utiliza un pincel."},{"id":7,"difficulty":"Básico","type":"Emoción","prompt":"Miedo es a temblor como alegría es a...","options":["sonrisa","silencio","sueño","enojo"],"answer":0,"explanation":"El miedo puede producir temblor; la alegría puede producir una sonrisa."},{"id":8,"difficulty":"Básico","type":"Vehículo y conductor","prompt":"Capitán es a barco como conductor es a...","options":["avión","automóvil","caballo","bicicleta"],"answer":1,"explanation":"El capitán dirige un barco; el conductor maneja un automóvil."},{"id":9,"difficulty":"Básico","type":"Parte y todo","prompt":"Rueda es a bicicleta como página es a...","options":["cuaderno","lápiz","mochila","ventana"],"answer":0,"explanation":"La rueda es parte de una bicicleta; la página es parte de un cuaderno."},{"id":10,"difficulty":"Básico","type":"Tiempo","prompt":"Hora es a día como día es a...","options":["mes","semana","año","minuto"],"answer":1,"explanation":"Una hora forma parte de un día; un día forma parte de una semana."},{"id":11,"difficulty":"Básico","type":"Animal y hábitat","prompt":"Pez es a agua como ave es a...","options":["nido","aire","pluma","semilla"],"answer":1,"explanation":"El pez vive en el agua; el ave se desplaza por el aire."},{"id":12,"difficulty":"Básico","type":"Material y objeto","prompt":"Vidrio es a botella como madera es a...","options":["mesa","agua","pintura","clavo"],"answer":0,"explanation":"Una botella puede fabricarse con vidrio; una mesa puede fabricarse con madera."},{"id":13,"difficulty":"Básico","type":"Parte y planta","prompt":"Raíz es a árbol como pétalo es a...","options":["fruto","flor","tallo","semilla"],"answer":1,"explanation":"La raíz es parte del árbol; el pétalo es parte de la flor."},{"id":14,"difficulty":"Básico","type":"Sonido y fuente","prompt":"Campana es a sonido como lámpara es a...","options":["calor","luz","olor","vapor"],"answer":1,"explanation":"La campana produce sonido; la lámpara produce luz."},{"id":15,"difficulty":"Básico","type":"Acción y herramienta","prompt":"Pintar es a pincel como cortar es a...","options":["tijera","cuchara","vaso","almohada"],"answer":0,"explanation":"El pincel se usa para pintar; la tijera se usa para cortar."},{"id":16,"difficulty":"Básico","type":"Lugar y actividad","prompt":"Hospital es a curar como escuela es a...","options":["cocinar","aprender","vender","viajar"],"answer":1,"explanation":"En el hospital se cura; en la escuela se aprende."},{"id":17,"difficulty":"Básico","type":"Recipiente y contenido","prompt":"Botella es a agua como caja es a...","options":["papel","juguetes","techo","tierra"],"answer":1,"explanation":"La botella puede contener agua; la caja puede contener juguetes."},{"id":18,"difficulty":"Básico","type":"Categoría","prompt":"Manzana es a fruta como zanahoria es a...","options":["animal","verdura","bebida","herramienta"],"answer":1,"explanation":"La manzana pertenece a las frutas; la zanahoria pertenece a las verduras."},{"id":19,"difficulty":"Básico","type":"Origen y producto","prompt":"Gallina es a huevo como vaca es a...","options":["lana","leche","miel","seda"],"answer":1,"explanation":"La gallina produce huevos; la vaca produce leche."},{"id":20,"difficulty":"Básico","type":"Cantidad y conjunto","prompt":"Par es a dos como docena es a...","options":["cinco","diez","doce","cien"],"answer":2,"explanation":"Un par contiene dos elementos; una docena contiene doce."},{"id":21,"difficulty":"Básico","type":"Sinonimia","prompt":"Comenzar es a iniciar como finalizar es a...","options":["terminar","subir","abrir","caminar"],"answer":0,"explanation":"Comenzar e iniciar son semejantes; finalizar y terminar también."},{"id":22,"difficulty":"Básico","type":"Antonimia","prompt":"Liso es a rugoso como limpio es a...","options":["claro","sucio","brillante","suave"],"answer":1,"explanation":"Liso y rugoso son opuestos; limpio y sucio también."},{"id":23,"difficulty":"Básico","type":"Género","prompt":"Rey es a reina como príncipe es a...","options":["princesa","duque","madre","niña"],"answer":0,"explanation":"Reina es el femenino de rey; princesa es el femenino de príncipe."},{"id":24,"difficulty":"Básico","type":"Animal y grupo","prompt":"Pez es a cardumen como lobo es a...","options":["rebaño","manada","bandada","colmena"],"answer":1,"explanation":"Un grupo de peces es un cardumen; un grupo de lobos es una manada."},{"id":25,"difficulty":"Básico","type":"Instrumento y función","prompt":"Reloj es a hora como termómetro es a...","options":["peso","temperatura","distancia","velocidad"],"answer":1,"explanation":"El reloj indica la hora; el termómetro indica la temperatura."},{"id":26,"difficulty":"Básico","type":"Objeto y lugar","prompt":"Libro es a biblioteca como cuadro es a...","options":["museo","garaje","estadio","mercado"],"answer":0,"explanation":"El libro se encuentra en una biblioteca; el cuadro puede encontrarse en un museo."},{"id":27,"difficulty":"Básico","type":"Causa y efecto","prompt":"Estudio es a aprendizaje como ejercicio es a...","options":["cansancio","fortaleza","silencio","hambre"],"answer":1,"explanation":"El estudio favorece el aprendizaje; el ejercicio favorece la fortaleza."},{"id":28,"difficulty":"Básico","type":"Secuencia","prompt":"Lunes es a martes como enero es a...","options":["marzo","febrero","abril","diciembre"],"answer":1,"explanation":"Martes sucede a lunes; febrero sucede a enero."},{"id":29,"difficulty":"Básico","type":"Prenda y parte del cuerpo","prompt":"Zapato es a pie como guante es a...","options":["cabeza","mano","cuello","espalda"],"answer":1,"explanation":"El zapato cubre el pie; el guante cubre la mano."},{"id":30,"difficulty":"Básico","type":"Estación y fenómeno","prompt":"Invierno es a frío como verano es a...","options":["lluvia","calor","nieve","viento"],"answer":1,"explanation":"El invierno se relaciona con el frío; el verano se relaciona con el calor."},{"id":31,"difficulty":"Intermedio","type":"Causa y efecto","prompt":"Semilla es a planta como idea es a...","options":["olvido","proyecto","ruido","sombra"],"answer":1,"explanation":"Una semilla puede originar una planta; una idea puede originar un proyecto."},{"id":32,"difficulty":"Intermedio","type":"Categoría","prompt":"Violín es a instrumento como roble es a...","options":["fruta","árbol","animal","metal"],"answer":1,"explanation":"El violín pertenece a los instrumentos; el roble pertenece a los árboles."},{"id":33,"difficulty":"Intermedio","type":"Material y producto","prompt":"Algodón es a tela como arcilla es a...","options":["vasija","humo","cuerda","papel"],"answer":0,"explanation":"El algodón puede transformarse en tela; la arcilla puede transformarse en una vasija."},{"id":34,"difficulty":"Intermedio","type":"Parte y sistema","prompt":"Tecla es a teclado como ladrillo es a...","options":["pared","cemento","pintura","ventana"],"answer":0,"explanation":"La tecla forma parte del teclado; el ladrillo forma parte de una pared."},{"id":35,"difficulty":"Intermedio","type":"Acción y herramienta","prompt":"Escribir es a teclado como fotografiar es a...","options":["cámara","lienzo","escalera","brújula"],"answer":0,"explanation":"El teclado se usa para escribir; la cámara se usa para fotografiar."},{"id":36,"difficulty":"Intermedio","type":"Profesión y espacio","prompt":"Panadero es a panadería como farmacéutico es a...","options":["escuela","farmacia","estación","teatro"],"answer":1,"explanation":"El panadero trabaja en una panadería; el farmacéutico trabaja en una farmacia."},{"id":37,"difficulty":"Intermedio","type":"Necesidad y satisfacción","prompt":"Descanso es a cansancio como alimento es a...","options":["hambre","frío","miedo","sed"],"answer":0,"explanation":"El descanso alivia el cansancio; el alimento satisface el hambre."},{"id":38,"difficulty":"Intermedio","type":"Intensidad","prompt":"Brisa es a viento como chispa es a...","options":["humo","incendio","ceniza","lluvia"],"answer":1,"explanation":"La brisa es una forma suave de viento; la chispa puede iniciar un incendio."},{"id":39,"difficulty":"Intermedio","type":"Origen y producto","prompt":"Abeja es a miel como olivo es a...","options":["aceite","harina","leche","lana"],"answer":0,"explanation":"La abeja produce miel; el olivo produce aceite."},{"id":40,"difficulty":"Intermedio","type":"Recipiente y contenido","prompt":"Acuario es a peces como biblioteca es a...","options":["plantas","libros","vehículos","alimentos"],"answer":1,"explanation":"El acuario contiene peces; la biblioteca contiene libros."},{"id":41,"difficulty":"Intermedio","type":"Transformación","prompt":"Oruga es a mariposa como renacuajo es a...","options":["pez","rana","lagarto","caracol"],"answer":1,"explanation":"La oruga se transforma en mariposa; el renacuajo se transforma en rana."},{"id":42,"difficulty":"Intermedio","type":"Símbolo y significado","prompt":"Semáforo es a tránsito como balanza es a...","options":["justicia","velocidad","comercio","música"],"answer":0,"explanation":"El semáforo regula el tránsito; la balanza simboliza la justicia."},{"id":43,"difficulty":"Intermedio","type":"Objeto y función","prompt":"Brújula es a orientar como lupa es a...","options":["iluminar","ampliar","pesar","cortar"],"answer":1,"explanation":"La brújula ayuda a orientarse; la lupa ayuda a ampliar."},{"id":44,"difficulty":"Intermedio","type":"Lugar y actividad","prompt":"Observatorio es a astros como estadio es a...","options":["deportes","medicina","lectura","agricultura"],"answer":0,"explanation":"En un observatorio se estudian los astros; en un estadio se practican deportes."},{"id":45,"difficulty":"Intermedio","type":"Antonimia","prompt":"Humilde es a orgulloso como generoso es a...","options":["egoísta","curioso","valiente","sereno"],"answer":0,"explanation":"Humilde y orgulloso son opuestos; generoso y egoísta también."},{"id":46,"difficulty":"Intermedio","type":"Sinonimia","prompt":"Preciso es a exacto como rápido es a...","options":["lento","veloz","débil","pesado"],"answer":1,"explanation":"Preciso y exacto son semejantes; rápido y veloz también."},{"id":47,"difficulty":"Intermedio","type":"Animal y hábitat","prompt":"Camello es a desierto como pingüino es a...","options":["selva","región polar","pradera","volcán"],"answer":1,"explanation":"El camello está adaptado al desierto; el pingüino está adaptado a regiones polares."},{"id":48,"difficulty":"Intermedio","type":"Conjunto y elemento","prompt":"Bosque es a árbol como biblioteca es a...","options":["libro","lápiz","mesa","ventana"],"answer":0,"explanation":"Un bosque reúne árboles; una biblioteca reúne libros."},{"id":49,"difficulty":"Intermedio","type":"Instrumento y medida","prompt":"Regla es a longitud como balanza es a...","options":["peso","temperatura","tiempo","sonido"],"answer":0,"explanation":"La regla mide longitud; la balanza mide peso."},{"id":50,"difficulty":"Intermedio","type":"Creador y obra","prompt":"Escultor es a estatua como escritor es a...","options":["novela","martillo","teatro","pincel"],"answer":0,"explanation":"El escultor crea estatuas; el escritor crea novelas."},{"id":51,"difficulty":"Intermedio","type":"Acción y resultado","prompt":"Practicar es a habilidad como preguntar es a...","options":["respuesta","duda","silencio","sueño"],"answer":0,"explanation":"Practicar desarrolla una habilidad; preguntar busca una respuesta."},{"id":52,"difficulty":"Intermedio","type":"Causa y efecto","prompt":"Descuido es a accidente como esfuerzo es a...","options":["logro","olvido","ruido","descanso"],"answer":0,"explanation":"El descuido puede causar un accidente; el esfuerzo puede producir un logro."},{"id":53,"difficulty":"Intermedio","type":"Parte y todo","prompt":"Capítulo es a libro como escena es a...","options":["película","actor","cámara","entrada"],"answer":0,"explanation":"El capítulo forma parte de un libro; la escena forma parte de una película."},{"id":54,"difficulty":"Intermedio","type":"Fuente y energía","prompt":"Sol es a luz como alimento es a...","options":["energía","sombra","sed","ruido"],"answer":0,"explanation":"El sol proporciona luz; el alimento proporciona energía."},{"id":55,"difficulty":"Intermedio","type":"Secuencia","prompt":"Capullo es a flor como huevo es a...","options":["ave","nido","pluma","cáscara"],"answer":0,"explanation":"Del capullo surge una flor; del huevo puede surgir un ave."},{"id":56,"difficulty":"Intermedio","type":"Profesión y herramienta","prompt":"Astrónomo es a telescopio como cirujano es a...","options":["estetoscopio","bisturí","micrófono","martillo"],"answer":1,"explanation":"El astrónomo utiliza un telescopio; el cirujano utiliza un bisturí."},{"id":57,"difficulty":"Intermedio","type":"Objeto y lugar","prompt":"Avión es a hangar como barco es a...","options":["puerto","carretera","túnel","pista"],"answer":0,"explanation":"El avión se guarda en un hangar; el barco se guarda o atraca en un puerto."},{"id":58,"difficulty":"Intermedio","type":"Necesidad y protección","prompt":"Abrigo es a frío como paraguas es a...","options":["sol","lluvia","viento","nieve"],"answer":1,"explanation":"El abrigo protege del frío; el paraguas protege de la lluvia."},{"id":59,"difficulty":"Intermedio","type":"Materia y alimento","prompt":"Harina es a pan como leche es a...","options":["queso","agua","sal","arroz"],"answer":0,"explanation":"La harina puede convertirse en pan; la leche puede convertirse en queso."},{"id":60,"difficulty":"Intermedio","type":"Objeto y función","prompt":"Llave es a abrir como jabón es a...","options":["lavar","cerrar","cortar","dibujar"],"answer":0,"explanation":"La llave sirve para abrir; el jabón sirve para lavar."},{"id":61,"difficulty":"Avanzado","type":"Relación abstracta","prompt":"Duda es a certeza como confusión es a...","options":["orden","ruido","prisa","memoria"],"answer":0,"explanation":"La certeza resuelve la duda; el orden resuelve la confusión."},{"id":62,"difficulty":"Avanzado","type":"Categoría","prompt":"Soneto es a poema como acuarela es a...","options":["pintura","música","escultura","danza"],"answer":0,"explanation":"El soneto es un tipo de poema; la acuarela es un tipo de pintura."},{"id":63,"difficulty":"Avanzado","type":"Instrumento y resultado","prompt":"Barómetro es a presión como sismógrafo es a...","options":["temperatura","movimiento sísmico","humedad","distancia"],"answer":1,"explanation":"El barómetro mide la presión; el sismógrafo registra movimientos sísmicos."},{"id":64,"difficulty":"Avanzado","type":"Creador y obra","prompt":"Arquitecto es a edificio como dramaturgo es a...","options":["obra teatral","escultura","melodía","mapa"],"answer":0,"explanation":"El arquitecto diseña edificios; el dramaturgo escribe obras teatrales."},{"id":65,"difficulty":"Avanzado","type":"Proceso y resultado","prompt":"Investigar es a descubrir como analizar es a...","options":["comprender","ocultar","copiar","adornar"],"answer":0,"explanation":"Investigar puede conducir a descubrir; analizar puede conducir a comprender."},{"id":66,"difficulty":"Avanzado","type":"Parte y sistema","prompt":"Neurona es a sistema nervioso como glóbulo rojo es a...","options":["sistema circulatorio","sistema óseo","sistema digestivo","sistema muscular"],"answer":0,"explanation":"La neurona pertenece al sistema nervioso; el glóbulo rojo pertenece al sistema circulatorio."},{"id":67,"difficulty":"Avanzado","type":"Origen y destino","prompt":"Afluente es a río como avenida es a...","options":["ciudad","mar","puente","casa"],"answer":0,"explanation":"Un afluente desemboca en un río; una avenida conduce o pertenece a una ciudad."},{"id":68,"difficulty":"Avanzado","type":"Símbolo y significado","prompt":"Laurel es a victoria como corona es a...","options":["autoridad","tristeza","velocidad","silencio"],"answer":0,"explanation":"El laurel simboliza la victoria; la corona puede simbolizar autoridad."},{"id":69,"difficulty":"Avanzado","type":"Intensidad","prompt":"Goteo es a lluvia como murmullo es a...","options":["voz","silencio","grito","canción"],"answer":0,"explanation":"El goteo es una manifestación leve de la lluvia; el murmullo es una manifestación leve de la voz."},{"id":70,"difficulty":"Avanzado","type":"Orden","prompt":"Tesis es a conclusión como problema es a...","options":["solución","pregunta","causa","duda"],"answer":0,"explanation":"Una tesis puede conducir a una conclusión; un problema busca una solución."},{"id":71,"difficulty":"Avanzado","type":"Causa y efecto","prompt":"Erosión es a relieve como práctica es a...","options":["destreza","olvido","pausa","ruido"],"answer":0,"explanation":"La erosión transforma el relieve; la práctica desarrolla la destreza."},{"id":72,"difficulty":"Avanzado","type":"Condición y resultado","prompt":"Disciplina es a logro como negligencia es a...","options":["fracaso","premio","descanso","acuerdo"],"answer":0,"explanation":"La disciplina favorece el logro; la negligencia puede conducir al fracaso."},{"id":73,"difficulty":"Avanzado","type":"Relación recíproca","prompt":"Enseñar es a aprender como preguntar es a...","options":["responder","observar","dibujar","caminar"],"answer":0,"explanation":"Enseñar se relaciona con aprender; preguntar se relaciona con responder."},{"id":74,"difficulty":"Avanzado","type":"Herramienta y producto","prompt":"Telar es a tejido como horno es a...","options":["cerámica","alimento","semilla","madera"],"answer":0,"explanation":"El telar produce tejidos; el horno puede producir cerámica."},{"id":75,"difficulty":"Avanzado","type":"Instrumento y objeto de estudio","prompt":"Microscopio es a célula como telescopio es a...","options":["estrella","montaña","semilla","sonido"],"answer":0,"explanation":"El microscopio permite observar células; el telescopio permite observar estrellas."},{"id":76,"difficulty":"Avanzado","type":"Relación abstracta","prompt":"Memoria es a recuerdo como imaginación es a...","options":["idea","ruido","olvido","medida"],"answer":0,"explanation":"La memoria conserva recuerdos; la imaginación puede producir ideas."},{"id":77,"difficulty":"Avanzado","type":"Categoría","prompt":"Triángulo es a polígono como cubo es a...","options":["poliedro","círculo","línea","punto"],"answer":0,"explanation":"El triángulo es un polígono; el cubo es un poliedro."},{"id":78,"difficulty":"Avanzado","type":"Transformación","prompt":"Mineral es a metal como leche es a...","options":["yogur","agua","sal","harina"],"answer":0,"explanation":"Un mineral puede transformarse en metal; la leche puede transformarse en yogur."},{"id":79,"difficulty":"Avanzado","type":"Lugar y actividad","prompt":"Archivo es a conservar como laboratorio es a...","options":["investigar","cocinar","dormir","nadar"],"answer":0,"explanation":"En un archivo se conservan documentos; en un laboratorio se investiga."},{"id":80,"difficulty":"Avanzado","type":"Antonimia","prompt":"Efímero es a permanente como artificial es a...","options":["natural","moderno","brillante","pequeño"],"answer":0,"explanation":"Efímero y permanente son opuestos; artificial y natural también."},{"id":81,"difficulty":"Avanzado","type":"Sinonimia","prompt":"Adversidad es a dificultad como beneficio es a...","options":["ventaja","pérdida","problema","duda"],"answer":0,"explanation":"Adversidad y dificultad son semejantes; beneficio y ventaja también."},{"id":82,"difficulty":"Avanzado","type":"Parte y todo","prompt":"Verso es a poema como capítulo es a...","options":["novela","párrafo","autor","biblioteca"],"answer":0,"explanation":"El verso forma parte de un poema; el capítulo forma parte de una novela."},{"id":83,"difficulty":"Avanzado","type":"Origen y producto","prompt":"Olivo es a aceite como trigo es a...","options":["harina","madera","tela","vidrio"],"answer":0,"explanation":"El olivo produce aceite; el trigo puede transformarse en harina."},{"id":84,"difficulty":"Avanzado","type":"Símbolo y concepto","prompt":"Balanza es a justicia como corona es a...","options":["monarquía","deporte","agricultura","música"],"answer":0,"explanation":"La balanza simboliza la justicia; la corona se relaciona con la monarquía."},{"id":85,"difficulty":"Avanzado","type":"Secuencia lógica","prompt":"Causa es a efecto como pregunta es a...","options":["respuesta","hipótesis","silencio","camino"],"answer":0,"explanation":"Una causa produce un efecto; una pregunta busca una respuesta."},{"id":86,"difficulty":"Avanzado","type":"Instrumento y fenómeno","prompt":"Sismógrafo es a terremoto como pluviómetro es a...","options":["lluvia","viento","nieve","calor"],"answer":0,"explanation":"El sismógrafo registra terremotos; el pluviómetro mide la lluvia."},{"id":87,"difficulty":"Avanzado","type":"Creador y obra","prompt":"Dramaturgo es a obra teatral como coreógrafo es a...","options":["danza","novela","escultura","sinfonía"],"answer":0,"explanation":"El dramaturgo crea obras teatrales; el coreógrafo crea danzas."},{"id":88,"difficulty":"Avanzado","type":"Relación múltiple","prompt":"Escuchar es a comprender como observar es a...","options":["interpretar","correr","dormir","gritar"],"answer":0,"explanation":"Escuchar ayuda a comprender; observar ayuda a interpretar."},{"id":89,"difficulty":"Avanzado","type":"Relación recíproca","prompt":"Pregunta es a respuesta como oferta es a...","options":["demanda","regalo","compra","promesa"],"answer":0,"explanation":"Una pregunta espera una respuesta; una oferta se relaciona con una demanda."},{"id":90,"difficulty":"Avanzado","type":"Parte y sistema","prompt":"Cable es a circuito como vena es a...","options":["sistema circulatorio","sistema solar","sistema digestivo","sistema óseo"],"answer":0,"explanation":"El cable forma parte de un circuito; la vena forma parte del sistema circulatorio."}];
+const adjectives = [{"id":1,"difficulty":"Básico","type":"Calificativo","prompt":"Selecciona el adjetivo calificativo: La casa grande tiene ventanas azules.","options":["casa","grande","ventanas","tiene"],"answer":1,"explanation":"Grande describe el tamaño de la casa.","hint":"Busca la palabra que expresa una cualidad o característica."},{"id":2,"difficulty":"Básico","type":"Calificativo","prompt":"¿Cuál palabra califica al sustantivo en “El perro juguetón corre”?","options":["perro","corre","El","juguetón"],"answer":3,"explanation":"Juguetón indica cómo es el perro.","hint":"Los calificativos responden cómo es alguien o algo."},{"id":3,"difficulty":"Básico","type":"Calificativo","prompt":"Completa: La flor ____ perfuma el jardín.","options":["hermosa","esa","tres","mi"],"answer":0,"explanation":"Hermosa expresa una cualidad de la flor.","hint":"Elige una palabra que describa a la flor."},{"id":4,"difficulty":"Básico","type":"Demostrativo","prompt":"Selecciona el demostrativo: Estos libros son interesantes.","options":["libros","son","interesantes","Estos"],"answer":3,"explanation":"Estos señala libros cercanos.","hint":"Los demostrativos señalan distancia: este, ese o aquel."},{"id":5,"difficulty":"Básico","type":"Demostrativo","prompt":"Completa: ____ montaña que ves es muy alta.","options":["Aquella","Cinco","Mi","Hermosa"],"answer":0,"explanation":"Aquella señala una montaña que está lejos.","hint":"Para señalar algo lejano usamos aquel, aquella o aquellos."},{"id":6,"difficulty":"Básico","type":"Demostrativo","prompt":"¿Qué palabra señala al sustantivo en “Esa mochila es roja”?","options":["roja","mochila","Esa","es"],"answer":2,"explanation":"Esa señala la mochila a una distancia media.","hint":"Identifica la palabra que acompaña y señala a mochila."},{"id":7,"difficulty":"Básico","type":"Numeral","prompt":"Selecciona el adjetivo numeral: Tengo dos cuadernos.","options":["Tengo","dos","cuadernos","los"],"answer":1,"explanation":"Dos indica una cantidad exacta.","hint":"Los numerales expresan una cantidad u orden preciso."},{"id":8,"difficulty":"Básico","type":"Numeral","prompt":"Completa: El corredor llegó en ____ lugar.","options":["primer","ese","mi","rápido"],"answer":0,"explanation":"Primer indica el orden de llegada.","hint":"Los numerales ordinales expresan posición: primero, segundo..."},{"id":9,"difficulty":"Básico","type":"Numeral","prompt":"¿Cuál es el numeral en “Tres niñas cantan”?","options":["niñas","cantan","Tres","las"],"answer":2,"explanation":"Tres indica cuántas niñas cantan.","hint":"Pregunta “¿cuántas?” para encontrar el numeral cardinal."},{"id":10,"difficulty":"Básico","type":"Posesivo","prompt":"Selecciona el posesivo: Mi lápiz está sobre la mesa.","options":["lápiz","mesa","sobre","Mi"],"answer":3,"explanation":"Mi indica que el lápiz pertenece a quien habla.","hint":"Los posesivos indican pertenencia: mi, tu, su, nuestro..."},{"id":11,"difficulty":"Básico","type":"Posesivo","prompt":"Completa: Ana guardó ____ mochila.","options":["aquella","su","dos","pesada"],"answer":1,"explanation":"Su indica que la mochila pertenece a Ana.","hint":"Busca la palabra que responde “¿de quién?”."},{"id":12,"difficulty":"Básico","type":"Posesivo","prompt":"¿Qué posesivo aparece en “Nuestro equipo ganó”?","options":["ganó","equipo","Nuestro","el"],"answer":2,"explanation":"Nuestro expresa pertenencia al grupo que habla.","hint":"Los posesivos relacionan el sustantivo con su dueño."},{"id":13,"difficulty":"Básico","type":"Indefinido","prompt":"Selecciona el indefinido: Algunos estudiantes participaron.","options":["estudiantes","Algunos","participaron","los"],"answer":1,"explanation":"Algunos indica una cantidad imprecisa.","hint":"Los indefinidos no señalan una cantidad exacta."},{"id":14,"difficulty":"Básico","type":"Indefinido","prompt":"Completa: ____ persona dejó un mensaje.","options":["Esa","Tres","Alguna","Mi"],"answer":2,"explanation":"Alguna se refiere a una persona no determinada.","hint":"Piensa en palabras como algún, ningún, varios o muchos."},{"id":15,"difficulty":"Básico","type":"Indefinido","prompt":"¿Cuál es el indefinido en “Tengo muchas tareas”?","options":["Tengo","muchas","tareas","las"],"answer":1,"explanation":"Muchas expresa una cantidad aproximada.","hint":"No necesitas poder contar la cantidad con exactitud."},{"id":16,"difficulty":"Básico","type":"Calificativo","prompt":"Elige el calificativo: El cielo despejado luce brillante.","options":["cielo","luce","despejado","El"],"answer":2,"explanation":"Despejado describe el estado del cielo.","hint":"Busca una característica del sustantivo."},{"id":17,"difficulty":"Básico","type":"Demostrativo","prompt":"Completa: ____ zapatos de aquí son nuevos.","options":["Aquellos","Estos","Varios","Tus"],"answer":1,"explanation":"Estos señala zapatos cercanos.","hint":"“De aquí” indica cercanía."},{"id":18,"difficulty":"Básico","type":"Numeral","prompt":"Completa: Compré ____ naranjas.","options":["aquellas","cuatro","mis","dulces"],"answer":1,"explanation":"Cuatro señala una cantidad exacta.","hint":"El numeral responde cuántas naranjas hay."},{"id":19,"difficulty":"Básico","type":"Posesivo","prompt":"Elige el posesivo: ¿Dónde están tus llaves?","options":["Dónde","están","tus","llaves"],"answer":2,"explanation":"Tus indica pertenencia a la persona que escucha.","hint":"Es una palabra que indica a quién pertenecen las llaves."},{"id":20,"difficulty":"Básico","type":"Indefinido","prompt":"Completa: Hay ____ leche en el vaso.","options":["poca","esa","mi","segunda"],"answer":0,"explanation":"Poca expresa una cantidad no exacta.","hint":"La cantidad se expresa de manera aproximada."},{"id":21,"difficulty":"Intermedio","type":"Calificativo","prompt":"En “La paciente enfermera atendió al niño”, ¿cuál es el calificativo?","options":["La","paciente","enfermera","atendió"],"answer":1,"explanation":"Paciente describe una cualidad de la enfermera.","hint":"Distingue el sustantivo de la palabra que lo describe."},{"id":22,"difficulty":"Intermedio","type":"Calificativo","prompt":"Elige el calificativo que concuerda: Las montañas ____ dominan el paisaje.","options":["majestuosas","majestuoso","majestuosa","majestuosos"],"answer":0,"explanation":"Montañas es femenino plural, por eso corresponde majestuosas.","hint":"El adjetivo debe coincidir en género y número."},{"id":23,"difficulty":"Intermedio","type":"Demostrativo","prompt":"¿Qué demostrativo indica mayor distancia en “Aquellos árboles son enormes”?","options":["árboles","son","enormes","Aquellos"],"answer":3,"explanation":"Aquellos señala elementos lejanos y masculinos plurales.","hint":"Compara este, ese y aquel según la distancia."},{"id":24,"difficulty":"Intermedio","type":"Demostrativo","prompt":"Completa: No quiero ____ cuaderno de ahí.","options":["este","ese","mis","varios"],"answer":1,"explanation":"Ese señala un cuaderno que está a cierta distancia.","hint":"“De ahí” suele relacionarse con ese o esa."},{"id":25,"difficulty":"Intermedio","type":"Numeral","prompt":"Identifica el numeral ordinal: La segunda puerta está abierta.","options":["puerta","abierta","La","segunda"],"answer":3,"explanation":"Segunda indica el orden de la puerta.","hint":"Los ordinales indican posición, no cantidad."},{"id":26,"difficulty":"Intermedio","type":"Numeral","prompt":"Completa: El atleta recorrió ____ kilómetros.","options":["diez","aquellos","sus","largos"],"answer":0,"explanation":"Diez expresa una cantidad exacta.","hint":"Elige una palabra que pueda escribirse como un número."},{"id":27,"difficulty":"Intermedio","type":"Posesivo","prompt":"En “Las niñas ordenaron sus materiales”, identifica el posesivo.","options":["niñas","ordenaron","sus","materiales"],"answer":2,"explanation":"Sus indica que los materiales pertenecen a las niñas.","hint":"Pregunta quién es el dueño de los materiales."},{"id":28,"difficulty":"Intermedio","type":"Posesivo","prompt":"Completa: Nosotros visitamos ____ antigua escuela.","options":["nuestra","aquella","muchas","tercera"],"answer":0,"explanation":"Nuestra expresa pertenencia a quienes hablan.","hint":"El posesivo debe concordar con escuela y señalar pertenencia."},{"id":29,"difficulty":"Intermedio","type":"Indefinido","prompt":"Identifica el indefinido: Varios vecinos limpiaron la plaza.","options":["Varios","vecinos","limpiaron","plaza"],"answer":0,"explanation":"Varios indica una cantidad imprecisa de vecinos.","hint":"La palabra no indica exactamente cuántos son."},{"id":30,"difficulty":"Intermedio","type":"Indefinido","prompt":"Completa: No cometimos ____ error.","options":["este","ningún","nuestro","primer"],"answer":1,"explanation":"Ningún expresa una cantidad cero, sin precisar un número.","hint":"Busca el indefinido que acompaña a un sustantivo masculino singular."},{"id":31,"difficulty":"Intermedio","type":"Calificativo","prompt":"En “El río caudaloso atraviesa el valle”, el adjetivo es...","options":["río","caudaloso","atraviesa","valle"],"answer":1,"explanation":"Caudaloso indica que el río lleva mucho caudal.","hint":"Es la palabra que añade una característica al río."},{"id":32,"difficulty":"Intermedio","type":"Demostrativo","prompt":"Elige la forma correcta: ____ casas de allí fueron restauradas.","options":["Estas","Esas","Aquellas","Aquella"],"answer":2,"explanation":"Aquellas concuerda con casas y señala distancia lejana.","hint":"Revisa distancia, género y número."},{"id":33,"difficulty":"Intermedio","type":"Numeral","prompt":"¿Cuál oración contiene un numeral cardinal?","options":["Mi salón","Aquel salón","El tercer salón","Cinco salones"],"answer":3,"explanation":"Cinco indica una cantidad exacta.","hint":"Los cardinales responden cuántos o cuántas."},{"id":34,"difficulty":"Intermedio","type":"Posesivo","prompt":"Completa: El director saludó a ____ familias.","options":["sus","esas","diez","amables"],"answer":0,"explanation":"Sus indica que las familias están relacionadas con el director.","hint":"Escoge el adjetivo que indica pertenencia."},{"id":35,"difficulty":"Intermedio","type":"Indefinido","prompt":"¿Cuál opción contiene un indefinido?","options":["tus ideas","aquellas ideas","muchas ideas","dos ideas"],"answer":2,"explanation":"Muchas expresa una cantidad aproximada.","hint":"Compara una cantidad exacta con una aproximada."},{"id":36,"difficulty":"Avanzado","type":"Calificativo","prompt":"Completa correctamente: Los caminos ____ conducen al pueblo.","options":["estrecho","estrecha","estrechos","estrechas"],"answer":2,"explanation":"Caminos es masculino plural: caminos estrechos.","hint":"Haz concordar el adjetivo con caminos."},{"id":37,"difficulty":"Avanzado","type":"Demostrativo","prompt":"En “Este problema requiere atención”, este expresa...","options":["cantidad","pertenencia","cercanía","cualidad"],"answer":2,"explanation":"Este señala un problema cercano.","hint":"Los demostrativos ubican algo respecto de quien habla."},{"id":38,"difficulty":"Avanzado","type":"Numeral","prompt":"En “Obtuvo el quinto puesto”, quinto es un numeral...","options":["cardinal","ordinal","indefinido","posesivo"],"answer":1,"explanation":"Quinto expresa el orden que ocupa.","hint":"Indica posición en una serie."},{"id":39,"difficulty":"Avanzado","type":"Posesivo","prompt":"¿Qué relación expresa “vuestros proyectos”?","options":["distancia","cantidad","pertenencia","cualidad"],"answer":2,"explanation":"Vuestros indica que los proyectos pertenecen a ustedes.","hint":"Los posesivos responden a la pregunta “¿de quién?”."},{"id":40,"difficulty":"Avanzado","type":"Indefinido","prompt":"Completa: ____ alumnos resolvieron el desafío, pero no todos.","options":["Aquellos","Algunos","Nuestros","Sextos"],"answer":1,"explanation":"Algunos indica una parte imprecisa del grupo.","hint":"La oración habla de una parte, sin decir cuántos."},{"id":41,"difficulty":"Avanzado","type":"Calificativo","prompt":"En “La solución más adecuada fue aceptada”, la expresión calificativa es...","options":["La solución","más adecuada","fue aceptada","aceptada"],"answer":1,"explanation":"Más adecuada califica a solución e indica grado comparativo.","hint":"Puede haber más de una palabra formando el grupo adjetival."},{"id":42,"difficulty":"Avanzado","type":"Demostrativo","prompt":"Selecciona la opción con concordancia correcta.","options":["Aquella problemas","Estos decisión","Esas respuestas","Este preguntas"],"answer":2,"explanation":"Esas concuerda en femenino plural con respuestas.","hint":"Comprueba género y número del demostrativo."},{"id":43,"difficulty":"Avanzado","type":"Numeral","prompt":"En “Ambas propuestas fueron evaluadas”, ambas es un numeral...","options":["cardinal","ordinal","partitivo","colectivo"],"answer":0,"explanation":"Ambas indica exactamente las dos propuestas.","hint":"Aunque no aparezca en cifras, señala una cantidad precisa."},{"id":44,"difficulty":"Avanzado","type":"Numeral","prompt":"Identifica el numeral partitivo: La mitad del grupo participó.","options":["grupo","participó","La","mitad"],"answer":3,"explanation":"Mitad expresa una fracción o parte exacta del grupo.","hint":"Los partitivos expresan una parte de un todo."},{"id":45,"difficulty":"Avanzado","type":"Posesivo","prompt":"Completa: Cada equipo presentó ____ propia propuesta.","options":["su","esa","tercera","alguna"],"answer":0,"explanation":"Su indica pertenencia a cada equipo.","hint":"Busca la palabra que relaciona propuesta con equipo."},{"id":46,"difficulty":"Avanzado","type":"Indefinido","prompt":"En “Cualquier respuesta puede ser revisada”, cualquier expresa...","options":["una opción no determinada","una cantidad exacta","cercanía","pertenencia"],"answer":0,"explanation":"Cualquier se refiere a una respuesta sin especificarla.","hint":"Los indefinidos dejan abierta la identidad o cantidad."},{"id":47,"difficulty":"Avanzado","type":"Calificativo","prompt":"¿Qué función cumple “histórica” en “La decisión histórica cambió el pueblo”?","options":["posesiva","calificativa","demostrativa","numeral"],"answer":1,"explanation":"Histórica describe la importancia o carácter de la decisión.","hint":"Pregunta qué característica aporta al sustantivo."},{"id":48,"difficulty":"Avanzado","type":"Demostrativo","prompt":"Elige la oración correctamente clasificada.","options":["“Mis” es demostrativo.","“Aquellos” es demostrativo.","“Varios” es posesivo.","“Dos” es calificativo."],"answer":1,"explanation":"Aquellos señala objetos lejanos, por eso es demostrativo.","hint":"Recuerda qué palabras señalan distancia."},{"id":49,"difficulty":"Avanzado","type":"Posesivo","prompt":"¿Cuál oración contiene un posesivo y un calificativo?","options":["Mi cuaderno nuevo","Dos cuadernos","Aquellos cuadernos","Algunos cuadernos"],"answer":0,"explanation":"Mi es posesivo y nuevo es calificativo.","hint":"Busca primero pertenencia y luego una característica."},{"id":50,"difficulty":"Avanzado","type":"Indefinido","prompt":"¿Cuál oración contiene un indefinido, un posesivo y un calificativo?","options":["Tres libros grandes","Mis dos libros","Algunos de nuestros libros interesantes","Aquellos libros"],"answer":2,"explanation":"Algunos es indefinido, nuestros es posesivo e interesantes es calificativo.","hint":"Identifica cantidad imprecisa, pertenencia y cualidad en una misma oración."}];
+
+       const challengeBanks = { analogies, adjectives };
+      let selectedChallenge = localStorage.getItem('yachay-challenge') || 'analogies';
+       const getChallenge = () => document.querySelector('input[name="challenge"]:checked')?.value || '';
+       const challengeName = (type) => type === 'adjectives' ? 'Adjetivos' : 'Analogías';
+       const challengeExerciseTotal = (type) => type === 'adjectives' ? 50 : 30;
+       const getResultStats = (item) => {
+         const fallbackTotal = challengeExerciseTotal(item.desafio || 'analogies');
+         const savedTotal = Number(item.ejercicios);
+         const total = Number.isInteger(savedTotal) && savedTotal > 0 ? savedTotal : fallbackTotal;
+         const savedCorrect = Number(item.aciertos) || 0;
+         const correctAnswers = Math.min(Math.max(savedCorrect, 0), total);
+         return { total, correct: correctAnswers, errors: total - correctAnswers, percentage: Math.round((correctAnswers / total) * 100) };
+       };
+       const challengeInstruction = (type) => type === 'adjectives' ? 'Resuelve el ejercicio' : 'Completa la analogía';
+      let allQuestions = challengeBanks[selectedChallenge] || analogies;
+      let totalQuestions = allQuestions.length;
+       const errorThreshold = 15;
+       const historyKey = 'yachay-results';
+       const recentQuestionsKey = () => `yachay-recent-questions-${selectedChallenge}`;
+       const progressKey = (name, challenge = selectedChallenge) => `yachay-progress-${challenge}-${normalizeStudentName(name)}`;
+       const resultsEndpoint = 'https://script.google.com/macros/s/AKfycbx2rb6uOeRqPvdicauu_q3O114DjExI0Tv3SMqRzm2h5-5y9c6MGdF2djLjfEp6expPIA/exec';
+      let activeQuestions = [], current = 0, score = 0, correct = 0, streak = 0, bestStreak = 0, answered = false;
+      let audioContext, masterGain, soundOn = false;
+      const $ = (id) => document.getElementById(id);
+      const intro = $('intro-view'), history = $('history-view'), quiz = $('quiz-view'), results = $('results-view');
+      const shuffle = (items) => [...items].sort(() => Math.random() - 0.5);
+      const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]));
+      function getHistory() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(historyKey) || '[]');
+          return Array.isArray(saved) ? saved : [];
+        } catch {
+          return [];
+        }
+      }
+      function formatResultDate(value) {
+        const date = new Date(value);
+        return Number.isNaN(date.getTime()) ? 'Sin fecha' : date.toLocaleString('es-PE', { dateStyle: 'short', timeStyle: 'short' });
+      }
+      function normalizeStudentName(name) {
+        return String(name).trim().toLocaleLowerCase('es');
+      }
+       function getLatestStudentResult(name) {
+         const student = normalizeStudentName(name);
+         return getHistory()
+           .filter((item) => normalizeStudentName(item.nombre) === student && (item.desafio || 'analogies') === selectedChallenge)
+          .sort((first, second) => new Date(second.fecha) - new Date(first.fecha))[0];
+       }
+       function getSavedProgress(name, challenge = selectedChallenge) {
+         try {
+           const saved = JSON.parse(localStorage.getItem(progressKey(name, challenge)) || 'null');
+           return saved && saved.challenge === challenge && Array.isArray(saved.activeQuestions) ? saved : null;
+         } catch {
+           return null;
+         }
+       }
+       function clearSavedProgress(name, challenge = selectedChallenge) {
+         localStorage.removeItem(progressKey(name, challenge));
+       }
+       function saveProgress(name, position = current) {
+         if (!name || !activeQuestions.length) return;
+         localStorage.setItem(progressKey(name), JSON.stringify({ version: 1, name, challenge: selectedChallenge, activeQuestions, current: position, score, correct, streak, bestStreak, savedAt: new Date().toISOString() }));
+       }
+       function refreshResumeOption() {
+         const name = $('student-name').value.trim();
+         const challenge = getChallenge();
+         const saved = name && challenge ? getSavedProgress(name, challenge) : null;
+         $('resume-button').classList.toggle('hidden', !saved);
+         if (saved) {
+           $('resume-button').textContent = `Continuar ${challengeName(challenge)} →`;
+           $('challenge-selection-status').textContent = `Hay un recorrido de ${challengeName(challenge)} pendiente.`;
+         }
+       }
+       function getQuestionPlan(name) {
+         const latestResult = getLatestStudentResult(name);
+         if (selectedChallenge === 'adjectives') return { 'Básico': 20, 'Intermedio': 15, 'Avanzado': 15 };
+         return latestResult && Number(latestResult.errores) >= errorThreshold
+          ? { 'Básico': 20, 'Intermedio': 10 }
+          : { 'Básico': 10, 'Intermedio': 10, 'Avanzado': 10 };
+      }
+      function arrangeOptions(items) {
+        const answerPositions = shuffle(items.map((item, index) => index % item.options.length));
+        return items.map((item, index) => {
+          const correctOption = item.options[item.answer];
+          const distractors = shuffle(item.options.filter((_, optionIndex) => optionIndex !== item.answer));
+          const options = [...distractors];
+          const answer = answerPositions[index];
+          options.splice(answer, 0, correctOption);
+          return { ...item, options, answer };
+        });
+      }
+       function renderHistory(filter = '') {
+         const history = getHistory().sort((first, second) => {
+           const firstTime = Date.parse(first.fecha) || 0;
+           const secondTime = Date.parse(second.fecha) || 0;
+           return secondTime - firstTime;
+         });
+        const filterElement = $('history-student-filter');
+        const list = $('history-list');
+        const status = $('history-status');
+        const students = [...new Set(history.map((item) => item.nombre).filter(Boolean))].sort((first, second) => first.localeCompare(second, 'es', { sensitivity: 'base' }));
+        const selectedStudent = students.includes(filter) ? filter : '';
+        const filtered = selectedStudent ? history.filter((item) => item.nombre === selectedStudent) : history;
+        filterElement.innerHTML = '<option value="">Todos los estudiantes</option>' + students.map((student) => `<option value="${escapeHtml(student)}">${escapeHtml(student)}</option>`).join('');
+        filterElement.value = selectedStudent;
+         list.innerHTML = filtered.map((item) => { const challenge = item.desafio || 'analogies'; const stats = getResultStats(item); return `<tr><th scope="row">${escapeHtml(item.nombre || 'Estudiante')}</th><td>${escapeHtml(challengeName(challenge))}</td><td>${stats.correct}/${stats.total}</td><td>${stats.errors}</td><td><span class="level-badge">${escapeHtml(item.nivel || 'Mixto')}</span></td><td>${escapeHtml(formatResultDate(item.fecha))}</td></tr>`; }).join('');
+        status.textContent = filtered.length ? `${filtered.length} resultado${filtered.length === 1 ? '' : 's'} guardado${filtered.length === 1 ? '' : 's'}.` : 'No hay resultados guardados para este filtro.';
+      }
+       function storeResult(result) {
+        const history = getHistory().filter((item) => item.fecha !== result.fecha);
+        localStorage.setItem(historyKey, JSON.stringify([result, ...history].slice(0, 100)));
+         renderHistory();
+       }
+       function getStudentResults(name) {
+         const student = normalizeStudentName(name);
+         return getHistory()
+           .filter((item) => normalizeStudentName(item.nombre) === student)
+            .sort((first, second) => {
+              const firstTime = Date.parse(first.fecha) || 0;
+              const secondTime = Date.parse(second.fecha) || 0;
+              return secondTime - firstTime;
+            });
+       }
+       function pdfText(value) {
+         return String(value ?? '').replace(/[\u0000-\u001f\u007f]/g, ' ').trim();
+       }
+       function formatPdfDate(value) {
+         const date = new Date(value);
+         if (Number.isNaN(date.getTime())) return 'Sin fecha';
+         return `${String(date.getDate()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}/${String(date.getFullYear()).slice(-2)} ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
+       }
+       function addPdfTable(doc, records, startY) {
+         const columns = [
+           { label: 'Fecha', width: 45, value: (item) => formatPdfDate(item.fecha) },
+           { label: 'Desafío', width: 40, value: (item) => challengeName(item.desafio || 'analogies') },
+           { label: 'Nivel', width: 35, value: (item) => item.nivel || 'Mixto' },
+            { label: 'Aciertos', width: 38, value: (item) => { const stats = getResultStats(item); return `${stats.correct}/${stats.total}`; } },
+            { label: 'Errores', width: 30, value: (item) => getResultStats(item).errors },
+            { label: 'Precisión', width: 30, value: (item) => `${getResultStats(item).percentage}%` },
+           { label: 'Puntos', width: 38, value: (item) => item.puntaje }
+         ];
+          const left = 14;
+          const pageBottom = 195;
+          const lineHeight = 4.2;
+          const totalWidth = columns.reduce((sum, column) => sum + column.width, 0);
+          let y = startY;
+          const getDataLines = (item) => columns.map((column) => doc.splitTextToSize(pdfText(column.value(item)), column.width - 5));
+          const getDataRowHeight = (item) => Math.max(10, ...getDataLines(item).map((lines) => lines.length * lineHeight + 5));
+          const drawHeader = () => {
+            const headerHeight = 14;
+            let x = left;
+            doc.setFillColor(23, 59, 69);
+            doc.setDrawColor(23, 59, 69);
+            doc.rect(left, y, totalWidth, headerHeight, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(8.5);
+            columns.forEach((column) => {
+              doc.setDrawColor(255, 255, 255);
+              doc.rect(x, y, column.width, headerHeight, 'S');
+              doc.setTextColor(255, 255, 255);
+              doc.setFont('helvetica', 'bold');
+              doc.setFontSize(8.5);
+              doc.text(pdfText(column.label), x + 2.5, y + 8);
+              x += column.width;
+            });
+            y += headerHeight;
+          };
+          const drawDataRow = (item) => {
+            const rowHeight = getDataRowHeight(item);
+            const cellLines = getDataLines(item);
+            let x = left;
+            doc.setFillColor(255, 254, 250);
+            doc.setDrawColor(242, 107, 94);
+            doc.setTextColor(23, 59, 69);
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(8.5);
+            columns.forEach((column, index) => {
+              doc.rect(x, y, column.width, rowHeight, 'S');
+              const lines = cellLines[index];
+              const textY = y + (rowHeight - (lines.length - 1) * lineHeight) / 2 + 2.8;
+              doc.text(lines, x + 2.5, textY, { baseline: 'middle' });
+              x += column.width;
+            });
+            y += rowHeight;
+          };
+          drawHeader();
+          records.forEach((item) => {
+            if (y + getDataRowHeight(item) > pageBottom) { doc.addPage(); y = 18; drawHeader(); }
+            drawDataRow(item);
+          });
+       }
+       async function downloadResultsPdf(buttonId = 'print-button', statusId = 'pdf-status') {
+         const name = localStorage.getItem('yachay-student') || 'Estudiante';
+         const records = getStudentResults(name);
+         const status = $(statusId);
+         if (!records.length) {
+           status.textContent = 'Todavía no hay resultados guardados para este estudiante.';
+           return;
+         }
+         const button = $(buttonId);
+         button.disabled = true;
+         status.textContent = 'Generando PDF...';
+         try {
+           const { jsPDF } = await import('https://cdn.jsdelivr.net/npm/jspdf@4.2.1/+esm');
+           const doc = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'landscape' });
+           records.sort((first, second) => {
+             const firstTime = Date.parse(first.fecha) || 0;
+             const secondTime = Date.parse(second.fecha) || 0;
+             return secondTime - firstTime;
+           });
+           const bestScore = Math.max(...records.map((item) => Number(item.puntaje) || 0));
+           const challengeCount = new Set(records.map((item) => challengeName(item.desafio || 'analogies'))).size;
+           doc.setTextColor(23, 59, 69);
+           doc.setFont('helvetica', 'bold');
+           doc.setFontSize(22);
+           doc.text('YACHAY', 14, 20);
+           doc.setFontSize(11);
+           doc.setFont('helvetica', 'normal');
+           doc.text('Resultados de aprendizaje', 14, 27);
+           doc.setDrawColor(242, 107, 94);
+           doc.line(14, 31, 283, 31);
+           doc.setFont('helvetica', 'bold');
+           doc.setFontSize(16);
+           doc.text(pdfText(name), 14, 43);
+           doc.setFont('helvetica', 'normal');
+           doc.setFontSize(10);
+           doc.text(`Institución Educativa José Carlos Mariátegui · Socchabamba · Ayabaca`, 14, 50);
+           doc.text(`Intentos registrados: ${records.length}   Desafíos realizados: ${challengeCount}   Mejor puntaje: ${bestScore}`, 14, 59);
+           doc.setFontSize(13);
+           doc.setFont('helvetica', 'bold');
+           doc.text('Detalle de resultados', 14, 73);
+           addPdfTable(doc, records, 79);
+           const filename = `resultados-${normalizeStudentName(name).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'estudiante'}.pdf`;
+           doc.save(filename);
+           status.textContent = `PDF descargado con ${records.length} resultado${records.length === 1 ? '' : 's'}.`;
+         } catch (error) {
+           status.textContent = 'No se pudo generar el PDF. Inténtalo nuevamente.';
+           console.error('Error al generar el PDF:', error);
+         } finally {
+           button.disabled = false;
+         }
+       }
+      function chooseQuestions(name) {
+       let recentIds = [];
+         try { recentIds = JSON.parse(localStorage.getItem(recentQuestionsKey()) || '[]'); } catch { recentIds = []; }
+       const recent = new Set(Array.isArray(recentIds) ? recentIds : []);
+       const selected = Object.entries(getQuestionPlan(name)).flatMap(([level, count]) => {
+         const levelQuestions = allQuestions.filter((item) => item.difficulty === level);
+         const fresh = shuffle(levelQuestions.filter((item) => !recent.has(item.id)));
+          return (fresh.length >= count ? fresh : shuffle(levelQuestions)).slice(0, count);
+       });
+       const selectedIds = selected.map((item) => item.id);
+        localStorage.setItem(recentQuestionsKey(), JSON.stringify([...selectedIds, ...recentIds].slice(0, totalQuestions)));
+        return arrangeOptions(selected);
+     }
+        function startQuiz(resume = false) {
+         const name = $('student-name').value.trim() || 'Estudiante';
+         selectedChallenge = getChallenge();
+         if (!selectedChallenge) {
+           $('challenge-selection-status').textContent = 'Selecciona Analogías o Adjetivos antes de comenzar.';
+           return;
+         }
+         localStorage.setItem('yachay-challenge', selectedChallenge);
+         allQuestions = challengeBanks[selectedChallenge] || analogies;
+         totalQuestions = allQuestions.length;
+         $('progress-track').setAttribute('aria-valuemax', String(totalQuestions));
+         localStorage.setItem('yachay-student', name);
+         const saved = resume ? getSavedProgress(name, selectedChallenge) : null;
+         if (saved) {
+           activeQuestions = saved.activeQuestions; current = Number(saved.current) || 0; score = Number(saved.score) || 0; correct = Number(saved.correct) || 0; streak = Number(saved.streak) || 0; bestStreak = Number(saved.bestStreak) || 0;
+         } else {
+           clearSavedProgress(name, selectedChallenge);
+           activeQuestions = chooseQuestions(name); current = 0; score = 0; correct = 0; streak = 0; bestStreak = 0;
+         }
+          totalQuestions = activeQuestions.length;
+          $('progress-track').setAttribute('aria-valuemax', String(totalQuestions));
+          intro.classList.add('hidden'); history.classList.add('hidden'); results.classList.add('hidden'); quiz.classList.remove('hidden');
+         $('correct-count').textContent = correct; $('streak-count').textContent = streak;
+         if (current >= activeQuestions.length) showResults(); else renderQuestion();
+    }
+    function renderQuestion() {
+      answered = false; const item = activeQuestions[current];
+      $('question-number').textContent = String(current + 1).padStart(2, '0'); $('difficulty-pill').textContent = item.difficulty.toUpperCase();
+       $('challenge-label').textContent = challengeName(selectedChallenge).toUpperCase();
+       $('type-label').textContent = selectedChallenge === 'adjectives' ? 'TIPO DE ADJETIVO' : 'RELACIÓN';
+        $('question-instruction').textContent = challengeInstruction(selectedChallenge);
+       $('analogy-type').textContent = item.type; $('question-title').textContent = item.prompt; $('score').textContent = String(score).padStart(3, '0');
+       $('tip-text').innerHTML = selectedChallenge === 'adjectives' ? `<strong>Pista:</strong><br />${escapeHtml(item.hint)}` : '<strong>Observa antes de elegir.</strong><br />Busca qué relación existe entre el primer par.';
+       updateProgress(current);
+      $('feedback').classList.add('hidden'); $('next-button').classList.add('hidden');
+       $('options-list').innerHTML = item.options.map((option, index) => `<button class="option-button" type="button" data-index="${index}" aria-label="Opción ${String.fromCharCode(65 + index)}: ${option}"><span class="option-letter" aria-hidden="true">${String.fromCharCode(65 + index)}</span><span>${option}</span></button>`).join('');
+       document.querySelectorAll('.option-button').forEach((button) => button.addEventListener('click', () => answer(Number(button.dataset.index))));
+     }
+     function updateProgress(completed) {
+       const percentage = (completed / activeQuestions.length) * 100;
+       $('progress-bar').style.width = `${percentage}%`;
+       $('progress-track')?.setAttribute('aria-valuenow', String(completed));
+     }
+    function answer(index) {
+      if (answered) return; answered = true; const item = activeQuestions[current]; const isCorrect = index === item.answer;
+      document.querySelectorAll('.option-button').forEach((button, optionIndex) => { button.disabled = true; if (optionIndex === item.answer) button.classList.add('correct'); if (optionIndex === index && !isCorrect) button.classList.add('wrong'); });
+      if (isCorrect) { correct++; streak++; bestStreak = Math.max(bestStreak, streak); score += 10 + Math.min(streak, 5); $('feedback-title').textContent = streak > 1 ? `¡Excelente! Racha de ${streak}` : '¡Muy bien!'; $('feedback-icon').textContent = '✓'; $('feedback').className = 'feedback correct-feedback'; } else { streak = 0; $('feedback-title').textContent = 'Casi. Sigue explorando'; $('feedback-icon').textContent = '↺'; $('feedback').className = 'feedback wrong-feedback'; }
+       $('feedback-text').textContent = item.explanation; $('correct-count').textContent = correct; $('streak-count').textContent = streak; $('score').textContent = String(score).padStart(3, '0'); $('next-button').classList.remove('hidden');
+        saveProgress(localStorage.getItem('yachay-student'), current + 1);
+        updateProgress(current + 1);
+      }
+     function nextQuestion() { current++; saveProgress(localStorage.getItem('yachay-student')); if (current >= activeQuestions.length) showResults(); else renderQuestion(); }
+      async function saveResult(name) {
+        const saveStatus = $('save-status');
+        const result = {
+          fecha: new Date().toISOString(),
+          nombre: name,
+          ejercicios: totalQuestions,
+          aciertos: Math.min(Math.max(correct, 0), totalQuestions),
+          errores: Math.max(totalQuestions - correct, 0),
+           nivel: [...new Set(activeQuestions.map((item) => item.difficulty))].length === 1 ? activeQuestions[0].difficulty : 'Mixto',
+           desafio: selectedChallenge,
+          porcentaje: Math.round((Math.min(Math.max(correct, 0), totalQuestions) / totalQuestions) * 100),
+          puntaje: score,
+          tiempo: 0
+        };
+
+        storeResult(result);
+
+        saveStatus.textContent = 'Guardando resultado...';
+        saveStatus.className = 'save-status saving';
+
+        try {
+          await fetch(resultsEndpoint, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+            body: JSON.stringify(result)
+          });
+          saveStatus.textContent = 'Resultado guardado en Google Sheets.';
+          saveStatus.className = 'save-status saved';
+        } catch (error) {
+          saveStatus.textContent = 'No se pudo guardar. Revisa tu conexión e inténtalo de nuevo.';
+          saveStatus.className = 'save-status failed';
+          console.error('Error al guardar el resultado:', error);
+        }
+      }
+
+      function showResults() {
+        quiz.classList.add('hidden'); results.classList.remove('hidden'); history.classList.remove('hidden');
+       const name = localStorage.getItem('yachay-student') || 'estudiante';
+        clearSavedProgress(name, selectedChallenge);
+        const previousBest = Number(localStorage.getItem(`yachay-best-score-${selectedChallenge}`) || 0);
+       const isBest = score >= previousBest;
+        localStorage.setItem(`yachay-best-score-${selectedChallenge}`, String(Math.max(score, previousBest)));
+         $('result-name').textContent = name; $('result-challenge').textContent = challengeName(selectedChallenge).toUpperCase(); $('final-score').textContent = score;
+         const completedCorrect = Math.min(Math.max(correct, 0), totalQuestions);
+         const completedErrors = Math.max(totalQuestions - completedCorrect, 0);
+         $('final-errors').textContent = completedErrors;
+         $('result-date').textContent = `Completado el ${new Date().toLocaleString('es-PE', { dateStyle: 'long', timeStyle: 'short' })}`;
+         document.title = `Resultado de ${name} | ${challengeName(selectedChallenge)}`;
+        $('final-correct').textContent = `${completedCorrect}/${totalQuestions}`;
+         $('final-percent').textContent = `${Math.round((completedCorrect / totalQuestions) * 100)}%`;
+        $('final-streak').textContent = bestStreak;
+        $('best-result').classList.toggle('hidden', !isBest);
+        saveResult(name);
+      }
+     function toggleSound() {
+       if (!audioContext) {
+          const AudioCtor = window.AudioContext || window.webkitAudioContext;
+         if (!AudioCtor) return;
+         audioContext = new AudioCtor(); masterGain = audioContext.createGain(); masterGain.gain.value = 0.025; masterGain.connect(audioContext.destination);
+         const osc = audioContext.createOscillator(); osc.type = 'sine'; osc.frequency.value = 196;
+         const lfo = audioContext.createOscillator(); const lfoGain = audioContext.createGain(); lfo.frequency.value = 0.08; lfoGain.gain.value = 5; lfo.connect(lfoGain); lfoGain.connect(osc.frequency); osc.connect(masterGain); osc.start(); lfo.start();
+       }
+       if (audioContext.state === 'suspended') audioContext.resume(); soundOn = !soundOn; masterGain.gain.value = soundOn ? 0.025 : 0; $('sound-toggle').setAttribute('aria-pressed', String(soundOn)); $('sound-label').textContent = soundOn ? 'Sonido activo' : 'Ambiente sonoro';
+     }
+      $('student-name').value = localStorage.getItem('yachay-student') || '';
+      document.querySelectorAll('input[name="challenge"]').forEach((option) => option.addEventListener('change', (event) => {
+         const challenge = event.target.value;
+         $('start-button').classList.remove('hidden');
+         $('challenge-selection-status').textContent = `Desafío seleccionado: ${challengeName(challenge)}. Ya puedes comenzar.`;
+         refreshResumeOption();
+       }));
+      $('student-name').addEventListener('input', refreshResumeOption);
+      $('history-student-filter').addEventListener('change', (event) => renderHistory(event.target.value));
+      renderHistory();
+       $('start-button').addEventListener('click', () => startQuiz(false)); $('resume-button').addEventListener('click', () => startQuiz(true)); $('next-button').addEventListener('click', nextQuestion); $('restart-button').addEventListener('click', () => startQuiz(false)); $('sound-toggle').addEventListener('click', toggleSound); $('print-button').addEventListener('click', () => downloadResultsPdf()); $('history-print-button').addEventListener('click', () => downloadResultsPdf('history-print-button', 'history-pdf-status'));
+     $('student-name').addEventListener('keydown', (event) => { if (event.key === 'Enter') startQuiz(); });
+      const savedChallenge = localStorage.getItem('yachay-challenge');
+      if (savedChallenge) {
+        const challengeOption = document.querySelector(`input[name="challenge"][value="${savedChallenge}"]`);
+        if (challengeOption) challengeOption.checked = true;
+        $('start-button').classList.remove('hidden');
+      }
+      refreshResumeOption();
+      window.addEventListener('pagehide', () => {
+        if (!quiz.classList.contains('hidden')) saveProgress(localStorage.getItem('yachay-student'));
+      });
+  })();</script>  </body></html>
