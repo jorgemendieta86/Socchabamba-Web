@@ -38,13 +38,14 @@
                 <a href="#comunicados">Comunicados</a>
                 <a href="#contacto" class="btn-contacto">Contacto</a>
             </nav>
-            <div class="hamburger" id="hamburger">
+            <button class="hamburger" id="hamburger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </header>
+    <div class="nav-overlay" id="nav-overlay"></div>
 
     <!-- ============================================
          CARRUSEL HERO - INICIO
@@ -113,18 +114,18 @@
         </div>
 
         <div class="carousel-indicators">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
+            <button class="dot active" type="button" aria-label="Ir a la diapositiva 1"></button>
+            <button class="dot" type="button" aria-label="Ir a la diapositiva 2"></button>
+            <button class="dot" type="button" aria-label="Ir a la diapositiva 3"></button>
+            <button class="dot" type="button" aria-label="Ir a la diapositiva 4"></button>
+            <button class="dot" type="button" aria-label="Ir a la diapositiva 5"></button>
+            <button class="dot" type="button" aria-label="Ir a la diapositiva 6"></button>
+            <button class="dot" type="button" aria-label="Ir a la diapositiva 7"></button>
+            <button class="dot" type="button" aria-label="Ir a la diapositiva 8"></button>
+            <button class="dot" type="button" aria-label="Ir a la diapositiva 9"></button>
+            <button class="dot" type="button" aria-label="Ir a la diapositiva 10"></button>
+            <button class="dot" type="button" aria-label="Ir a la diapositiva 11"></button>
+            <button class="dot" type="button" aria-label="Ir a la diapositiva 12"></button>
         </div>
     </section>
 
@@ -391,8 +392,6 @@
                         <p>Estudiantes participan en la Olimpiada Nacional de Matemática, demostrando sus habilidades y talento en la resolución de problemas matemáticos.</p>
                         <span class="card-arrow">Ver galería &#10140;</span>
                     </div>
-                </div>
-            </div>
                 </div>
             </div>
 
@@ -2083,19 +2082,6 @@
         </div>
     </footer>
 
-<!-- ============================================
-          VENTANA EMERGENTE REFORZAMIENTO ARITMÉTICO
-          ============================================ -->
-    <div class="popup-overlay" id="refuerzo-popup">
-        <div class="popup-content">
-            <button class="popup-close" id="popup-close">&times;</button>
-            <div class="popup-icon">🎓</div>
-            <h3>¡Reforzamiento Aritmético Disponible!</h3>
-            <p>Ya está disponible la primera versión de nuestro módulo de Reforzamiento Aritmético. No pierdas la oportunidad de mejorar tus habilidades matemáticas.</p>
-            <a href="aprendizaje/aritmetica/index.html" class="popup-btn">Visitar el refuerzo aritmético</a>
-        </div>
-    </div>
-
     <!-- ============================================
           VISOR DE LA REVISTA MARIATEGUISTA
           ============================================ -->
@@ -2127,10 +2113,10 @@
     <!-- ============================================
           LIGHTBOX
           ============================================ -->
-    <div class="lightbox" id="lightbox">
-        <span class="lightbox-close">&times;</span>
-        <span class="lightbox-nav prev">&#10094;</span>
-        <span class="lightbox-nav next">&#10095;</span>
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galería de imágenes" aria-hidden="true">
+        <button type="button" class="lightbox-close" aria-label="Cerrar galería">&times;</button>
+        <button type="button" class="lightbox-nav prev" aria-label="Imagen anterior">&#10094;</button>
+        <button type="button" class="lightbox-nav next" aria-label="Imagen siguiente">&#10095;</button>
         <img src="" alt="Vista ampliada">
     </div>
 
