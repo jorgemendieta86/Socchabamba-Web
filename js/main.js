@@ -10,13 +10,40 @@ let carouselInterval;
 let carouselTouchStart = 0;
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+function prepareImages() {
+    document.querySelectorAll('img').forEach(image => {
+        if (!image.hasAttribute('width') || !image.hasAttribute('height')) {
+            const source = image.getAttribute('src') || '';
+            const isLogo = source.includes('logo.png');
+            image.width = isLogo ? 240 : 2000;
+            image.height = isLogo ? 298 : 1500;
+        }
+        if (!image.hasAttribute('decoding')) image.decoding = 'async';
+        if (!image.closest('.hero-carousel') && !image.hasAttribute('loading')) image.loading = 'lazy';
+    });
+}
+
+prepareImages();
+
 function showSlide(index) {
     carouselSlides.forEach(slide => slide.classList.remove('active'));
     carouselDots.forEach(dot => dot.classList.remove('active'));
 
     currentSlide = (index + carouselSlides.length) % carouselSlides.length;
+    loadSlideImage(currentSlide);
+    loadSlideImage(currentSlide + 1);
     carouselSlides[currentSlide].classList.add('active');
     carouselDots[currentSlide].classList.add('active');
+}
+
+function loadSlideImage(index) {
+    const slide = carouselSlides[(index + carouselSlides.length) % carouselSlides.length];
+    const image = slide?.querySelector('img[data-src]');
+    if (!image) return;
+
+    image.src = image.dataset.src;
+    image.removeAttribute('data-src');
+    image.decoding = 'async';
 }
 
 function nextSlide() {
@@ -59,7 +86,22 @@ carouselDots.forEach((dot, index) => {
     });
 });
 
+loadSlideImage(currentSlide);
 startCarousel();
+
+const mapFrame = document.querySelector('.mapa-wrapper iframe[data-src]');
+if (mapFrame) {
+    const loadMap = () => {
+        if (mapFrame.hasAttribute('src')) return;
+        mapFrame.src = mapFrame.dataset.src;
+    };
+    const mapObserver = new IntersectionObserver(entries => {
+        if (!entries[0].isIntersecting) return;
+        loadMap();
+        mapObserver.disconnect();
+    }, { rootMargin: '300px' });
+    mapObserver.observe(mapFrame);
+}
 
 const heroCarousel = document.querySelector('.hero-carousel');
 heroCarousel?.addEventListener('mouseenter', stopCarousel);
@@ -113,15 +155,6 @@ if (hamburger && navMenu) {
    ============================================ */
 const header = document.querySelector('.header');
 
-window.addEventListener('scroll', () => {
-    if (!header) return;
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
-
 /* ============================================
    NAVEGACIÓN ACTIVA SEGÚN SCROLL
    ============================================ */
@@ -138,7 +171,12 @@ document.querySelectorAll('.activity-card').forEach(card => {
     });
 });
 
-window.addEventListener('scroll', () => {
+let scrollFrame;
+
+function updateScrollState() {
+    scrollFrame = null;
+    if (header) header.classList.toggle('scrolled', window.scrollY > 50);
+
     let current = '';
     sections.forEach(section => {
         const sectionTop = section.offsetTop - 100;
@@ -149,12 +187,13 @@ window.addEventListener('scroll', () => {
     });
 
     navItems.forEach(item => {
-        item.classList.remove('active');
-        if (item.getAttribute('href') === '#' + current) {
-            item.classList.add('active');
-        }
+        item.classList.toggle('active', item.getAttribute('href') === '#' + current);
     });
-});
+}
+
+window.addEventListener('scroll', () => {
+    if (!scrollFrame) scrollFrame = requestAnimationFrame(updateScrollState);
+}, { passive: true });
 
 /* ============================================
     ACTIVIDADES - MOSTRAR/OCULTAR GALERÍAS
@@ -164,9 +203,19 @@ function showActivity(id) {
     const detail = document.getElementById('activity-' + id);
     if (grid) grid.style.display = 'none';
     if (detail) {
+        renderDynamicGallery(id);
         detail.classList.add('active');
         detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+}
+
+function renderDynamicGallery(id) {
+    const renderers = {
+        'reinado-primavera-2026': renderReinadoGallery,
+        'tercera-reunion-escuela-familia-2026': renderEscuelaFamilia3Gallery,
+        'celebracion-primavera-2026': renderPrimaveraGallery
+    };
+    renderers[id]?.();
 }
 
 function hideActivity(id) {
@@ -520,7 +569,8 @@ const activityGalleries = {
 
 function renderReinadoGallery() {
     const grid = document.getElementById('reinado-gallery-grid');
-    if (!grid) return;
+    if (!grid || grid.dataset.rendered) return;
+    grid.dataset.rendered = 'true';
 
     reinadoImages.forEach((src, index) => {
         const item = document.createElement('div');
@@ -531,16 +581,18 @@ function renderReinadoGallery() {
         image.src = src;
         image.alt = `Reinado de la Primavera 2026 - imagen ${index + 1}`;
         image.loading = 'lazy';
+        image.width = 2000;
+        image.height = 1500;
+        image.decoding = 'async';
         item.appendChild(image);
         grid.appendChild(item);
     });
 }
 
-renderReinadoGallery();
-
 function renderEscuelaFamilia3Gallery() {
     const grid = document.getElementById('tercera-reunion-escuela-familia-gallery-grid');
-    if (!grid) return;
+    if (!grid || grid.dataset.rendered) return;
+    grid.dataset.rendered = 'true';
 
     escuelaFamilia3Images.forEach((src, index) => {
         const item = document.createElement('div');
@@ -551,6 +603,9 @@ function renderEscuelaFamilia3Gallery() {
         image.src = src;
         image.alt = `3.ª Reunión de Escuela y Familia - imagen ${index + 1}`;
         image.loading = 'lazy';
+        image.width = 2000;
+        image.height = 1500;
+        image.decoding = 'async';
         item.appendChild(image);
         grid.appendChild(item);
     });
@@ -558,7 +613,8 @@ function renderEscuelaFamilia3Gallery() {
 
 function renderPrimaveraGallery() {
     const grid = document.getElementById('primavera-gallery-grid');
-    if (!grid) return;
+    if (!grid || grid.dataset.rendered) return;
+    grid.dataset.rendered = 'true';
 
     primaveraImages.forEach((src, index) => {
         const item = document.createElement('div');
@@ -569,13 +625,13 @@ function renderPrimaveraGallery() {
         image.src = src;
         image.alt = `Celebración de la Primavera 2026 - imagen ${index + 1}`;
         image.loading = 'lazy';
+        image.width = 2000;
+        image.height = 1500;
+        image.decoding = 'async';
         item.appendChild(image);
         grid.appendChild(item);
     });
 }
-
-renderEscuelaFamilia3Gallery();
-renderPrimaveraGallery();
 
 function openLightboxAt(activityId, index) {
     if (!lightbox || !lightboxImg) return;
