@@ -84,36 +84,56 @@ ul { list-style: none; }
 .nav-menu a.nav-aprendizaje {
     position: relative;
     isolation: isolate;
-    border: 2px solid transparent;
-    background-clip: padding-box;
+    overflow: hidden;
+    border-radius: 12px;
+    background: transparent;
+    box-shadow: 0 5px 14px rgba(214, 163, 50, 0.16);
+    color: var(--ink-900);
+    transition: transform var(--ease), box-shadow var(--ease), color var(--ease);
 }
 .nav-menu a.nav-aprendizaje::before {
     content: "";
     position: absolute;
-    inset: -2px;
-    z-index: -1;
-    padding: 2px;
+    inset: 0;
+    z-index: -2;
     border-radius: inherit;
-    background: var(--gold-500);
+    background: linear-gradient(135deg, #d6a332, #16829a);
     background: conic-gradient(
         from var(--aprendizaje-angle),
-        transparent 0deg 220deg,
-        var(--gold-300) 275deg,
-        var(--gold-500) 320deg,
-        transparent 360deg
+        #d6a332 0deg,
+        #f4dc91 78deg,
+        #16829a 180deg,
+        #0f697f 260deg,
+        #d6a332 360deg
     );
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    mask-composite: exclude;
     pointer-events: none;
-    animation: aprendizaje-border 2.8s linear infinite;
+    animation: aprendizaje-border 5s linear infinite;
+}
+.nav-menu a.nav-aprendizaje::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    z-index: -1;
+    border-radius: 10px;
+    background: #fff;
+    pointer-events: none;
 }
 @keyframes aprendizaje-border {
     to { --aprendizaje-angle: 360deg; }
 }
+.nav-menu a.nav-aprendizaje:hover,
+.nav-menu a.nav-aprendizaje:focus-visible {
+    background: transparent;
+    color: var(--teal-700);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 22px rgba(15, 105, 127, 0.2);
+}
+.nav-menu a.nav-aprendizaje:focus-visible { outline-offset: 4px; }
 @media (prefers-reduced-motion: reduce) {
-    .nav-menu a.nav-aprendizaje::before { animation: none; }
+    .nav-menu a.nav-aprendizaje::before {
+        animation: none;
+        background: linear-gradient(135deg, #d6a332, #16829a);
+    }
 }
 .nav-menu .btn-contacto {
     background: var(--teal-700);
