@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel docente de la I.E. José Carlos Mariátegui.">
+    <title>Panel docente | I.E. José Carlos Mariátegui</title>
+    <link rel="icon" type="image/png" href="../../img/logo.png">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="learning-header">
+        <div class="learning-shell teacher-header-inner">
+            <a class="brand" href="../index.html" aria-label="Volver al aula de aprendizaje">
+                <img src="../../img/logo.png" alt="Logo de la I.E. José Carlos Mariátegui">
+                <span>
+                    <strong>I.E. José Carlos Mariátegui</strong>
+                    <small>Panel docente</small>
+                </span>
+            </a>
+            <div class="teacher-header-actions">
+                <a class="back-link" href="../index.html">Biblioteca</a>
+                <button class="teacher-button teacher-button-muted hidden" id="logout-button" type="button">Cerrar sesión</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="teacher-main learning-shell">
+        <section class="teacher-auth-card" id="auth-view" aria-labelledby="auth-title">
+            <p class="eyebrow">ESPACIO DOCENTE</p>
+            <h1 id="auth-title">Comparte tus materiales con la comunidad educativa.</h1>
+            <p>Ingresa con la cuenta que te proporcionó la institución. Solo podrás publicar en las áreas que tienes asignadas.</p>
+            <button class="teacher-button" id="login-button" type="button">Iniciar sesión</button>
+            <p class="teacher-status" id="auth-status" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="teacher-app hidden" id="app-view" aria-labelledby="dashboard-title">
+            <div class="teacher-welcome">
+                <div>
+                    <p class="eyebrow">PANEL DOCENTE</p>
+                    <h1 id="dashboard-title">Hola, <span id="teacher-name">docente</span>.</h1>
+                    <p id="teacher-email" class="teacher-muted"></p>
+                </div>
+                <div class="teacher-area-summary">
+                    <span>Mis áreas</span>
+                    <strong id="teacher-area-count">0</strong>
+                </div>
+            </div>
+
+            <div class="teacher-notice" id="teacher-notice" role="status" aria-live="polite"></div>
+
+            <div class="teacher-layout">
+                <section class="teacher-panel teacher-upload-panel" aria-labelledby="upload-title">
+                    <div class="teacher-panel-heading">
+                        <div>
+                            <p class="section-kicker">PUBLICACIÓN DIRECTA</p>
+                            <h2 id="upload-title">Subir material</h2>
+                        </div>
+                        <span class="teacher-pill">Vigencia: 2 meses</span>
+                    </div>
+                    <p class="teacher-panel-intro">Completa los datos, selecciona un archivo y publícalo. El material aparecerá inmediatamente en la biblioteca.</p>
+                    <form id="material-form" novalidate>
+                        <input id="material-id" type="hidden">
+                        <label class="teacher-field">
+                            <span>Área <b aria-hidden="true">*</b></span>
+                            <select id="material-area" required></select>
+                        </label>
+                        <label class="teacher-field">
+                            <span>Título <b aria-hidden="true">*</b></span>
+                            <input id="material-title" type="text" maxlength="120" placeholder="Ej. Ficha de reforzamiento" required>
+                        </label>
+                        <label class="teacher-field">
+                            <span>Grado o nivel</span>
+                            <input id="material-grade" type="text" maxlength="60" placeholder="Ej. Segundo grado de secundaria">
+                        </label>
+                        <label class="teacher-field">
+                            <span>Descripción breve</span>
+                            <textarea id="material-description" maxlength="500" rows="4" placeholder="Explica en pocas palabras qué encontrará el estudiante."></textarea>
+                        </label>
+                        <label class="teacher-field">
+                            <span>Archivo <b aria-hidden="true" id="file-required-mark">*</b></span>
+                            <input id="material-file" type="file" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.odt,.odp,.ods,.jpg,.jpeg,.png,.webp" required>
+                            <small>PDF, Word, PowerPoint, Excel o imagen. Tamaño máximo: 4 MB.</small>
+                        </label>
+                        <p class="teacher-form-status" id="form-status" role="status" aria-live="polite"></p>
+                        <div class="teacher-form-actions">
+                            <button class="teacher-button" id="submit-material-button" type="submit">Publicar material</button>
+                            <button class="teacher-button teacher-button-muted hidden" id="cancel-edit-button" type="button">Cancelar edición</button>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="teacher-panel" aria-labelledby="my-materials-title">
+                    <div class="teacher-panel-heading">
+                        <div>
+                            <p class="section-kicker">MIS PUBLICACIONES</p>
+                            <h2 id="my-materials-title">Mis materiales</h2>
+                        </div>
+                        <span class="teacher-pill" id="materials-count">0 materiales</span>
+                    </div>
+                    <div class="teacher-materials-list" id="teacher-materials-list"></div>
+                </section>
+            </div>
+
+            <section class="teacher-panel admin-panel hidden" id="admin-panel" aria-labelledby="admin-title">
+                <div class="teacher-panel-heading">
+                    <div>
+                        <p class="section-kicker">ADMINISTRACIÓN</p>
+                        <h2 id="admin-title">Asignar áreas a docentes</h2>
+                    </div>
+                </div>
+                <p class="teacher-panel-intro">Escribe el correo utilizado por el docente y marca una o varias áreas. Los cambios se aplican al siguiente inicio de sesión.</p>
+                <form class="assignment-form" id="assignment-form">
+                    <label class="teacher-field">
+                        <span>Correo del docente</span>
+                        <input id="assignment-email" type="email" placeholder="docente@ejemplo.com" required>
+                    </label>
+                    <fieldset class="area-checks">
+                        <legend>Áreas asignadas</legend>
+                        <div id="assignment-areas"></div>
+                    </fieldset>
+                    <p class="teacher-form-status" id="assignment-status" role="status" aria-live="polite"></p>
+                    <button class="teacher-button" type="submit">Guardar asignación</button>
+                </form>
+                <div class="assignment-list" id="assignment-list"></div>
+            </section>
+        </section>
+    </main>
+
+    <footer class="learning-footer learning-shell">
+        <span>I.E. José Carlos Mariátegui</span>
+        <span><a href="../index.html">Volver al aula</a></span>
+    </footer>
+
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

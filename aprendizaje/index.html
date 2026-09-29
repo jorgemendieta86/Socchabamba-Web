@@ -18,7 +18,10 @@
                     <small>Socchabamba - Ayabaca</small>
                 </span>
             </a>
-            <a class="back-link" href="../index.html">Plataforma principal</a>
+            <div class="learning-header-actions">
+                <a class="teacher-link" href="docentes/index.html">Acceso docentes</a>
+                <a class="back-link" href="../index.html">Plataforma principal</a>
+            </div>
         </div>
     </header>
 
@@ -51,6 +54,31 @@
             </article>
         </section>
 
+        <section class="materials-library" aria-labelledby="materials-title">
+            <div class="materials-heading">
+                <div>
+                    <p class="eyebrow">BIBLIOTECA DOCENTE</p>
+                    <h2 id="materials-title">Materiales para seguir aprendiendo</h2>
+                    <p>Consulta recursos organizados por área. Los materiales se actualizan durante cada bimestre académico.</p>
+                </div>
+                <a class="teacher-link materials-heading-link" href="docentes/index.html">Publicar material</a>
+            </div>
+            <div class="materials-filters" aria-label="Filtros de materiales">
+                <label>
+                    <span>Área</span>
+                    <select id="materials-area-filter">
+                        <option value="">Todas las áreas</option>
+                    </select>
+                </label>
+                <label class="materials-search">
+                    <span>Buscar</span>
+                    <input id="materials-search-input" type="search" placeholder="Título, grado o palabra clave">
+                </label>
+            </div>
+            <p class="materials-status" id="materials-status" role="status" aria-live="polite">Cargando materiales...</p>
+            <div class="materials-grid" id="materials-grid"></div>
+        </section>
+
         <aside class="learning-note">
             <strong>Consejo:</strong> escribe tu nombre al iniciar cada recorrido para que tus resultados puedan identificarse en el historial del dispositivo.
         </aside>
@@ -60,5 +88,6 @@
         <span>I.E. José Carlos Mariátegui</span>
         <span><a href="../index.html">Volver a inicio</a></span>
     </footer>
+    <script src="materials.js"></script>
 </body>
 </html>
