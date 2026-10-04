@@ -858,6 +858,15 @@ ul { list-style: none; }
     color: #b3433b;
     background: #ffe5df;
 }
+.comunicado-celulares { border-top-color: #d64545; }
+.comunicado-celulares .comunicado-image-wrap { background: #f3e4e4; }
+.comunicado-celulares .comunicado-image-wrap img {
+    height: 280px;
+    object-fit: contain;
+    object-position: top center;
+}
+.comunicado-celulares .comunicado-featured { background: #d64545; color: #fff; }
+.comunicado-celulares .comunicado-tag { color: #9b2c2c; background: #fde8e8; }
 .comunicado-revista { border-top-color: #d7a52b; }
 .comunicado-revista .comunicado-image-wrap { background: #ead7ad; }
 .comunicado-revista .comunicado-image-wrap img { object-fit: cover; }
@@ -1120,6 +1129,11 @@ ul { list-style: none; }
         height: auto;
         min-height: 0;
         aspect-ratio: 4 / 3;
+    }
+    .comunicado-celulares .comunicado-image-wrap img {
+        height: auto;
+        aspect-ratio: 3 / 4;
+        object-fit: contain;
     }
     .comunicado-featured { left: 14px; bottom: 14px; }
     .comunicado-card h4 { font-size: clamp(1.18rem, 5vw, 1.45rem); }
