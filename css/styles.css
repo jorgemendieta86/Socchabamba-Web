@@ -180,6 +180,28 @@ ul { list-style: none; }
 }
 .carousel-slide.active { opacity: 1; }
 .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
+.carousel-slide--escudo { background: linear-gradient(105deg, #0c3344 0%, #14556c 48%, #1c7f9c 100%); }
+.carousel-slide--escudo img {
+    position: absolute;
+    top: 6%;
+    right: 4%;
+    left: auto;
+    z-index: 1;
+    width: min(34vw, 420px);
+    height: 88%;
+    object-fit: contain;
+    object-position: center;
+}
+.carousel-slide--escudo .carousel-overlay {
+    z-index: 2;
+    background: linear-gradient(105deg, rgba(12, 40, 54, 0.92) 0%, rgba(12, 40, 54, 0.78) 36%, rgba(12, 40, 54, 0.16) 58%, rgba(12, 40, 54, 0.04) 74%);
+}
+.hero-carousel.is-escudo .carousel-content {
+    margin-left: max(1.2rem, calc((100% - 1180px) / 2));
+    margin-right: auto;
+    width: min(560px, 48%);
+    max-width: 560px;
+}
 .carousel-overlay {
     position: absolute;
     inset: 0;
@@ -1115,6 +1137,8 @@ ul { list-style: none; }
     .hamburger { display: flex; z-index: 1400; }
 
     .hero-carousel { min-height: 440px; height: min(72vh, 650px); }
+    .carousel-slide--escudo img { width: min(30vw, 180px); height: 42%; top: 12px; right: 12px; }
+    .hero-carousel.is-escudo .carousel-content { width: min(100% - 2rem, 560px); max-width: 560px; margin-left: auto; margin-right: auto; }
     .carousel-content { top: 52%; }
     .carousel-content h1 { font-size: 1.9rem; }
     .carousel-content p { font-size: 0.98rem; }
@@ -1163,7 +1187,8 @@ ul { list-style: none; }
     .carousel-btn { top: auto; bottom: 52px; }
     .carousel-btn.prev { left: 12px; }
     .carousel-btn.next { right: 12px; }
-    .carousel-indicators { max-width: calc(100% - 120px); overflow: hidden; }
+    .carousel-indicators { max-width: calc(100% - 96px); gap: 0; overflow: hidden; }
+    .dot { width: 18px; height: 28px; }
     .patriotic-quote,
     .berbena-quote { font-size: 0.98rem; padding: 16px; }
     .comunicado-content { padding: 24px 20px 26px; }

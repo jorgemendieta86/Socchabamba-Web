@@ -34,6 +34,7 @@ function showSlide(index) {
     loadSlideImage(currentSlide + 1);
     carouselSlides[currentSlide].classList.add('active');
     carouselDots[currentSlide].classList.add('active');
+    heroCarousel?.classList.toggle('is-escudo', carouselSlides[currentSlide].classList.contains('carousel-slide--escudo'));
 }
 
 function loadSlideImage(index) {
