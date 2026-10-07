@@ -889,6 +889,19 @@ ul { list-style: none; }
 }
 .comunicado-celulares .comunicado-featured { background: #d64545; color: #fff; }
 .comunicado-celulares .comunicado-tag { color: #9b2c2c; background: #fde8e8; }
+.comunicado-economico { border-top-color: #17639a; }
+.comunicado-economico .comunicado-image-wrap { background: #e8f4fb; }
+.comunicado-economico .comunicado-image-wrap img {
+    height: 280px;
+    object-fit: contain;
+    object-position: center top;
+}
+.comunicado-economico .comunicado-featured { background: #17639a; color: #fff; }
+.comunicado-economico .comunicado-tag { color: #14517d; background: #e2f0f8; }
+.comunicado-signature {
+    color: #0f4156 !important;
+    font-weight: 800;
+}
 .comunicado-revista { border-top-color: #d7a52b; }
 .comunicado-revista .comunicado-image-wrap { background: #ead7ad; }
 .comunicado-revista .comunicado-image-wrap img { object-fit: cover; }
@@ -1155,6 +1168,11 @@ ul { list-style: none; }
         aspect-ratio: 4 / 3;
     }
     .comunicado-celulares .comunicado-image-wrap img {
+        height: auto;
+        aspect-ratio: 3 / 4;
+        object-fit: contain;
+    }
+    .comunicado-economico .comunicado-image-wrap img {
         height: auto;
         aspect-ratio: 3 / 4;
         object-fit: contain;
