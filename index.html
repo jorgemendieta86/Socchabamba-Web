@@ -233,6 +233,15 @@
 
             <!-- Tarjetas de actividades (vista general) -->
             <div class="activities-grid fade-in" id="activities-grid">
+                <div class="activity-card" data-date="2026-10-08" onclick="showActivity('dia-educacion-fisica-2026')">
+                    <img src="img/día-física/WhatsApp Image 2026-10-08 at 9.37.45 AM.webp" alt="Comunidad educativa reunida para celebrar el Día de la Educación Física" width="2000" height="1500" loading="lazy" decoding="async">
+                    <div class="card-body">
+                        <span class="activity-card-tag">Celebración institucional</span>
+                        <h3>Día de la Educación Física</h3>
+                        <p>Estudiantes, docentes y personal administrativo compartieron una jornada de movimiento, deporte e integración.</p>
+                        <span class="card-arrow">Ver galería &#10140;</span>
+                    </div>
+                </div>
                 <div class="activity-card" data-date="2026-07-09" onclick="showActivity('aniversario-42')">
                     <img src="img/Aniversario/photo_16_2026-07-09_18-00-34.webp" alt="42° Aniversario Institucional" width="2000" height="1500" loading="lazy" decoding="async">
                     <div class="card-body">
@@ -398,6 +407,32 @@
                         <h3>ONEM 2026 - Etapa Institucional</h3>
                         <p>Estudiantes participan en la Olimpiada Nacional de Matemática, demostrando sus habilidades y talento en la resolución de problemas matemáticos.</p>
                         <span class="card-arrow">Ver galería &#10140;</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Galería individual: Día de la Educación Física 2026 -->
+            <div class="activity-detail" id="activity-dia-educacion-fisica-2026">
+                <button class="btn-back" onclick="hideActivity('dia-educacion-fisica-2026')">&#10094; Volver a actividades</button>
+
+                <div class="activity-single">
+                    <div class="activity-header fade-in">
+                        <div class="activity-title-block">
+                            <span class="activity-badge">Deporte, salud e integración</span>
+                            <h3>Nuestra comunidad educativa celebra el Día de la Educación Física</h3>
+                            <p><strong>Socchabamba, 8 de octubre de 2026.</strong></p>
+                            <p>Nuestra comunidad educativa celebró esta fecha con una jornada de movimiento, deporte e integración, en la que participaron estudiantes, docentes y personal administrativo. La actividad resaltó el valor del ejercicio para el desarrollo integral y promovió hábitos saludables, respeto, disciplina, cooperación y trabajo en equipo.</p>
+                            <p>Reafirmamos nuestro compromiso con el bienestar físico, emocional y social de nuestros estudiantes.</p>
+                            <p><strong>I.E. José Carlos Mariátegui – Socchabamba, Ayabaca.</strong><br><em>Laboriosidad, Fe y Disciplina.</em></p>
+                        </div>
+                        <div class="activity-featured-img">
+                            <img src="img/día-física/WhatsApp Image 2026-10-08 at 9.37.45 AM.webp" alt="Participantes de la celebración del Día de la Educación Física" width="2000" height="1500" loading="lazy" decoding="async" onclick="openLightboxAt('dia-educacion-fisica-2026', 0)">
+                        </div>
+                    </div>
+
+                    <div class="activity-gallery fade-in">
+                        <h4>Galería fotográfica - 40 imágenes</h4>
+                        <div class="gallery-grid" id="dia-educacion-fisica-gallery-grid"></div>
                     </div>
                 </div>
             </div>

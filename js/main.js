@@ -212,6 +212,7 @@ function showActivity(id) {
 
 function renderDynamicGallery(id) {
     const renderers = {
+        'dia-educacion-fisica-2026': renderDiaEducacionFisicaGallery,
         'reinado-primavera-2026': renderReinadoGallery,
         'tercera-reunion-escuela-familia-2026': renderEscuelaFamilia3Gallery,
         'celebracion-primavera-2026': renderPrimaveraGallery
@@ -376,8 +377,52 @@ const primaveraImages = [
     'img/primavera/20260923_154009.webp', 'img/primavera/20260923_154443.webp'
 ];
 
+const diaEducacionFisicaImages = [
+    'img/día-física/WhatsApp Image 2026-10-08 at 9.37.45 AM.webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 9.37.45 AM (1).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 9.37.45 AM (2).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 9.37.45 AM (3).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.47.47 PM.webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.47.47 PM (1).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.06 PM.webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.06 PM (1).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.07 PM.webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.07 PM (1).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.07 PM (2).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.07 PM (3).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.07 PM (4).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.08 PM.webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.08 PM (1).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.08 PM (2).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.08 PM (3).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.08 PM (4).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.08 PM (5).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.09 PM.webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.09 PM (1).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.09 PM (2).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.09 PM (3).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.09 PM (4).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.09 PM (5).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.10 PM.webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.10 PM (1).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.10 PM (2).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.10 PM (3).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.10 PM (4).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.10 PM (5).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.11 PM.webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.11 PM (1).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.11 PM (2).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.11 PM (3).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.11 PM (4).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.12 PM.webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.12 PM (1).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.12 PM (2).webp',
+    'img/día-física/WhatsApp Image 2026-10-08 at 2.48.12 PM (3).webp'
+];
+
 // Definir las imágenes de cada actividad
 const activityGalleries = {
+    'dia-educacion-fisica-2026': diaEducacionFisicaImages,
     'juegos-escolares': (function() {
         const imgs = [];
         const featured = 'img/actividades/20260424_085156.jpg';
@@ -625,6 +670,28 @@ function renderPrimaveraGallery() {
         const image = document.createElement('img');
         image.src = src;
         image.alt = `Celebración de la Primavera 2026 - imagen ${index + 1}`;
+        image.loading = 'lazy';
+        image.width = 2000;
+        image.height = 1500;
+        image.decoding = 'async';
+        item.appendChild(image);
+        grid.appendChild(item);
+    });
+}
+
+function renderDiaEducacionFisicaGallery() {
+    const grid = document.getElementById('dia-educacion-fisica-gallery-grid');
+    if (!grid || grid.dataset.rendered) return;
+    grid.dataset.rendered = 'true';
+
+    diaEducacionFisicaImages.forEach((src, index) => {
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        item.addEventListener('click', () => openLightboxAt('dia-educacion-fisica-2026', index));
+
+        const image = document.createElement('img');
+        image.src = src;
+        image.alt = `Día de la Educación Física 2026 - imagen ${index + 1}`;
         image.loading = 'lazy';
         image.width = 2000;
         image.height = 1500;
