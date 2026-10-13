@@ -718,10 +718,13 @@ ul { list-style: none; }
     max-width: 1180px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
     align-items: stretch;
 }
+
+.comunicados-grid[hidden],
+.comunicado-detail[hidden] { display: none; }
 
 .comunicado-card {
     background: #fff;
@@ -738,7 +741,7 @@ ul { list-style: none; }
     border-left-width: 0;
     border-top: 4px solid var(--gold-500);
     box-shadow: var(--shadow-md);
-    height: 100%;
+    min-height: 480px;
 }
 
 .comunicado-image-wrap {
@@ -752,7 +755,7 @@ ul { list-style: none; }
 .comunicado-image-wrap img {
     width: 100%;
     max-width: 100%;
-    height: 190px;
+    height: 210px;
     min-height: 0;
     object-fit: contain;
 }
@@ -776,15 +779,15 @@ ul { list-style: none; }
     display: flex;
     flex: 1;
     flex-direction: column;
-    padding: 22px 22px 24px;
+    padding: 18px 24px 22px;
 }
 
 .comunicado-meta {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+    margin-bottom: 10px;
 }
 
 .comunicado-date {
@@ -883,7 +886,7 @@ ul { list-style: none; }
 .comunicado-celulares { border-top-color: #d64545; }
 .comunicado-celulares .comunicado-image-wrap { background: #f3e4e4; }
 .comunicado-celulares .comunicado-image-wrap img {
-    height: 280px;
+    height: 210px;
     object-fit: contain;
     object-position: top center;
 }
@@ -892,20 +895,76 @@ ul { list-style: none; }
 .comunicado-economico { border-top-color: #17639a; }
 .comunicado-economico .comunicado-image-wrap { background: #e8f4fb; }
 .comunicado-economico .comunicado-image-wrap img {
-    height: 280px;
+    height: 210px;
     object-fit: contain;
     object-position: center top;
 }
 .comunicado-economico .comunicado-featured { background: #17639a; color: #fff; }
 .comunicado-economico .comunicado-tag { color: #14517d; background: #e2f0f8; }
+.comunicado-gestion { border-top-color: #2679b8; }
+.comunicado-gestion .comunicado-image-wrap { background: #eaf5ff; }
+.comunicado-gestion .comunicado-image-wrap img { object-fit: contain; }
+.comunicado-gestion .comunicado-featured { background: #2679b8; color: #fff; }
+.comunicado-detail { max-width: 1180px; margin: 0 auto; }
+.comunicado-detail.active { animation: fadeIn 0.35s ease; }
+.comunicado-detail-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
+    gap: 20px;
+}
+.comunicado-detail-copy,
+.comunicado-detail-image {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: #fff;
+    box-shadow: var(--shadow-sm);
+}
+.comunicado-detail-copy { padding: 28px; }
+.comunicado-detail-copy h3 {
+    color: #0f4156;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    line-height: 1.2;
+    margin: 12px 0;
+}
+.comunicado-detail-copy p { color: var(--muted); margin-bottom: 14px; }
+.comunicado-detail-copy .comunicado-lead { color: var(--text); }
+.comunicado-detail-copy .comunicado-highlights { margin: 18px 0 22px; }
+.comunicado-badge {
+    display: inline-flex;
+    padding: 6px 11px;
+    border-radius: 999px;
+    background: #e6f2f6;
+    color: var(--teal-700);
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+.comunicado-detail-image {
+    display: grid;
+    place-items: center;
+    padding: 14px;
+    background: #f4f8fa;
+}
+.comunicado-detail-image img {
+    width: 100%;
+    max-height: 680px;
+    object-fit: contain;
+}
+.comunicado-detail-image-poster { background: #eaf5ff; }
+.comunicado-detail-image-cellphones { background: #f3e4e4; }
+.comunicado-detail-image-economic { background: #e8f4fb; }
+.comunicado-detail-image-cover { background: #ead7ad; }
+.comunicado-detail-image-learning { background: #f7f1e5; }
 .comunicado-signature {
     color: #0f4156 !important;
     font-weight: 800;
 }
 .comunicado-revista { border-top-color: #d7a52b; }
 .comunicado-revista .comunicado-image-wrap { background: #ead7ad; }
-.comunicado-revista .comunicado-image-wrap img { object-fit: cover; }
-.comunicado-revista .comunicado-featured { background: #173f4f; color: #fff; }
+.comunicado-revista .comunicado-image-wrap img { object-fit: contain; }
+.comunicado-revista .comunicado-featured { left: auto; right: 18px; background: #173f4f; color: #fff; }
 .comunicado-revista .comunicado-tag { color: #82620f; background: #f9edcf; }
 
 .mapa-wrapper {
@@ -1110,6 +1169,7 @@ ul { list-style: none; }
     .matricula-steps-only { grid-template-columns: repeat(2, 1fr); }
     .contacto-info-only { grid-template-columns: 1fr; }
     .comunicados-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .comunicado-detail-header { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 860px) {
@@ -1161,6 +1221,7 @@ ul { list-style: none; }
 
 @media (max-width: 760px) {
     .comunicados-grid { grid-template-columns: 1fr; }
+    .comunicado-card { min-height: 0; }
     .comunicado-image-wrap { min-height: 0; }
     .comunicado-image-wrap img {
         height: auto;
@@ -1177,9 +1238,15 @@ ul { list-style: none; }
         aspect-ratio: 3 / 4;
         object-fit: contain;
     }
+    .comunicado-gestion .comunicado-image-wrap img {
+        height: auto;
+        aspect-ratio: 3 / 4;
+        object-fit: contain;
+    }
     .comunicado-featured { left: 14px; bottom: 14px; }
     .comunicado-card h4 { font-size: clamp(1.18rem, 5vw, 1.45rem); }
     .comunicado-card p { overflow-wrap: anywhere; }
+    .comunicado-detail-copy { padding: 22px 20px; }
 }
 
 @media (max-width: 640px) {
@@ -1209,7 +1276,7 @@ ul { list-style: none; }
     .dot { width: 18px; height: 28px; }
     .patriotic-quote,
     .berbena-quote { font-size: 0.98rem; padding: 16px; }
-    .comunicado-content { padding: 24px 20px 26px; }
+    .comunicado-content { padding: 18px 20px 22px; }
     .comunicado-image-wrap img { min-height: 0; }
     .comunicado-meta { align-items: flex-start; flex-direction: column; gap: 8px; }
     .comunicado-date { white-space: normal; }

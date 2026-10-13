@@ -227,6 +227,33 @@ function hideActivity(id) {
     if (grid) grid.style.display = 'grid';
 }
 
+/* ============================================
+    COMUNICADOS - MOSTRAR/OCULTAR DETALLES
+    ============================================ */
+function showAnnouncement(id) {
+    const grid = document.getElementById('comunicados-grid');
+    const detail = document.getElementById('comunicado-detalle-' + id);
+    if (!grid || !detail) return;
+
+    grid.hidden = true;
+    detail.hidden = false;
+    detail.classList.add('active');
+    detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function hideAnnouncement(id) {
+    const grid = document.getElementById('comunicados-grid');
+    const detail = document.getElementById('comunicado-detalle-' + id);
+    if (detail) {
+        detail.classList.remove('active');
+        detail.hidden = true;
+    }
+    if (grid) {
+        grid.hidden = false;
+        grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
 function openGallery(activityId) {
     openLightboxAt(activityId, 0);
 }

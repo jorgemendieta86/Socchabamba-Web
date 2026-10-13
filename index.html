@@ -1937,10 +1937,26 @@
                 <p>Espacio para emitir comunicados y avisos importantes a la comunidad educativa</p>
             </div>
 
-            <div class="comunicados-grid fade-in">
-                <article class="comunicado-card comunicado-destacado comunicado-economico" id="comunicado-economico">
+            <div class="comunicados-grid fade-in" id="comunicados-grid">
+                <article class="comunicado-card comunicado-destacado comunicado-gestion">
                     <div class="comunicado-image-wrap">
-                        <img src="img/reporte/Informe Económico Escolar 2026.png" alt="Infografía del Informe Económico a Setiembre de 2026" loading="lazy">
+                        <img src="img/gestion/semgestion.jpeg" alt="Cronograma de la Semana de Gestión de octubre 2026, para el jueves 15 y viernes 16" width="1122" height="1402" loading="lazy" decoding="async">
+                        <span class="comunicado-featured">15 y 16 de octubre</span>
+                    </div>
+                    <div class="comunicado-content">
+                        <div class="comunicado-meta">
+                            <span class="comunicado-tag">Agenda institucional</span>
+                            <span class="comunicado-date">Octubre 2026</span>
+                        </div>
+                        <h3>Semana de Gestión</h3>
+                        <p class="comunicado-lead">Conoce la programación del 15 y 16 de octubre: evaluación, revisión de documentos de gestión, convivencia fraterna y actividades pedagógicas.</p>
+                        <button type="button" class="comunicado-btn" onclick="showAnnouncement('gestion')">Ver programación <span aria-hidden="true">&#10140;</span></button>
+                    </div>
+                </article>
+
+                <article class="comunicado-card comunicado-destacado comunicado-economico">
+                    <div class="comunicado-image-wrap">
+                        <img src="img/reporte/Informe Económico Escolar 2026.png" alt="Infografía del Informe Económico a Setiembre de 2026" loading="lazy" decoding="async">
                         <span class="comunicado-featured">Transparencia</span>
                     </div>
                     <div class="comunicado-content">
@@ -1948,6 +1964,100 @@
                             <span class="comunicado-tag">Informe institucional</span>
                             <span class="comunicado-date">Setiembre 2026</span>
                         </div>
+                        <h3>Informe Económico a Setiembre de 2026</h3>
+                        <p class="comunicado-lead">Información transparente sobre los recursos económicos administrados por la institución durante el periodo.</p>
+                        <button type="button" class="comunicado-btn" onclick="showAnnouncement('economico')">Leer comunicado <span aria-hidden="true">&#10140;</span></button>
+                    </div>
+                </article>
+
+                <article class="comunicado-card comunicado-destacado comunicado-celulares">
+                    <div class="comunicado-image-wrap">
+                        <img src="img/Comunicados/celulares.png" alt="Afiche: celulares en el colegio, nuevas reglas de uso restringido" loading="lazy" decoding="async">
+                        <span class="comunicado-featured">Vigente</span>
+                    </div>
+                    <div class="comunicado-content">
+                        <div class="comunicado-meta">
+                            <span class="comunicado-tag">Norma institucional</span>
+                            <span class="comunicado-date">3 de octubre de 2026</span>
+                        </div>
+                        <h3>Celulares en el colegio: uso restringido</h3>
+                        <p class="comunicado-lead">El uso de celulares y dispositivos similares está restringido durante las actividades educativas.</p>
+                        <button type="button" class="comunicado-btn" onclick="showAnnouncement('celulares')">Leer comunicado <span aria-hidden="true">&#10140;</span></button>
+                    </div>
+                </article>
+
+                <article class="comunicado-card comunicado-destacado comunicado-revista">
+                    <div class="comunicado-image-wrap">
+                        <img src="revista/Portada_Mariateguista_01_2026.jpg" alt="Portada de la primera edición de la revista Mariateguista" loading="lazy" decoding="async">
+                        <span class="comunicado-featured">Primera edición</span>
+                    </div>
+                    <div class="comunicado-content">
+                        <div class="comunicado-meta">
+                            <span class="comunicado-tag">Publicación institucional</span>
+                            <span class="comunicado-date">Septiembre 2026</span>
+                        </div>
+                        <h3>Revista Mariateguista</h3>
+                        <p class="comunicado-lead">Historias, aprendizajes y experiencias que construyen nuestra comunidad educativa.</p>
+                        <button type="button" class="comunicado-btn" onclick="showAnnouncement('revista')">Conocer la revista <span aria-hidden="true">&#10140;</span></button>
+                    </div>
+                </article>
+
+                <article class="comunicado-card comunicado-destacado comunicado-analogias">
+                    <div class="comunicado-image-wrap">
+                        <img src="img/actividades/reforzamiento-analogias.png" alt="YACHAY: laboratorio de analogías y razonamiento verbal" loading="lazy" decoding="async">
+                        <span class="comunicado-featured">Nueva actividad</span>
+                    </div>
+                    <div class="comunicado-content">
+                        <div class="comunicado-meta">
+                            <span class="comunicado-tag">Comunicación · Razonamiento verbal</span>
+                            <span class="comunicado-date">Septiembre 2026</span>
+                        </div>
+                        <h3>¡Aprendamos conectando palabras!</h3>
+                        <p class="comunicado-lead">Conoce YACHAY, la plataforma interactiva para aprender analogías y fortalecer el razonamiento verbal.</p>
+                        <button type="button" class="comunicado-btn" onclick="showAnnouncement('yachay')">Conocer YACHAY <span aria-hidden="true">&#10140;</span></button>
+                    </div>
+                </article>
+
+                <article class="comunicado-card comunicado-destacado">
+                    <div class="comunicado-image-wrap">
+                        <img src="img/actividades/reforzamiento-aritmetico.svg" alt="Reforzamiento Aritmético: suma, resta, multiplicación y división" loading="lazy" decoding="async">
+                        <span class="comunicado-featured">Primera versión</span>
+                    </div>
+                    <div class="comunicado-content">
+                        <div class="comunicado-meta">
+                            <span class="comunicado-tag">Lanzamiento institucional</span>
+                            <span class="comunicado-date">Septiembre 2026</span>
+                        </div>
+                        <h3>¡La matemática da un nuevo paso!</h3>
+                        <p class="comunicado-lead">Presentamos la plataforma de Reforzamiento Aritmético para practicar las cuatro operaciones básicas.</p>
+                        <button type="button" class="comunicado-btn" onclick="showAnnouncement('aritmetica')">Conocer la plataforma <span aria-hidden="true">&#10140;</span></button>
+                    </div>
+                </article>
+            </div>
+
+            <div class="comunicado-detail" id="comunicado-detalle-gestion" hidden>
+                <button type="button" class="btn-back" onclick="hideAnnouncement('gestion')">&#10094; Volver a comunicados</button>
+                <div class="comunicado-detail-header">
+                    <div class="comunicado-detail-copy">
+                        <span class="comunicado-badge">Agenda institucional · Octubre 2026</span>
+                        <h3>Semana de Gestión</h3>
+                        <p><strong>Jueves 15 y viernes 16 de octubre de 2026.</strong></p>
+                        <p>Compartimos el cronograma de la Semana de Gestión. La agenda contempla evaluación general, resultados del monitoreo, convivencia fraterna, revisión de documentos institucionales y actividades pedagógicas y formativas.</p>
+                        <p>El jueves se desarrollarán la evaluación general, la revisión de resultados del monitoreo, espacios de convivencia y la enseñanza problémica con proyectos institucionales. El viernes se evaluarán los documentos de gestión (PEI, PAT y PCIE), además de realizar actividades de convivencia y evaluación formativa.</p>
+                        <p class="comunicado-signature">I.E. José Carlos Mariátegui – Socchabamba<br>Juntos por una mejor educación.</p>
+                        <button type="button" class="comunicado-btn" onclick="openLightbox('img/gestion/semgestion.jpeg')">Ampliar programación <span aria-hidden="true">&#10140;</span></button>
+                    </div>
+                    <div class="comunicado-detail-image comunicado-detail-image-poster">
+                        <img src="img/gestion/semgestion.jpeg" alt="Cronograma completo de la Semana de Gestión: actividades del jueves 15 y viernes 16 de octubre de 2026" width="1122" height="1402" loading="lazy" decoding="async">
+                    </div>
+                </div>
+            </div>
+
+            <div class="comunicado-detail" id="comunicado-detalle-economico" hidden>
+                <button type="button" class="btn-back" onclick="hideAnnouncement('economico')">&#10094; Volver a comunicados</button>
+                <div class="comunicado-detail-header">
+                    <div class="comunicado-detail-copy">
+                        <span class="comunicado-badge">Informe institucional · Setiembre 2026</span>
                         <h3>Informe Económico a Setiembre de 2026</h3>
                         <p class="comunicado-lead">La Institución Educativa José Carlos Mariátegui de Socchabamba pone a disposición de estudiantes, madres y padres de familia, docentes y comunidad educativa en general el Informe Económico a setiembre de 2026, con el propósito de brindar información clara y transparente sobre los recursos económicos administrados durante el periodo.</p>
                         <p>El reporte presenta de manera organizada las principales fuentes de ingreso, provenientes de recursos del PRONIED, recursos directamente recaudados y aportes de APAFA. Asimismo, se informa sobre el destino de los recursos empleados en mantenimiento del local, adquisición de bienes y materiales, atención de necesidades educativas, servicios, mejoras de mobiliario y otros requerimientos vinculados al funcionamiento de la institución.</p>
@@ -1957,17 +2067,17 @@
                         <p class="comunicado-signature">I.E. José Carlos Mariátegui – Socchabamba<br>Laboriosidad, Fe y Disciplina</p>
                         <button type="button" class="comunicado-btn" onclick="openLightbox('img/reporte/Informe Económico Escolar 2026.png')">Ver la infografía <span aria-hidden="true">&#10140;</span></button>
                     </div>
-                </article>
-                <article class="comunicado-card comunicado-destacado comunicado-celulares" id="comunicado-celulares">
-                    <div class="comunicado-image-wrap">
-                        <img src="img/Comunicados/celulares.png" alt="Afiche: celulares en el colegio, nuevas reglas de uso restringido" loading="lazy">
-                        <span class="comunicado-featured">Vigente</span>
+                    <div class="comunicado-detail-image comunicado-detail-image-economic">
+                        <img src="img/reporte/Informe Económico Escolar 2026.png" alt="Infografía del Informe Económico a Setiembre de 2026" loading="lazy" decoding="async">
                     </div>
-                    <div class="comunicado-content">
-                        <div class="comunicado-meta">
-                            <span class="comunicado-tag">Norma institucional</span>
-                            <span class="comunicado-date">3 de octubre de 2026</span>
-                        </div>
+                </div>
+            </div>
+
+            <div class="comunicado-detail" id="comunicado-detalle-celulares" hidden>
+                <button type="button" class="btn-back" onclick="hideAnnouncement('celulares')">&#10094; Volver a comunicados</button>
+                <div class="comunicado-detail-header">
+                    <div class="comunicado-detail-copy">
+                        <span class="comunicado-badge">Norma institucional · 3 de octubre de 2026</span>
                         <h3>Celulares en el colegio: uso restringido</h3>
                         <p class="comunicado-lead">El uso de <strong>celulares y dispositivos similares está restringido</strong> durante las actividades educativas, incluso fuera del aula o del horario de clases.</p>
                         <p>La medida, dispuesta por el Minedu, busca más atención, mejor convivencia y aprendizajes más seguros. Solo se permite su uso con autorización, para fines pedagógicos, salud o una emergencia.</p>
@@ -1976,20 +2086,21 @@
                             <li><span>✓</span> Solo con autorización: pedagogía, salud o emergencia</li>
                             <li><span>→</span> Familias y escuela velan por el cumplimiento</li>
                         </ul>
-                        <button type="button" class="comunicado-btn" onclick="openLightbox('img/Comunicados/celulares.png')">Ver el comunicado <span aria-hidden="true">&#10140;</span></button>
+                        <p class="comunicado-signature">I.E. José Carlos Mariátegui – Socchabamba</p>
+                        <button type="button" class="comunicado-btn" onclick="openLightbox('img/Comunicados/celulares.png')">Ampliar comunicado <span aria-hidden="true">&#10140;</span></button>
                     </div>
-                </article>
-                <article class="comunicado-card comunicado-destacado comunicado-revista" id="revista-mariateguista">
-                    <div class="comunicado-image-wrap">
-                        <img src="revista/Portada_Mariateguista_01_2026.jpg" alt="Portada de la primera edición de la revista Marietaguista" loading="lazy">
-                        <span class="comunicado-featured">Primera edición</span>
+                    <div class="comunicado-detail-image comunicado-detail-image-cellphones">
+                        <img src="img/Comunicados/celulares.png" alt="Afiche: celulares en el colegio, nuevas reglas de uso restringido" loading="lazy" decoding="async">
                     </div>
-                    <div class="comunicado-content">
-                        <div class="comunicado-meta">
-                            <span class="comunicado-tag">Publicación institucional</span>
-                            <span class="comunicado-date">Septiembre 2026</span>
-                        </div>
-                        <h3>Revista Marietaguista</h3>
+                </div>
+            </div>
+
+            <div class="comunicado-detail" id="comunicado-detalle-revista" hidden>
+                <button type="button" class="btn-back" onclick="hideAnnouncement('revista')">&#10094; Volver a comunicados</button>
+                <div class="comunicado-detail-header">
+                    <div class="comunicado-detail-copy">
+                        <span class="comunicado-badge">Publicación institucional · Septiembre 2026</span>
+                        <h3>Revista Mariateguista</h3>
                         <p class="comunicado-lead">Presentamos la primera edición de nuestra revista institucional.</p>
                         <p>Una publicación para compartir las historias, aprendizajes y experiencias que construyen nuestra comunidad educativa.</p>
                         <ul class="comunicado-highlights">
@@ -1999,17 +2110,17 @@
                         </ul>
                         <button type="button" class="comunicado-btn revista-open-btn" id="revista-open">Leer la revista <span aria-hidden="true">&#10140;</span></button>
                     </div>
-                </article>
-                <article class="comunicado-card comunicado-destacado comunicado-analogias">
-                    <div class="comunicado-image-wrap">
-                        <img src="img/actividades/reforzamiento-analogias.png" alt="YACHAY: laboratorio de analogías y razonamiento verbal" loading="lazy">
-                        <span class="comunicado-featured">Nueva actividad</span>
+                    <div class="comunicado-detail-image comunicado-detail-image-cover">
+                        <img src="revista/Portada_Mariateguista_01_2026.jpg" alt="Portada de la primera edición de la revista Mariateguista" loading="lazy" decoding="async">
                     </div>
-                    <div class="comunicado-content">
-                        <div class="comunicado-meta">
-                            <span class="comunicado-tag">Comunicación · Razonamiento verbal</span>
-                            <span class="comunicado-date">Septiembre 2026</span>
-                        </div>
+                </div>
+            </div>
+
+            <div class="comunicado-detail" id="comunicado-detalle-yachay" hidden>
+                <button type="button" class="btn-back" onclick="hideAnnouncement('yachay')">&#10094; Volver a comunicados</button>
+                <div class="comunicado-detail-header">
+                    <div class="comunicado-detail-copy">
+                        <span class="comunicado-badge">Comunicación · Razonamiento verbal · Septiembre 2026</span>
                         <h3>¡Aprendamos conectando palabras!</h3>
                         <p class="comunicado-lead">Presentamos <strong>YACHAY</strong>, la nueva plataforma interactiva de reforzamiento de Comunicación dedicada al aprendizaje de analogías.</p>
                         <p>La actividad propone desafíos breves y progresivos para reconocer relaciones entre palabras, fortalecer el razonamiento verbal y aprender a tu propio ritmo desde cualquier dispositivo.</p>
@@ -2020,17 +2131,17 @@
                         </ul>
                         <a href="aprendizaje/yachay/index.html" class="comunicado-btn">Explorar YACHAY <span aria-hidden="true">&#10140;</span></a>
                     </div>
-                </article>
-                <article class="comunicado-card comunicado-destacado">
-                    <div class="comunicado-image-wrap">
-                        <img src="img/actividades/reforzamiento-aritmetico.svg" alt="Reforzamiento Aritmético: suma, resta, multiplicación y división" loading="lazy">
-                        <span class="comunicado-featured">Primera versión</span>
+                    <div class="comunicado-detail-image comunicado-detail-image-learning">
+                        <img src="img/actividades/reforzamiento-analogias.png" alt="YACHAY: laboratorio de analogías y razonamiento verbal" loading="lazy" decoding="async">
                     </div>
-                    <div class="comunicado-content">
-                        <div class="comunicado-meta">
-                            <span class="comunicado-tag">Lanzamiento institucional</span>
-                            <span class="comunicado-date">Septiembre 2026</span>
-                        </div>
+                </div>
+            </div>
+
+            <div class="comunicado-detail" id="comunicado-detalle-aritmetica" hidden>
+                <button type="button" class="btn-back" onclick="hideAnnouncement('aritmetica')">&#10094; Volver a comunicados</button>
+                <div class="comunicado-detail-header">
+                    <div class="comunicado-detail-copy">
+                        <span class="comunicado-badge">Lanzamiento institucional · Septiembre 2026</span>
                         <h3>¡La matemática da un nuevo paso en nuestra institución!</h3>
                         <p class="comunicado-lead">Presentamos la primera versión de la web de <strong>Reforzamiento Aritmético</strong>, un espacio creado para que nuestros estudiantes aprendan, practiquen y avancen a su propio ritmo.</p>
                         <p>La plataforma fortalece las habilidades fundamentales mediante actividades de suma, resta, multiplicación y división, convirtiendo la práctica matemática en una experiencia más cercana, dinámica y accesible.</p>
@@ -2041,7 +2152,10 @@
                         </ul>
                         <a href="aprendizaje/aritmetica/index.html" class="comunicado-btn">Explorar la plataforma <span aria-hidden="true">&#10140;</span></a>
                     </div>
-                </article>
+                    <div class="comunicado-detail-image comunicado-detail-image-learning">
+                        <img src="img/actividades/reforzamiento-aritmetico.svg" alt="Reforzamiento Aritmético: suma, resta, multiplicación y división" loading="lazy" decoding="async">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
