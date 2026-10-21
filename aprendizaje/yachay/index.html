@@ -402,10 +402,15 @@ const anaphoras = [{"id":1,"difficulty":"Básico","concept":"Anáfora","mechanis
        $('feedback-text').textContent = item.explanation; $('correct-count').textContent = correct; $('streak-count').textContent = streak; $('score').textContent = String(score).padStart(3, '0'); $('next-button').classList.remove('hidden');
          saveProgress(localStorage.getItem('yachay-student'), current + 1);
          updateProgress(current + 1);
-         if (selectedChallenge === 'anaphoras' && !isCorrect) {
-           $('next-button').classList.add('hidden');
-           openChallengeModal('failure', retryAnaphoraLevel);
-           return;
+          if (selectedChallenge === 'anaphoras' && !isCorrect) {
+            saveResult(localStorage.getItem('yachay-student') || 'Estudiante', {
+              total: current + 1,
+              correct: correct,
+              errors: (current + 1) - correct
+            });
+            $('next-button').classList.add('hidden');
+            openChallengeModal('failure', retryAnaphoraLevel);
+            return;
          }
          if (selectedChallenge === 'anaphoras' && isCorrect && anaphoraStreak >= 15 && anaphoraLevel < 2) {
            $('next-button').classList.add('hidden');
@@ -413,21 +418,25 @@ const anaphoras = [{"id":1,"difficulty":"Básico","concept":"Anáfora","mechanis
          }
       }
      function nextQuestion() { current++; saveProgress(localStorage.getItem('yachay-student')); if (current >= activeQuestions.length) showResults(); else renderQuestion(); }
-      async function saveResult(name) {
-        const saveStatus = $('save-status');
-        const result = {
-          fecha: new Date().toISOString(),
-          nombre: name,
-          ejercicios: totalQuestions,
-          aciertos: Math.min(Math.max(correct, 0), totalQuestions),
-          errores: Math.max(totalQuestions - correct, 0),
-           nivel: [...new Set(activeQuestions.map((item) => item.difficulty))].length === 1 ? activeQuestions[0].difficulty : 'Mixto',
-            desafio: selectedChallenge,
-            recorrido: selectedChallenge === 'anaphoras' ? anaphoraMode : undefined,
-          porcentaje: Math.round((Math.min(Math.max(correct, 0), totalQuestions) / totalQuestions) * 100),
-          puntaje: score,
-          tiempo: 0
-        };
+       async function saveResult(name, attempt = null) {
+         const saveStatus = $('save-status');
+         const resultTotal = attempt ? attempt.total : totalQuestions;
+         const resultCorrect = Math.min(Math.max(attempt ? attempt.correct : correct, 0), resultTotal);
+         const resultErrors = attempt ? Math.max(attempt.errors, 0) : Math.max(resultTotal - resultCorrect, 0);
+         const result = {
+           fecha: new Date().toISOString(),
+           nombre: name,
+           ejercicios: resultTotal,
+           aciertos: resultCorrect,
+           errores: resultErrors,
+            nivel: [...new Set(activeQuestions.map((item) => item.difficulty))].length === 1 ? activeQuestions[0].difficulty : 'Mixto',
+             desafio: selectedChallenge,
+             recorrido: selectedChallenge === 'anaphoras' ? anaphoraMode : undefined,
+           porcentaje: resultTotal ? Math.round((resultCorrect / resultTotal) * 100) : 0,
+           puntaje: score,
+           tiempo: 0,
+           completado: !attempt
+         };
 
         storeResult(result);
 
