@@ -213,6 +213,7 @@ function showActivity(id) {
 function renderDynamicGallery(id) {
     const renderers = {
         'dia-educacion-fisica-2026': renderDiaEducacionFisicaGallery,
+        'prevencion-violencia-escolar-2026': renderViolenciaEscolarGallery,
         'reinado-primavera-2026': renderReinadoGallery,
         'tercera-reunion-escuela-familia-2026': renderEscuelaFamilia3Gallery,
         'celebracion-primavera-2026': renderPrimaveraGallery
@@ -450,6 +451,53 @@ const diaEducacionFisicaImages = [
 // Definir las imágenes de cada actividad
 const activityGalleries = {
     'dia-educacion-fisica-2026': diaEducacionFisicaImages,
+    'prevencion-violencia-escolar-2026': [
+        'img/violencia/20261026_085103.webp',
+        'img/violencia/20261026_084258.webp',
+        'img/violencia/20261026_084309.webp',
+        'img/violencia/20261026_084319.webp',
+        'img/violencia/20261026_084333.webp',
+        'img/violencia/20261026_084400.webp',
+        'img/violencia/20261026_085006.webp',
+        'img/violencia/20261026_085012.webp',
+        'img/violencia/20261026_085021.webp',
+        'img/violencia/20261026_085923.webp',
+        'img/violencia/20261026_085926.webp',
+        'img/violencia/20261026_085929.webp',
+        'img/violencia/20261026_085938.webp',
+        'img/violencia/20261026_090146.webp',
+        'img/violencia/20261026_091452.webp',
+        'img/violencia/20261026_091502.webp',
+        'img/violencia/20261026_093110.webp',
+        'img/violencia/20261026_093248.webp',
+        'img/violencia/20261026_093503.webp',
+        'img/violencia/20261026_094450.webp',
+        'img/violencia/20261026_094800.webp',
+        'img/violencia/20261026_094807.webp',
+        'img/violencia/20261026_094913.webp',
+        'img/violencia/20261026_095119.webp',
+        'img/violencia/20261026_095154.webp',
+        'img/violencia/20261026_095201.webp',
+        'img/violencia/20261026_095224.webp',
+        'img/violencia/20261026_095704.webp',
+        'img/violencia/20261026_100006.webp',
+        'img/violencia/20261026_100119.webp',
+        'img/violencia/20261026_100122.webp',
+        'img/violencia/20261026_100243.webp',
+        'img/violencia/20261026_101634.webp',
+        'img/violencia/20261026_102825.webp',
+        'img/violencia/20261026_103215.webp',
+        'img/violencia/20261026_103534.webp',
+        'img/violencia/20261026_103600.webp',
+        'img/violencia/20261026_103652.webp',
+        'img/violencia/20261026_104248.webp',
+        'img/violencia/20261026_104839.webp',
+        'img/violencia/20261026_110718.webp',
+        'img/violencia/20261026_110722.webp',
+        'img/violencia/20261026_122712.webp',
+        'img/violencia/20261026_123046.webp',
+        'img/violencia/20261026_123048.webp'
+    ],
     'juegos-escolares': (function() {
         const imgs = [];
         const featured = 'img/actividades/20260424_085156.jpg';
@@ -719,6 +767,28 @@ function renderDiaEducacionFisicaGallery() {
         const image = document.createElement('img');
         image.src = src;
         image.alt = `Día de la Educación Física 2026 - imagen ${index + 1}`;
+        image.loading = 'lazy';
+        image.width = 2000;
+        image.height = 1500;
+        image.decoding = 'async';
+        item.appendChild(image);
+        grid.appendChild(item);
+    });
+}
+
+function renderViolenciaEscolarGallery() {
+    const grid = document.getElementById('prevencion-violencia-escolar-gallery-grid');
+    if (!grid || grid.dataset.rendered) return;
+    grid.dataset.rendered = 'true';
+
+    activityGalleries['prevencion-violencia-escolar-2026'].forEach((src, index) => {
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        item.addEventListener('click', () => openLightboxAt('prevencion-violencia-escolar-2026', index));
+
+        const image = document.createElement('img');
+        image.src = src;
+        image.alt = `Campaña de Prevención de la Violencia Escolar - imagen ${index + 1}`;
         image.loading = 'lazy';
         image.width = 2000;
         image.height = 1500;
