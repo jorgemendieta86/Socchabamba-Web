@@ -9,3 +9,6 @@ design-preview/
 
 # Original campaign photos are kept locally; the optimized WebP versions are tracked.
 img/violencia/*.jpg
+
+# Original portada image; the optimized WebP version is tracked.
+img/Portada/PORTADA.png
