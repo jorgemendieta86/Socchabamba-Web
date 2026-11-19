@@ -212,6 +212,7 @@ function showActivity(id) {
 
 function renderDynamicGallery(id) {
     const renderers = {
+        'debate-municipio-escolar-2027': renderDebateMunicipioEscolarGallery,
         'dia-educacion-fisica-2026': renderDiaEducacionFisicaGallery,
         'prevencion-violencia-escolar-2026': renderViolenciaEscolarGallery,
         'reinado-primavera-2026': renderReinadoGallery,
@@ -450,6 +451,9 @@ const diaEducacionFisicaImages = [
 
 // Definir las imágenes de cada actividad
 const activityGalleries = {
+    'debate-municipio-escolar-2027': Array.from({ length: 80 }, (_, index) =>
+        `img/debate/photo_${index + 1}_2026-11-18_20-02-20.webp`
+    ),
     'dia-educacion-fisica-2026': diaEducacionFisicaImages,
     'prevencion-violencia-escolar-2026': [
         'img/violencia/20261026_085103.webp',
@@ -770,6 +774,38 @@ function renderDiaEducacionFisicaGallery() {
         image.loading = 'lazy';
         image.width = 2000;
         image.height = 1500;
+        image.decoding = 'async';
+        item.appendChild(image);
+        grid.appendChild(item);
+    });
+}
+
+function renderDebateMunicipioEscolarGallery() {
+    const grid = document.getElementById('debate-municipio-escolar-gallery-grid');
+    if (!grid || grid.dataset.rendered) return;
+    grid.dataset.rendered = 'true';
+    const portraitNumbers = new Set([25, 27, 29, 34, 38, 41, 42, 46, 48, 50, 54, 57, 61, 62, 65, 73, 74]);
+
+    activityGalleries['debate-municipio-escolar-2027'].forEach((src, index) => {
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        item.setAttribute('role', 'button');
+        item.tabIndex = 0;
+        item.setAttribute('aria-label', `Ampliar imagen ${index + 1} del debate del Municipio Escolar 2027`);
+        item.addEventListener('click', () => openLightboxAt('debate-municipio-escolar-2027', index));
+        item.addEventListener('keydown', event => {
+            if (event.key !== 'Enter' && event.key !== ' ') return;
+            event.preventDefault();
+            item.click();
+        });
+
+        const image = document.createElement('img');
+        const isPortrait = portraitNumbers.has(index + 1);
+        image.src = src;
+        image.alt = `Debate estudiantil rumbo al Municipio Escolar 2027 - imagen ${index + 1}`;
+        image.loading = 'lazy';
+        image.width = isPortrait ? 591 : 1280;
+        image.height = isPortrait ? 1280 : 591;
         image.decoding = 'async';
         item.appendChild(image);
         grid.appendChild(item);
