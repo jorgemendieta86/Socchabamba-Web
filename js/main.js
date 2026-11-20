@@ -212,6 +212,7 @@ function showActivity(id) {
 
 function renderDynamicGallery(id) {
     const renderers = {
+        'celebracion-eucaristica-2026': renderCapillaGallery,
         'debate-municipio-escolar-2027': renderDebateMunicipioEscolarGallery,
         'dia-educacion-fisica-2026': renderDiaEducacionFisicaGallery,
         'prevencion-violencia-escolar-2026': renderViolenciaEscolarGallery,
@@ -450,7 +451,29 @@ const diaEducacionFisicaImages = [
 ];
 
 // Definir las imágenes de cada actividad
+const capillaPhotos = [
+    { file: '20261119_113013', alt: 'Comunidad educativa reunida en el interior de la capilla de Socchabamba Centro' },
+    { file: '20261119_113017', alt: 'Participantes junto al altar durante la celebración eucarística' },
+    { file: '20261119_113027', alt: 'Estudiantes y docentes compartiendo la jornada de fe en la capilla' },
+    { file: '20261119_113527', alt: 'Intervención junto al altar ante la comunidad educativa' },
+    { file: '20261119_113709', alt: 'Participantes de pie durante un momento de la celebración' },
+    { file: '20261119_113716', alt: 'Comunidad educativa participando en la celebración junto al altar' },
+    { file: '20261119_115000', alt: 'Participante de la comunidad educativa interviniendo junto al altar', portrait: true },
+    { file: '20261119_115042', alt: 'Lectura durante la celebración eucarística en la capilla', portrait: true },
+    { file: '20261119_115152', alt: 'Intervención durante la jornada de oración y reflexión', portrait: true },
+    { file: '20261119_115330', alt: 'Participante compartiendo una lectura ante la comunidad', portrait: true },
+    { file: '20261119_123024', alt: 'Sacerdote y participantes durante la celebración eucarística' },
+    { file: '20261119_123037', alt: 'Participación de la comunidad en un momento de la eucaristía' },
+    { file: '20261119_123053', alt: 'Estudiante junto al sacerdote durante la celebración' },
+    { file: '20261119_123102', alt: 'Encuentro de la comunidad educativa con el sacerdote en la capilla' },
+    { file: '20261119_124428', alt: 'Comunidad educativa reunida durante la celebración eucarística en Socchabamba Centro' },
+    { file: '20261119_124931', alt: 'Participantes compartiendo un momento de oración junto al altar' },
+    { file: '20261119_124937', alt: 'Vista de la comunidad educativa reunida en la capilla' },
+    { file: '20261119_124944', alt: 'Participantes de pie junto al altar durante la jornada espiritual' }
+];
+
 const activityGalleries = {
+    'celebracion-eucaristica-2026': capillaPhotos.map(photo => `img/capilla/${photo.file}.webp`),
     'debate-municipio-escolar-2027': Array.from({ length: 80 }, (_, index) =>
         `img/debate/photo_${index + 1}_2026-11-18_20-02-20.webp`
     ),
@@ -774,6 +797,36 @@ function renderDiaEducacionFisicaGallery() {
         image.loading = 'lazy';
         image.width = 2000;
         image.height = 1500;
+        image.decoding = 'async';
+        item.appendChild(image);
+        grid.appendChild(item);
+    });
+}
+
+function renderCapillaGallery() {
+    const grid = document.getElementById('celebracion-eucaristica-gallery-grid');
+    if (!grid || grid.dataset.rendered) return;
+    grid.dataset.rendered = 'true';
+
+    capillaPhotos.forEach((photo, index) => {
+        const item = document.createElement('div');
+        item.className = photo.portrait ? 'gallery-item gallery-item-portrait' : 'gallery-item';
+        item.setAttribute('role', 'button');
+        item.tabIndex = 0;
+        item.setAttribute('aria-label', `Ampliar imagen ${index + 1}: ${photo.alt}`);
+        item.addEventListener('click', () => openLightboxAt('celebracion-eucaristica-2026', index));
+        item.addEventListener('keydown', event => {
+            if (event.key !== 'Enter' && event.key !== ' ') return;
+            event.preventDefault();
+            item.click();
+        });
+
+        const image = document.createElement('img');
+        image.src = activityGalleries['celebracion-eucaristica-2026'][index];
+        image.alt = photo.alt;
+        image.loading = 'lazy';
+        image.width = photo.portrait ? 887 : 1920;
+        image.height = photo.portrait ? 1920 : 887;
         image.decoding = 'async';
         item.appendChild(image);
         grid.appendChild(item);
