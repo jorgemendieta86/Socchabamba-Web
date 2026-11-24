@@ -517,6 +517,10 @@ ul { list-style: none; }
 .activity-featured-img-debate img { object-fit: contain; }
 .activity-featured-img-capilla img { object-fit: contain; }
 #activity-celebracion-eucaristica-2026 .activity-title-block p + p { margin-top: 14px; }
+.activity-card-familia-clausura img { object-fit: contain; background: #f6fbfd; }
+.activity-featured-img-familia-clausura { align-self: start; }
+.activity-featured-img-familia-clausura img { height: auto; min-height: 0; object-fit: contain; }
+#activity-clausura-escuela-padres-2026 .activity-title-block p + p { margin-top: 14px; }
 .activity-gallery { padding: 22px; }
 .activity-gallery h4 { color: #0f4156; margin-bottom: 12px; }
 .gallery-grid { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }

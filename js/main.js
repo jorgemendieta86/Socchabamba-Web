@@ -212,6 +212,7 @@ function showActivity(id) {
 
 function renderDynamicGallery(id) {
     const renderers = {
+        'clausura-escuela-padres-2026': renderFamiliaClausuraGallery,
         'celebracion-eucaristica-2026': renderCapillaGallery,
         'debate-municipio-escolar-2027': renderDebateMunicipioEscolarGallery,
         'dia-educacion-fisica-2026': renderDiaEducacionFisicaGallery,
@@ -473,6 +474,9 @@ const capillaPhotos = [
 ];
 
 const activityGalleries = {
+    'clausura-escuela-padres-2026': Array.from({ length: 26 }, (_, index) =>
+        `img/familaclausura/photo_${index + 1}_2026-11-23_19-22-19.webp`
+    ),
     'celebracion-eucaristica-2026': capillaPhotos.map(photo => `img/capilla/${photo.file}.webp`),
     'debate-municipio-escolar-2027': Array.from({ length: 80 }, (_, index) =>
         `img/debate/photo_${index + 1}_2026-11-18_20-02-20.webp`
@@ -797,6 +801,38 @@ function renderDiaEducacionFisicaGallery() {
         image.loading = 'lazy';
         image.width = 2000;
         image.height = 1500;
+        image.decoding = 'async';
+        item.appendChild(image);
+        grid.appendChild(item);
+    });
+}
+
+function renderFamiliaClausuraGallery() {
+    const grid = document.getElementById('clausura-escuela-padres-gallery-grid');
+    if (!grid || grid.dataset.rendered) return;
+    grid.dataset.rendered = 'true';
+
+    activityGalleries['clausura-escuela-padres-2026'].forEach((src, index) => {
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        item.setAttribute('role', 'button');
+        item.tabIndex = 0;
+        item.setAttribute('aria-label', `Ampliar imagen ${index + 1} de la clausura de la Escuela de Padres 2026`);
+        item.addEventListener('click', () => openLightboxAt('clausura-escuela-padres-2026', index));
+        item.addEventListener('keydown', event => {
+            if (event.key !== 'Enter' && event.key !== ' ') return;
+            event.preventDefault();
+            item.click();
+        });
+
+        const image = document.createElement('img');
+        image.src = src;
+        image.alt = index === 21
+            ? 'Pancartas de la Escuela de Padres: Familia Te Escucho y La disciplina comienza en casa'
+            : `Clausura de la Escuela de Padres 2026 «Familia Te Escucha» - fotografía ${index + 1}`;
+        image.loading = 'lazy';
+        image.width = 1280;
+        image.height = 591;
         image.decoding = 'async';
         item.appendChild(image);
         grid.appendChild(item);
