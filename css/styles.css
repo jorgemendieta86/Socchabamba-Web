@@ -964,6 +964,38 @@ ul { list-style: none; }
 .comunicado-detail-image-economic { background: #e8f4fb; }
 .comunicado-detail-image-cover { background: #ead7ad; }
 .comunicado-detail-image-learning { background: #f7f1e5; }
+.comunicado-disciplina .comunicado-image-wrap,
+.comunicado-detail-image-disciplina { background: #eaf5ff; }
+.comunicado-detail-image-disciplina { align-self: start; }
+.comunicado-infografias {
+    margin-top: 24px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: #fff;
+    box-shadow: var(--shadow-sm);
+}
+.comunicado-infografias h4 { color: #0f4156; font-size: 1.3rem; margin-bottom: 10px; }
+.comunicado-infografias > p { color: var(--muted); margin-bottom: 20px; }
+.comunicado-infografias-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    align-items: start;
+}
+.comunicado-infografia { margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; }
+.comunicado-infografia-preview {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: #fff;
+    cursor: zoom-in;
+}
+.comunicado-infografia-preview img { display: block; width: 100%; height: auto; }
+.comunicado-infografia-preview:focus-visible { outline: 3px solid var(--teal-700); outline-offset: -3px; }
+.comunicado-infografia figcaption { display: grid; gap: 8px; padding: 16px; color: #0f4156; }
+.comunicado-infografia figcaption a { color: var(--teal-700); text-decoration: underline; font-weight: 700; }
 .comunicado-signature {
     color: #0f4156 !important;
     font-weight: 800;
@@ -1227,6 +1259,8 @@ ul { list-style: none; }
 }
 
 @media (max-width: 760px) {
+    .comunicado-infografias { padding: 16px; }
+    .comunicado-infografias-grid { grid-template-columns: 1fr; }
     .comunicados-grid { grid-template-columns: 1fr; }
     .comunicado-card { min-height: 0; }
     .comunicado-image-wrap { min-height: 0; }

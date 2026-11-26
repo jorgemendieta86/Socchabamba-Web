@@ -474,6 +474,15 @@ const capillaPhotos = [
 ];
 
 const activityGalleries = {
+    'disciplina-escolar-2026': [
+        'img/disciplina-escolar/01-convivencia-con-respeto.webp',
+        'img/disciplina-escolar/02-clasificacion-de-faltas.webp',
+        'img/disciplina-escolar/03-faltas-graves.webp',
+        'img/disciplina-escolar/04-faltas-muy-graves.webp',
+        'img/disciplina-escolar/05-medidas-correctivas-y-sancionadoras.webp',
+        'img/disciplina-escolar/06-permitido-y-prohibido.webp',
+        'img/disciplina-escolar/07-actuacion-y-derechos.webp'
+    ],
     'clausura-escuela-padres-2026': Array.from({ length: 26 }, (_, index) =>
         `img/familaclausura/photo_${index + 1}_2026-11-23_19-22-19.webp`
     ),
